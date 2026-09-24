@@ -1,7 +1,14 @@
 <div class="header" (click)="goHome()">
   <img class="logo" src="assets/images/ANIP_logo.png"/>
-  <label class="logo-label"> CIVIC Portal</label>
+  <label class="logo-label">{{ 'app.portalName' | translate }}</label>
+  <div class="language-switcher" role="group" [attr.aria-label]="'language.label' | translate" (click)="$event.stopPropagation()">
+    @for (lang of languageService.languages; track lang.code) {
+      <button type="button"
+              [class.active]="lang.code === languageService.current"
+              [attr.aria-pressed]="lang.code === languageService.current"
+              [attr.lang]="lang.code"
+              [title]="lang.label"
+              (click)="changeLanguage(lang.code)">{{ lang.code | uppercase }}</button>
+    }
+  </div>
 </div>
-
-
-

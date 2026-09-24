@@ -1,0 +1,138 @@
+{
+  "app": {
+    "title": "Aplikacje demonstracyjne",
+    "portalName": "Portal CIVIC"
+  },
+  "language": {
+    "label": "Język"
+  },
+  "common": {
+    "go": "Dalej",
+    "next": "Dalej",
+    "submit": "Wyślij",
+    "close": "Zamknij",
+    "delete": "Usuń",
+    "deeplink": "Deeplink:",
+    "errorPrefix": "Błąd: {{message}}"
+  },
+  "home": {
+    "useCaseSelection": "Wybór przypadku użycia",
+    "selectUseCase": "Wybierz przypadek użycia",
+    "chooseOption": "Wybierz opcję",
+    "description": "Opis",
+    "descriptionText": "Przepływ z kodem wstępnie autoryzowanym (Pre-Authorized Code Flow) umożliwia użytkownikom otrzymywanie cyfrowych poświadczeń w portfelu EUDI poprzez proste zeskanowanie kodu QR. Wystawca generuje kod QR zawierający ofertę poświadczenia oraz kod wstępnie autoryzowany, który użytkownik skanuje swoim portfelem. Następnie portfel bezpiecznie łączy się z wystawcą, realizuje kod wstępnie autoryzowany i pobiera weryfikowalne poświadczenie bez konieczności autoryzacji w przeglądarce. Po weryfikacji i wystawieniu poświadczenie jest bezpiecznie przechowywane w portfelu użytkownika, co zapewnia płynny, bezpieczny i przyjazny proces wydawania poświadczeń."
+  },
+  "useCases": {
+    "classic": "Klasyczny agent stacjonarny",
+    "dtc_type1_inp": "DTC Typ 1 - Agent stacjonarny",
+    "oid_pid_inp_uc1": "Wydanie PID - Agent stacjonarny (UC-1)",
+    "oid_degree_uc1": "Logowanie studenta uczelni (UC-1)",
+    "oid_birth_certificate_sd_jwt_uc1": "Logowanie aktem urodzenia (SD-JWT)",
+    "oid_birth_certificate_mdoc_uc1": "Logowanie aktem urodzenia (MDOC)",
+    "oid_pid_idp_uc2": "Wydanie - Na podstawie logowania IDP (UC-2)"
+  },
+  "createTransaction": {
+    "title": "FORMULARZ TRANSAKCJI",
+    "businessId": "Identyfikator biznesowy (BusinessID)",
+    "loa": "Poziom zaufania (LOA)",
+    "flowName": "Nazwa przepływu",
+    "flowType": "Typ przepływu",
+    "selectOrType": "Wybierz lub wpisz",
+    "source": "Źródło",
+    "action": "Akcja",
+    "operatingSystem": "System operacyjny",
+    "accessToken": "Token dostępu",
+    "acquireToken": "Pobierz token",
+    "creationFailed": "Wystąpił błąd podczas tworzenia transakcji. Spróbuj ponownie.",
+    "requiredFields": "Wypełnij poprawnie wszystkie wymagane pola."
+  },
+  "getTransaction": {
+    "title": "STATUS TRANSAKCJI",
+    "transactionId": "Identyfikator transakcji:",
+    "email": "E-mail:",
+    "domain": "Domena",
+    "generate": "Generuj",
+    "identityRejected": "Wystąpił problem z wprowadzonymi atrybutami tożsamości. Sprawdź je i spróbuj ponownie.",
+    "emailDocumentRejected": "Wystąpił problem z wprowadzonym adresem e-mail lub dokumentem. Sprawdź dane i spróbuj ponownie."
+  },
+  "offer": {
+    "title": "OFERTA",
+    "qrCode": "Kod QR:",
+    "transactionCode": "Kod transakcji:",
+    "authorizationCode": "Kod autoryzacji:",
+    "copyDeeplink": "Kopiuj deeplink",
+    "copied": "Deeplink skopiowano do schowka!"
+  },
+  "preAuth": {
+    "createOffer": "Utwórz ofertę",
+    "create": "Utwórz"
+  },
+  "dtc": {
+    "firstName": "Imię",
+    "lastName": "Nazwisko",
+    "documentNumber": "Numer dokumentu",
+    "dateOfBirth": "Data urodzenia",
+    "createTransaction": "Utwórz transakcję"
+  },
+  "dtcUsers": {
+    "id": "ID",
+    "documentType": "Typ dokumentu",
+    "dateOfExpiry": "Data ważności",
+    "action": "Akcja"
+  },
+  "dtcTransaction": {
+    "mrzData": "Dane MRZ",
+    "issuingCountry": "Kraj wydania",
+    "nationality": "Obywatelstwo",
+    "portrait": "Zdjęcie",
+    "portraitUnsupported": "Obraz jest w formacie JPEG2000, którego Twoja przeglądarka nie obsługuje",
+    "nfcData": "Dane NFC"
+  },
+  "errorDialog": {
+    "title": "Wystąpił błąd",
+    "message": "Wystąpił błąd, sprawdź logi."
+  },
+  "attributes": {
+    "contactDetails": "DANE KONTAKTOWE",
+    "email": "E-mail",
+    "phoneOptional": "Telefon (opcjonalnie)",
+    "documentDetails": "DANE DOKUMENTU",
+    "documentNumber": "Numer dokumentu",
+    "credentialNumber": "Numer poświadczenia",
+    "credentialType": "Typ poświadczenia",
+    "firstIssueDatePlace": "Data i miejsce pierwszego wydania",
+    "jurisdictionId": "Identyfikator jurysdykcji",
+    "dtc": "DTC",
+    "dtcValue": "Wartość DTC",
+    "signature": "PODPIS",
+    "signatureValue": "Wartość podpisu",
+    "identityDetails": "DANE TOŻSAMOŚCI",
+    "givenNames": "Imiona",
+    "surname": "Nazwisko",
+    "lastName": "Nazwisko",
+    "surnameRequired": "Nazwisko jest wymagane",
+    "gender": "Płeć",
+    "male": "Mężczyzna",
+    "female": "Kobieta",
+    "others": "Inna",
+    "placeOfBirth": "Miejsce urodzenia",
+    "birthTown": "Miejscowość urodzenia",
+    "personalNumber": "Numer osobisty",
+    "pui": "PUI",
+    "dateOfBirth": "Data urodzenia",
+    "nationality": "Obywatelstwo",
+    "familyName": "Nazwisko rodowe",
+    "isOver18": "Powyżej 18 lat",
+    "height": "Wzrost",
+    "heightUnit": "Jednostka wzrostu",
+    "dateOfExpiry": "Data ważności",
+    "dateOfIssue": "Data wydania",
+    "bloodType": "Grupa krwi",
+    "additionalData": "DANE DODATKOWE",
+    "additionalAttribute": "DODATKOWY ATRYBUT",
+    "name": "Nazwa",
+    "value": "Wartość",
+    "emptyFields": "Co najmniej jedno pole formularza jest puste. Wypełnij wymagane pola.",
+    "attributeExists": "Wartość jest pusta lub już istnieje"
+  }
+}

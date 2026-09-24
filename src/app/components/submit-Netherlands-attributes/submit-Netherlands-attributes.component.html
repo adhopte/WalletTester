@@ -9,19 +9,19 @@
         <div class="col-sm-4">
           <div class="row">
             <div class="col">
-              <label class="titleBar center">CONTACT DETAILS</label>
+              <label class="titleBar center">{{ 'attributes.contactDetails' | translate }}</label>
               <div class="app-card cardSetting">
 
                 <!-- EMAIL FIELD -->
                 <div class="form-group">
-                  <label for="email">Email</label>
+                  <label for="email">{{ 'attributes.email' | translate }}</label>
                   <input type="text" formControlName="email" class="form-control" />
                 </div>
 
 
                 <!-- PHONE FIELD -->
                 <div class="form-group">
-                  <label for="phone">Phone (Optional)</label>
+                  <label for="phone">{{ 'attributes.phoneOptional' | translate }}</label>
                   <input type="text" formControlName="phone" class="form-control" />
                 </div>
               </div>
@@ -32,17 +32,17 @@
           </div>
           <div class="row">
             <div class="col">
-              <label class="titleBar center">DOCUMENT DETAILS</label>
+              <label class="titleBar center">{{ 'attributes.documentDetails' | translate }}</label>
               <div class="app-card cardSetting">
 
                 <!-- DOC NUMBER -->
                 <div class="form-group">
-                  <label for="documentNumber">Document Number</label>
+                  <label for="documentNumber">{{ 'attributes.documentNumber' | translate }}</label>
                   <input type="text" formControlName="documentNumber" class="form-control" />
                 </div>
 
                 <div class="form-group">
-                  <label for="jurisdictionId">Jurisdiction ID</label>
+                  <label for="jurisdictionId">{{ 'attributes.jurisdictionId' | translate }}</label>
                   <input type="text" formControlName="jurisdictionId" class="form-control" />
                 </div>
 
@@ -54,10 +54,10 @@
           </div>
           <div class="row">
             <div class="col">
-              <label class="titleBar center">DTC</label>
+              <label class="titleBar center">{{ 'attributes.dtc' | translate }}</label>
               <div class="app-card cardSetting">
                 <div class="form-group">
-                  <label for="DTC">DTC value</label>
+                  <label for="DTC">{{ 'attributes.dtcValue' | translate }}</label>
                   <input type="text" formControlName="DTC" class="form-control" />
                 </div>
                 <div class="image-box">
@@ -77,11 +77,11 @@
         <!-- Identity Details -->
 
         <div class="col-sm-4">
-          <label class="titleBar center">IDENTITY DETAILS</label>
+          <label class="titleBar center">{{ 'attributes.identityDetails' | translate }}</label>
           <!-- GIVEN NAMES FEILD -->
           <div class="app-card cardSetting">
             <div class="form-group">
-              <label for="givenNames">Given Names</label>
+              <label for="givenNames">{{ 'attributes.givenNames' | translate }}</label>
               <div>
                 <input id="givenNames" type="text" formControlName="givenNames" class="form-control" />
                 <div style="margin-top: 5px;">
@@ -97,56 +97,56 @@
 
             <!-- SURNAME FORM -->
             <div class="form-group">
-              <label for="surname">Surname</label>
+              <label for="surname">{{ 'attributes.surname' | translate }}</label>
               <input type="text" formControlName="surname" class="form-control" />
               <div class="form-control-feedback" *ngIf="surname?.errors && (surname?.dirty || surname?.touched)">
-                <p *ngIf="surname?.errors['required']">Surname is required</p>
+                <p *ngIf="surname?.errors['required']">{{ 'attributes.surnameRequired' | translate }}</p>
               </div>
             </div>
 
             <!-- GENDER -->
             <div class="form-group">
-              <label for="gender">Gender</label>
+              <label for="gender">{{ 'attributes.gender' | translate }}</label>
               <select formControlName="gender" class="form-control" >
-                <option value="M" selected >Male</option>
-                <option value="F">Female</option>
-                <option value="X">Others</option>
+                <option value="M" selected >{{ 'attributes.male' | translate }}</option>
+                <option value="F">{{ 'attributes.female' | translate }}</option>
+                <option value="X">{{ 'attributes.others' | translate }}</option>
               </select>
             </div>
 
             <!-- PLACE OF BIRTH FEILD -->
             <div class="form-group">
-              <label for="placeOfBirth">Place Of Birth</label>
+              <label for="placeOfBirth">{{ 'attributes.placeOfBirth' | translate }}</label>
               <input type="text" formControlName="placeOfBirth" class="form-control" />
             </div>
 
             <div class="form-group">
-              <label for="personalNumber">Personal Number</label>
+              <label for="personalNumber">{{ 'attributes.personalNumber' | translate }}</label>
               <input type="text" formControlName="personalNumber" class="form-control" />
             </div>
 
 
             <!-- DATE OF BIRTH  FEILD-->
             <div class="form-group">
-              <label for="dateOfBirth">Date Of Birth</label>
+              <label for="dateOfBirth">{{ 'attributes.dateOfBirth' | translate }}</label>
               <input type="input" formControlName="dateOfBirth" class="form-control" />
             </div>
 
             <!-- NATIONALITY FORM -->
             <div class="form-group">
-              <label for="nationality">Nationality</label>
+              <label for="nationality">{{ 'attributes.nationality' | translate }}</label>
               <input type="text" formControlName="nationality" class="form-control" />
             </div>
 
             <!-- FAMILY NAME FORM -->
             <div class="form-group">
-              <label for="familyName">Family name</label>
+              <label for="familyName">{{ 'attributes.familyName' | translate }}</label>
               <input type="input" formControlName="familyName" class="form-control" />
             </div>
             <br/>
 
             <div class="form-group">
-              <label for="is18">Is over 18</label>
+              <label for="is18">{{ 'attributes.isOver18' | translate }}</label>
               <input type="checkbox" formControlName="is18" class="form-control" />
             </div>
 
@@ -158,7 +158,7 @@
 
         <!-- Image and additional attribute feild -->
         <div class="col-sm-4">
-          <label class="titleBar center">ADDITIONAL DATA</label>
+          <label class="titleBar center">{{ 'attributes.additionalData' | translate }}</label>
           <div class="app-card cardSetting" >
 
             <div>
@@ -179,18 +179,18 @@
 
             <div class="form-group" style="text-align: center;">
               <div style="width:100%">
-                <label class="lineTitle">ADDITIONAL ATTRIBUTE</label>
+                <label class="lineTitle">{{ 'attributes.additionalAttribute' | translate }}</label>
               </div>
               <div class="row">
                 <div class="col-4">
                   <div class="form-group">
-                    <label for="key"> Name</label>
+                    <label for="key">{{ 'attributes.name' | translate }}</label>
                     <input type="text" formControlName="key" class="form-control" />
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="form-group">
-                    <label for="value">Value</label>
+                    <label for="value">{{ 'attributes.value' | translate }}</label>
                     <input type="text" formControlName="value" class="form-control" />
                   </div>
                 </div>
@@ -207,7 +207,7 @@
                         <i>{{item.value.substr(0,200)}}.....</i>
                       </label>
                       <div style="height: 20px">
-                        <label class="attrDelete" (click)="deleteAttribute(i)">Delete</label>
+                        <label class="attrDelete" (click)="deleteAttribute(i)">{{ 'common.delete' | translate }}</label>
                       </div>
                     </div>
                   </div>
@@ -221,7 +221,7 @@
             </div>
 
             <div class="right-div">
-              <button class="button" style="margin-bottom: 10px" (onClick)="onSubmit()" [disabled]="isDisabled()"> Submit </button>
+              <button class="button" style="margin-bottom: 10px" (onClick)="onSubmit()" [disabled]="isDisabled()">{{ 'common.submit' | translate }}</button>
             </div>
             <!-- empty label to use as space : no time to look in detail -->
             <div class="form-group">

@@ -1,0 +1,138 @@
+{
+  "app": {
+    "title": "Applications de démonstration",
+    "portalName": "Portail CIVIC"
+  },
+  "language": {
+    "label": "Langue"
+  },
+  "common": {
+    "go": "Valider",
+    "next": "Suivant",
+    "submit": "Soumettre",
+    "close": "Fermer",
+    "delete": "Supprimer",
+    "deeplink": "Lien profond :",
+    "errorPrefix": "Erreur : {{message}}"
+  },
+  "home": {
+    "useCaseSelection": "Sélection du cas d'usage",
+    "selectUseCase": "Sélectionnez un cas d'usage",
+    "chooseOption": "Choisissez une option",
+    "description": "Description",
+    "descriptionText": "Le flux à code pré-autorisé (Pre-Authorized Code Flow) permet aux utilisateurs de recevoir des attestations numériques dans leur portefeuille EUDI par un simple scan de QR code. L'émetteur génère un QR code contenant une offre d'attestation et un code pré-autorisé, que l'utilisateur scanne avec son portefeuille. Le portefeuille se connecte ensuite de manière sécurisée à l'émetteur, utilise le code pré-autorisé et récupère l'attestation vérifiable sans nécessiter de flux d'autorisation via un navigateur. Une fois validée et émise, l'attestation est stockée de manière sécurisée dans le portefeuille de l'utilisateur, offrant une expérience d'émission fluide, sûre et conviviale."
+  },
+  "useCases": {
+    "classic": "Agent en présentiel classique",
+    "dtc_type1_inp": "DTC Type 1 - Agent en présentiel",
+    "oid_pid_inp_uc1": "Émission de PID - Agent en présentiel (UC-1)",
+    "oid_degree_uc1": "Connexion étudiant université (UC-1)",
+    "oid_birth_certificate_sd_jwt_uc1": "Connexion acte de naissance (SD-JWT)",
+    "oid_birth_certificate_mdoc_uc1": "Connexion acte de naissance (MDOC)",
+    "oid_pid_idp_uc2": "Émission - Basée sur une connexion IDP (UC-2)"
+  },
+  "createTransaction": {
+    "title": "FORMULAIRE DE TRANSACTION",
+    "businessId": "Identifiant métier (BusinessID)",
+    "loa": "Niveau de garantie (LOA)",
+    "flowName": "Nom du flux",
+    "flowType": "Type de flux",
+    "selectOrType": "Sélectionner ou saisir",
+    "source": "Source",
+    "action": "Action",
+    "operatingSystem": "Système d'exploitation",
+    "accessToken": "Jeton d'accès",
+    "acquireToken": "Obtenir un jeton",
+    "creationFailed": "Une erreur est survenue lors de la création de la transaction. Veuillez réessayer.",
+    "requiredFields": "Veuillez remplir correctement tous les champs obligatoires."
+  },
+  "getTransaction": {
+    "title": "STATUT DE LA TRANSACTION",
+    "transactionId": "Identifiant de transaction :",
+    "email": "E-mail :",
+    "domain": "Domaine",
+    "generate": "Générer",
+    "identityRejected": "Un problème a été détecté dans les attributs d'identité saisis. Veuillez les vérifier et réessayer.",
+    "emailDocumentRejected": "Un problème a été détecté dans l'e-mail ou le document saisi. Veuillez les vérifier et réessayer."
+  },
+  "offer": {
+    "title": "OFFRE",
+    "qrCode": "QR code :",
+    "transactionCode": "Code de transaction :",
+    "authorizationCode": "Code d'autorisation :",
+    "copyDeeplink": "Copier le lien profond",
+    "copied": "Lien profond copié dans le presse-papiers !"
+  },
+  "preAuth": {
+    "createOffer": "Créer une offre",
+    "create": "Créer"
+  },
+  "dtc": {
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "documentNumber": "Numéro du document",
+    "dateOfBirth": "Date de naissance",
+    "createTransaction": "Créer la transaction"
+  },
+  "dtcUsers": {
+    "id": "ID",
+    "documentType": "Type de document",
+    "dateOfExpiry": "Date d'expiration",
+    "action": "Action"
+  },
+  "dtcTransaction": {
+    "mrzData": "Données MRZ",
+    "issuingCountry": "Pays de délivrance",
+    "nationality": "Nationalité",
+    "portrait": "Portrait",
+    "portraitUnsupported": "L'image est au format JPEG2000, que votre navigateur ne prend pas en charge",
+    "nfcData": "Données NFC"
+  },
+  "errorDialog": {
+    "title": "Une erreur est survenue",
+    "message": "Une erreur s'est produite, veuillez consulter les journaux."
+  },
+  "attributes": {
+    "contactDetails": "COORDONNÉES",
+    "email": "E-mail",
+    "phoneOptional": "Téléphone (facultatif)",
+    "documentDetails": "INFORMATIONS DU DOCUMENT",
+    "documentNumber": "Numéro du document",
+    "credentialNumber": "Numéro de l'attestation",
+    "credentialType": "Type d'attestation",
+    "firstIssueDatePlace": "Date et lieu de première délivrance",
+    "jurisdictionId": "Identifiant de juridiction",
+    "dtc": "DTC",
+    "dtcValue": "Valeur DTC",
+    "signature": "SIGNATURE",
+    "signatureValue": "Valeur de la signature",
+    "identityDetails": "INFORMATIONS D'IDENTITÉ",
+    "givenNames": "Prénoms",
+    "surname": "Nom",
+    "lastName": "Nom de famille",
+    "surnameRequired": "Le nom est obligatoire",
+    "gender": "Sexe",
+    "male": "Masculin",
+    "female": "Féminin",
+    "others": "Autre",
+    "placeOfBirth": "Lieu de naissance",
+    "birthTown": "Ville de naissance",
+    "personalNumber": "Numéro personnel",
+    "pui": "PUI",
+    "dateOfBirth": "Date de naissance",
+    "nationality": "Nationalité",
+    "familyName": "Nom de famille",
+    "isOver18": "Plus de 18 ans",
+    "height": "Taille",
+    "heightUnit": "Unité de taille",
+    "dateOfExpiry": "Date d'expiration",
+    "dateOfIssue": "Date de délivrance",
+    "bloodType": "Groupe sanguin",
+    "additionalData": "DONNÉES SUPPLÉMENTAIRES",
+    "additionalAttribute": "ATTRIBUT SUPPLÉMENTAIRE",
+    "name": "Nom",
+    "value": "Valeur",
+    "emptyFields": "Un ou plusieurs champs du formulaire sont vides. Veuillez remplir les champs obligatoires.",
+    "attributeExists": "La valeur est vide ou existe déjà"
+  }
+}

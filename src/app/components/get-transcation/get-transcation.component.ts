@@ -1,5 +1,6 @@
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Status } from '../../models/ResponseModel';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RestControllerService } from '../../services/rest-controller.service';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { Router } from '@angular/router';
@@ -15,10 +16,11 @@ declare const qrcode: any;
   selector: 'app-get-transcation',
   templateUrl: './get-transcation.component.html',
   styleUrls: ['./get-transcation.component.scss'],
-  imports:[ReactiveFormsModule,QRCodeComponent]
+  imports:[ReactiveFormsModule,QRCodeComponent,TranslatePipe]
 })
 export class GetTranscationComponent implements OnInit {
 
+  private translate = inject(TranslateService);
    key_identity: string = "";
    errorResponse:string = "";
    statusModel: Status = new Status();
@@ -81,11 +83,11 @@ export class GetTranscationComponent implements OnInit {
         }
         else if(this.statusModel.identityStatus == "REJECTED"){
           this.statusModel = null;
-          alert("There was an issue with the identity attributes entered. Kindly re-check and try again.")
+          alert(this.translate.instant('getTransaction.identityRejected'))
           window.location.href = "/create-transcation"
         }else if(this.statusModel.identityValidityStatus == "REJECTED"){
           this.statusModel = null;
-          alert("There was  an issue with Email/Document entered. Kindly re-check and try again.")
+          alert(this.translate.instant('getTransaction.emailDocumentRejected'))
           window.location.href = "/create-transcation"
         }
         else{
@@ -100,7 +102,7 @@ export class GetTranscationComponent implements OnInit {
       },
       (err:any) => {
         console.log("Exceution Error: " + err.message)
-        this.errorResponse = "Error : \n" + err.message
+        this.errorResponse = this.translate.instant('common.errorPrefix', {message: err.message})
       });
   }
 

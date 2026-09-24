@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -12,7 +13,7 @@ import { RestControllerService } from '../../services/rest-controller.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [CommonModule, MatSelectModule],
+  imports: [CommonModule, MatSelectModule, TranslatePipe],
   standalone: true
 })
 export class HomeComponent implements OnInit {

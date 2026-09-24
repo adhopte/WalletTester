@@ -18,3 +18,32 @@ nav {
     margin: 0px;
     padding-left: 10px;
 }
+
+.header {
+    position: relative;
+}
+
+.language-switcher {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 4px;
+
+    button {
+        font-size: 14px;
+        font-weight: bold;
+        color: #192c70;
+        background: white;
+        border: 1px solid #192c70;
+        border-radius: 4px;
+        padding: 4px 8px;
+        cursor: pointer;
+
+        &.active {
+            color: white;
+            background: #192c70;
+        }
+    }
+}

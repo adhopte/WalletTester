@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router, UrlSerializer} from '@angular/router';
 import {CommonModule} from '@angular/common';
@@ -9,7 +10,7 @@ import { fromBER,OctetString } from 'asn1js';
   selector: 'dtc-users',
   templateUrl: './dtc-users.component.html',
   styleUrls: ['./dtc-users.component.scss'],
-  imports: [CommonModule, MatTableModule],
+  imports: [CommonModule, MatTableModule, TranslatePipe],
   standalone: true
 })
 export class DtcUsersComponent implements OnInit {

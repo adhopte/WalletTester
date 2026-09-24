@@ -62,3 +62,12 @@ To use env variables perform `ng build --prod` this will build this project with
 defaults:
 `IPV_HOST = ""` <- points to localhost
 `IPV_BASE_PATH = "/gips"`
+## Localization
+
+The portal UI is available in English, French and Polish, using [ngx-translate](https://github.com/ngx-translate/core).
+
+- Translations live in `src/assets/i18n/{en,fr,pl}.json` and are loaded at runtime.
+- Users switch language with the EN / FR / PL buttons in the header. The choice is saved in `localStorage`; on first visit the browser language is used if supported, otherwise English.
+- In templates use the `translate` pipe (`{{ 'home.selectUseCase' | translate }}`); in code use `TranslateService.instant(...)`.
+- To add a string, add the same key to all three JSON files. Missing keys fall back to English.
+- To add a language, add a JSON file and register it in `LanguageService.languages` (`src/app/services/language.service.ts`).

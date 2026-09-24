@@ -2,48 +2,48 @@
   <div class="container-fluid " style="margin-top:15px">
     <div class="row">
       <div class="col-sm-6">
-        <label class="titleBar center">MRZ Data</label>
+        <label class="titleBar center">{{ 'dtcTransaction.mrzData' | translate }}</label>
         <div class="app-card cardSetting">
           <!-- FORM START -->
 
             <!-- BusinessID Feild -->
             <div class="form-group">
-              <label for="dg1">First Name</label>
+              <label for="dg1">{{ 'dtc.firstName' | translate }}</label>
               <p name="dg1">{{user.mrz.firstName}}</p>
             </div>
             <div class="form-group">
-              <label for="dg1">Last Name</label>
+              <label for="dg1">{{ 'dtc.lastName' | translate }}</label>
               <p name="dg1">{{user.mrz.lastName}}</p>
             </div>
             <div class="form-group">
-              <label for="dg1">Document Number</label>
+              <label for="dg1">{{ 'dtc.documentNumber' | translate }}</label>
               <p name="dg1">{{user.mrz.documentNumber}}</p>
             </div>
             <div class="form-group">
-              <label for="dg1">DOB</label>
+              <label for="dg1">{{ 'dtc.dateOfBirth' | translate }}</label>
               <p name="dg1">{{user.mrz.dateOfBirth}}</p>
             </div>
             <div class="form-group">
-              <label for="dg1">Issuing Country</label>
+              <label for="dg1">{{ 'dtcTransaction.issuingCountry' | translate }}</label>
               <p name="dg1">{{user.mrz.issuingCountry}}</p>
             </div>
             <div class="form-group">
-              <label for="dg1">Nationality</label>
+              <label for="dg1">{{ 'dtcTransaction.nationality' | translate }}</label>
               <p name="dg1">{{user.mrz.nationality}}</p>
             </div>
-          <label class="titleBar center">Portrait</label>
+          <label class="titleBar center">{{ 'dtcTransaction.portrait' | translate }}</label>
           <div class="app-card cardSetting">
           <!-- FORM START -->
 
             <!-- BusinessID Feild -->
             <div class="form-group">
-              <img *ngIf="jpegImageBase64" [src]="jpegImageBase64" alt="Image is of type JPEG2000 and your browser does not support it" />
+              <img *ngIf="jpegImageBase64" [src]="jpegImageBase64" [alt]="'dtcTransaction.portraitUnsupported' | translate" />
             </div>
           </div>
         </div>
       </div>
       <div class="col-sm-6">
-        <label class="titleBar center">NFC Data</label>
+        <label class="titleBar center">{{ 'dtcTransaction.nfcData' | translate }}</label>
         <div class="app-card cardSetting">
           <!-- FORM START -->
           <div class="form-group">
@@ -119,7 +119,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12 center" style="white-space: nowrap;">
-        <button (click)="createTransaction()" class="button">Create Transaction</button>
+        <button (click)="createTransaction()" class="button">{{ 'dtc.createTransaction' | translate }}</button>
       </div>
     </div>
   </div>

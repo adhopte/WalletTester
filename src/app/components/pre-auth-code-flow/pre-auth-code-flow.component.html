@@ -5,9 +5,9 @@
                 <table mat-table [dataSource]="dataSet" class="mat-elevation-z8 table">
                     <!-- Position Column -->
                     <ng-container matColumnDef="action">
-                        <th mat-header-cell *matHeaderCellDef> Create offer </th>
+                        <th mat-header-cell *matHeaderCellDef> {{ 'preAuth.createOffer' | translate }} </th>
                         <td mat-cell *matCellDef="let element" class="wrap-cell">
-                            <button mat-button (click)="createOffer(element)">Create</button>
+                            <button mat-button (click)="createOffer(element)">{{ 'preAuth.create' | translate }}</button>
                         </td>
                     </ng-container>
 

@@ -2,20 +2,20 @@
   <div class="container-fluid " style="margin-top:15px">
     <div class="row">
       <div class="col-sm-6">
-        <label class="titleBar center">Use case selection</label>
+        <label class="titleBar center">{{ 'home.useCaseSelection' | translate }}</label>
         <div class="app-card cardSetting">
           <!-- FORM START -->
-              <h4>Select Use Case</h4>
+              <h4>{{ 'home.selectUseCase' | translate }}</h4>
               <mat-form-field appearance="fill" class="wide-select">
-                <mat-label>Choose an option</mat-label>
+                <mat-label>{{ 'home.chooseOption' | translate }}</mat-label>
                 <mat-select [(value)]="selected">
-                  <mat-option *ngFor="let uc of useCases" value="{{uc[0]}}">{{uc[1]}}</mat-option>
+                  <mat-option *ngFor="let uc of useCases" value="{{uc[0]}}">{{ ('useCases.' + uc[0]) | translate }}</mat-option>
                 </mat-select>
               </mat-form-field>
 
 
             <div class="form-group right-div">
-              <button class="button" (click)="onSubmit()">Go</button>
+              <button class="button" (click)="onSubmit()">{{ 'common.go' | translate }}</button>
             </div>
 
             <!-- empty label to use as space : no time to look in detail -->
@@ -28,10 +28,10 @@
       </div>
 
       <div class="col-sm-6">
-        <label class="titleBar center">Description</label>
+        <label class="titleBar center">{{ 'home.description' | translate }}</label>
         <div class="app-card cardSetting">
           <p>
-            The Pre-Authorized Code Flow enables users to receive digital credentials in their EUDI Wallet through a simple QR code scan. The issuer generates a QR code containing a credential offer and a pre-authorized code, which the user scans with their wallet. The wallet then securely connects to the issuer, redeems the pre-authorized code, and retrieves the verifiable credential without requiring a browser-based authorization flow. Once validated and issued, the credential is securely stored in the user's wallet, providing a seamless, secure, and user-friendly credential issuance experience.
+            {{ 'home.descriptionText' | translate }}
           </p>
 
         </div>

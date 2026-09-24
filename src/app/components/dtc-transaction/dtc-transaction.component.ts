@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router, UrlSerializer} from '@angular/router';
 import {CommonModule} from '@angular/common';
@@ -26,7 +27,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'dtc-transaction',
   templateUrl: './dtc-transaction.component.html',
   styleUrls: ['./dtc-transaction.component.scss'],
-  imports: [CommonModule, MatTableModule,FormsModule],
+  imports: [CommonModule, MatTableModule,FormsModule, TranslatePipe],
   standalone: true
 })
 export class DtcTransactionComponent implements OnInit {
@@ -249,7 +250,7 @@ export class DtcTransactionComponent implements OnInit {
 @Component({
   selector: 'dialog-elements-example-dialog',
   templateUrl: 'error-dialog.html',
-  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose],
+  imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose, TranslatePipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DialogElementsExampleDialog {}

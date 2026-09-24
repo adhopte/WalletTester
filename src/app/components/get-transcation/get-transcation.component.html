@@ -6,11 +6,11 @@
       </div>
 
       <div class="col-sm-6">
-        <label class="titleBar center">TRANSACTION STATUS</label>
+        <label class="titleBar center">{{ 'getTransaction.title' | translate }}</label>
         <div class="app-card cardSetting">
         
-          <label>Transaction Id: {{statusModel.id}} </label><br>
-          <label>Email: {{statusModel.email}} </label>
+          <label>{{ 'getTransaction.transactionId' | translate }} {{statusModel.id}} </label><br>
+          <label>{{ 'getTransaction.email' | translate }} {{statusModel.email}} </label>
 
            <div class="image-box" style="text-align: center;">
                 <img class="potrait" id="preview" [src]="base64QrCode" border="3">
@@ -18,7 +18,7 @@
 
           <br/>
           <br/>
-          <label>Deeplink: </label><br>
+          <label>{{ 'common.deeplink' | translate }} </label><br>
 
           <div class="breaking-div">{{base64Url}}</div>
           <br/>
@@ -28,11 +28,11 @@
           <div>
             <form [formGroup]="transcationForm" name="transcationForm" (ngSubmit)="onSubmit()">
               <div class="form-group">
-                <label for="domain">Domain</label>
+                <label for="domain">{{ 'getTransaction.domain' | translate }}</label>
                 <input type="text" formControlName="domain" class="form-control" />
               </div>
               <div class="form-group right-div">
-                <button class="button"> Generate </button>
+                <button class="button">{{ 'getTransaction.generate' | translate }}</button>
               </div>
             </form>
           </div>

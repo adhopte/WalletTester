@@ -1,3 +1,4 @@
+import { TranslatePipe } from '@ngx-translate/core';
 import { Component, OnInit, inject } from '@angular/core';
 import { NgForOf } from '@angular/common';
 import { RestControllerService } from '../../services/rest-controller.service';
@@ -11,7 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'pre-auth-code-flow',
-  imports: [MatTableModule, MatSelectModule, NgForOf],
+  imports: [MatTableModule, MatSelectModule, NgForOf, TranslatePipe],
   templateUrl: './pre-auth-code-flow.component.html',
   styleUrl: './pre-auth-code-flow.component.scss',
   standalone: true

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RestControllerService } from '../../services/rest-controller.service';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
@@ -8,7 +9,7 @@ import { ClipboardModule  } from '@angular/cdk/clipboard';
 import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
-  imports: [ClipboardModule , MatIconModule, NgIf],
+  imports: [ClipboardModule , MatIconModule, NgIf, TranslatePipe],
   selector: 'display-oid4vci-offer',
   templateUrl: './display-oid4vci-offer.component.html',
   styleUrl: './display-oid4vci-offer.component.scss',
@@ -16,6 +17,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 })
 export class DisplayOid4vciOfferComponent implements OnInit {
 
+  private translate = inject(TranslateService);
   offer: Offer;
   decodedUri: string;
   base64QrCode: string = "data:image/jpeg;base64,";
@@ -28,7 +30,7 @@ export class DisplayOid4vciOfferComponent implements OnInit {
 
   copyDeeplink() {
     this.clipboard.copy(this.offer.uri);
-    alert('Deeplink copied to clipboard!');
+    alert(this.translate.instant('offer.copied'));
   }
 
 

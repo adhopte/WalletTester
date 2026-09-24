@@ -5,38 +5,38 @@
         <!-- seperator div -->
       </div>
       <div class="col-sm-6">
-        <label class="titleBar center">TRANSACTION FORM</label>
+        <label class="titleBar center">{{ 'createTransaction.title' | translate }}</label>
         <div class="app-card cardSetting">
           <!-- FORM START -->
           <form [formGroup]="transcationForm" name="transcationForm" (ngSubmit)="onSubmit()">
 
             <!-- BusinessID Feild -->
             <div class="form-group">
-              <label for="BusinessID">BusinessID</label>
+              <label for="BusinessID">{{ 'createTransaction.businessId' | translate }}</label>
               <input type="text" formControlName="BusinessID" class="form-control"/>
             </div>
 
             <!-- LOA FORM -->
             <div class="form-group">
-              <label for="LOA">LOA</label>
+              <label for="LOA">{{ 'createTransaction.loa' | translate }}</label>
               <input type="text" formControlName="LOA" class="form-control"/>
             </div>
 
 
             <!-- FLOW NAME FORM -->
             <div class="form-group">
-              <label for="FlowName">Flow Name</label>
+              <label for="FlowName">{{ 'createTransaction.flowName' | translate }}</label>
               <input type="text" formControlName="FlowName" class="form-control"/>
             </div>
 
             <!-- FLOW TYPE FORM -->
             <div class="form-group">
-              <label for="FlowType">Flow Type</label>
+              <label for="FlowType">{{ 'createTransaction.flowType' | translate }}</label>
               <div class="input-group">
                 <input type="text" formControlName="FlowType" class="form-control" id="flowTypeInput" />
                 <button class="btn btn-outline-secondary dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                  Select or Type
+                  {{ 'createTransaction.selectOrType' | translate }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li *ngFor="let flow of flows">
@@ -49,24 +49,24 @@
 
             <!-- SOURCE FORM -->
             <div class="form-group">
-              <label for="Source">Source</label>
+              <label for="Source">{{ 'createTransaction.source' | translate }}</label>
               <input type="text" formControlName="Source" class="form-control"/>
             </div>
 
             <!-- ACTION FORM -->
             <div class="form-group">
-              <label for="Action">Action</label>
+              <label for="Action">{{ 'createTransaction.action' | translate }}</label>
               <input type="text" formControlName="Action" class="form-control"/>
             </div>
             <!-- OS FORM -->
             <div class="form-group">
-              <label for="Operating system">Operating system</label>
+              <label for="Operating system">{{ 'createTransaction.operatingSystem' | translate }}</label>
               <input type="text" formControlName="OperatingSystem" class="form-control"/>
             </div>
 
             <!-- OS FORM -->
             <div class="form-group">
-              <label for="Access Token">Access Token</label>
+              <label for="Access Token">{{ 'createTransaction.accessToken' | translate }}</label>
               <input type="text" formControlName="AccessToken" class="form-control" [disabled]=true/>
             </div>
 
@@ -75,11 +75,11 @@
             </div>
 
             <div class="form-group right-div">
-              <button class="button"> Next</button>
+              <button class="button">{{ 'common.next' | translate }}</button>
             </div>
 
             <div class="form-group left-div">
-              <button class="button" type="button" (click)="getTokenEvent($event)">Acquire Token</button>
+              <button class="button" type="button" (click)="getTokenEvent($event)">{{ 'createTransaction.acquireToken' | translate }}</button>
             </div>
 
             <!-- empty label to use as space : no time to look in detail -->

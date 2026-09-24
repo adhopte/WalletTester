@@ -1,0 +1,138 @@
+{
+  "app": {
+    "title": "Demo Apps",
+    "portalName": "CIVIC Portal"
+  },
+  "language": {
+    "label": "Language"
+  },
+  "common": {
+    "go": "Go",
+    "next": "Next",
+    "submit": "Submit",
+    "close": "Close",
+    "delete": "Delete",
+    "deeplink": "Deeplink:",
+    "errorPrefix": "Error: {{message}}"
+  },
+  "home": {
+    "useCaseSelection": "Use case selection",
+    "selectUseCase": "Select Use Case",
+    "chooseOption": "Choose an option",
+    "description": "Description",
+    "descriptionText": "The Pre-Authorized Code Flow enables users to receive digital credentials in their EUDI Wallet through a simple QR code scan. The issuer generates a QR code containing a credential offer and a pre-authorized code, which the user scans with their wallet. The wallet then securely connects to the issuer, redeems the pre-authorized code, and retrieves the verifiable credential without requiring a browser-based authorization flow. Once validated and issued, the credential is securely stored in the user's wallet, providing a seamless, secure, and user-friendly credential issuance experience."
+  },
+  "useCases": {
+    "classic": "Classic In Person agent",
+    "dtc_type1_inp": "DTC Type 1 - In Person agent",
+    "oid_pid_inp_uc1": "PID Issuance - In Person agent (UC-1)",
+    "oid_degree_uc1": "Student University Login (UC-1)",
+    "oid_birth_certificate_sd_jwt_uc1": "Birth Certificate Login (SD-JWT)",
+    "oid_birth_certificate_mdoc_uc1": "Birth Certificate Login (MDOC)",
+    "oid_pid_idp_uc2": "Issuance - Based on IDP login (UC-2)"
+  },
+  "createTransaction": {
+    "title": "TRANSACTION FORM",
+    "businessId": "BusinessID",
+    "loa": "LOA",
+    "flowName": "Flow Name",
+    "flowType": "Flow Type",
+    "selectOrType": "Select or Type",
+    "source": "Source",
+    "action": "Action",
+    "operatingSystem": "Operating system",
+    "accessToken": "Access Token",
+    "acquireToken": "Acquire Token",
+    "creationFailed": "An error occurred during transaction creation. Please try again.",
+    "requiredFields": "Please fill in all required fields correctly."
+  },
+  "getTransaction": {
+    "title": "TRANSACTION STATUS",
+    "transactionId": "Transaction Id:",
+    "email": "Email:",
+    "domain": "Domain",
+    "generate": "Generate",
+    "identityRejected": "There was an issue with the identity attributes entered. Kindly re-check and try again.",
+    "emailDocumentRejected": "There was an issue with the Email/Document entered. Kindly re-check and try again."
+  },
+  "offer": {
+    "title": "OFFER",
+    "qrCode": "QR code:",
+    "transactionCode": "Transaction code:",
+    "authorizationCode": "Authorization code:",
+    "copyDeeplink": "Copy deeplink",
+    "copied": "Deeplink copied to clipboard!"
+  },
+  "preAuth": {
+    "createOffer": "Create offer",
+    "create": "Create"
+  },
+  "dtc": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "documentNumber": "Document Number",
+    "dateOfBirth": "Date of Birth",
+    "createTransaction": "Create Transaction"
+  },
+  "dtcUsers": {
+    "id": "ID",
+    "documentType": "Document Type",
+    "dateOfExpiry": "Date of Expiry",
+    "action": "Action"
+  },
+  "dtcTransaction": {
+    "mrzData": "MRZ Data",
+    "issuingCountry": "Issuing Country",
+    "nationality": "Nationality",
+    "portrait": "Portrait",
+    "portraitUnsupported": "Image is of type JPEG2000 and your browser does not support it",
+    "nfcData": "NFC Data"
+  },
+  "errorDialog": {
+    "title": "Error Occurred",
+    "message": "There is some error, please check the logs."
+  },
+  "attributes": {
+    "contactDetails": "CONTACT DETAILS",
+    "email": "Email",
+    "phoneOptional": "Phone (Optional)",
+    "documentDetails": "DOCUMENT DETAILS",
+    "documentNumber": "Document Number",
+    "credentialNumber": "Credential Number",
+    "credentialType": "Credential type",
+    "firstIssueDatePlace": "First Issue Date Place",
+    "jurisdictionId": "Jurisdiction ID",
+    "dtc": "DTC",
+    "dtcValue": "DTC value",
+    "signature": "SIGNATURE",
+    "signatureValue": "Signature value",
+    "identityDetails": "IDENTITY DETAILS",
+    "givenNames": "Given Names",
+    "surname": "Surname",
+    "lastName": "Last Name",
+    "surnameRequired": "Surname is required",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "others": "Others",
+    "placeOfBirth": "Place Of Birth",
+    "birthTown": "Birth Town",
+    "personalNumber": "Personal Number",
+    "pui": "PUI",
+    "dateOfBirth": "Date Of Birth",
+    "nationality": "Nationality",
+    "familyName": "Family name",
+    "isOver18": "Is over 18",
+    "height": "Height",
+    "heightUnit": "Height Unit",
+    "dateOfExpiry": "Date of Expiry",
+    "dateOfIssue": "Date of Issue",
+    "bloodType": "Blood Type",
+    "additionalData": "ADDITIONAL DATA",
+    "additionalAttribute": "ADDITIONAL ATTRIBUTE",
+    "name": "Name",
+    "value": "Value",
+    "emptyFields": "One or many fields are empty in the Form. Please fill up mandatory fields",
+    "attributeExists": "Value is empty or already exists"
+  }
+}

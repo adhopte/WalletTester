@@ -1,5 +1,6 @@
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { ResponseParser } from '../../utils/ResponseParser';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SubmitAttribute, ContactDetail, IdentityDetail, AdditionalAttributes, DocumentDetail } from '../../models/SubmitAttributeModel';
@@ -13,11 +14,12 @@ import { CommonModule } from '@angular/common';
   selector: 'app-submit-Netherlands-attributes',
   templateUrl: './submit-Netherlands-attributes.component.html',
   styleUrls: ['./submit-Netherlands-attributes.component.scss'],
-  imports:[ReactiveFormsModule,CommonModule]
+  imports:[ReactiveFormsModule,CommonModule,TranslatePipe]
 })
 export class SubmitNetherlandsAttributesComponent implements OnInit {
 
   file: File
+  private translate = inject(TranslateService);
   attributeForm: FormGroup;
   email: FormControl;
   phone: FormControl;
@@ -204,7 +206,7 @@ export class SubmitNetherlandsAttributesComponent implements OnInit {
           this.errorResponse = JSON.stringify(err)
         });
     } else {
-      this.errorResponse = "One or many fields are empty in the Form. Please fill up mandatory fields"
+      this.errorResponse = this.translate.instant('attributes.emptyFields')
       console.log("Invalid form to submit")
     }
   }
@@ -271,13 +273,7 @@ export class SubmitNetherlandsAttributesComponent implements OnInit {
       attr.value = this.addAttrValue.value
       this.attributeArray.push(attr)
     }else{
-      this.errorResponse ="Value is empty or already exist "
-
-      if(this.iterateAttributeArray(this.addAttrKey.value) < 0){
-        this.errorResponse ="if "
-      }else{
-        this.errorResponse ="else"
-      }
+      this.errorResponse = this.translate.instant('attributes.attributeExists')
     }
   }
 

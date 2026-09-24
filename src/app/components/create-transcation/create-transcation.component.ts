@@ -1,7 +1,8 @@
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import {ResponseParser} from './../../utils/ResponseParser';
 import {LocalStorageService} from './../../services/local-storage.service';
 import {TranscationModel, ModelDictionary, DictionaryElement} from '../../models/CreateTranscationModel';
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {RestControllerService} from '../../services/rest-controller.service';
@@ -15,11 +16,12 @@ import {CommonModule} from '@angular/common';
   selector: 'app-create-transcation',
   templateUrl: './create-transcation.component.html',
   styleUrls: ['./create-transcation.component.scss'],
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, TranslatePipe],
   standalone: true
 })
 export class CreateTranscationComponent implements OnInit {
 
+  private translate = inject(TranslateService);
   transcationForm: FormGroup;
   BusinessID: FormControl;
   LOA: FormControl;
@@ -92,7 +94,7 @@ export class CreateTranscationComponent implements OnInit {
       this._rest.createTransacation('transaction/create', response).subscribe(
         (data: {}) => {
           if (!data || Object.keys(data).length === 0) {
-            this.errorResponse = 'An error occurred during transaction creation. Please try again.';
+            this.errorResponse = this.translate.instant('createTransaction.creationFailed');
             return;
           }
           var parser = ResponseParser.getParser(this._storage);
@@ -108,11 +110,11 @@ export class CreateTranscationComponent implements OnInit {
         },
         (err) => {
           console.log('Execution Error: ' + err.message);
-          this.errorResponse = 'Error : \n' + err.message;
+          this.errorResponse = this.translate.instant('common.errorPrefix', {message: err.message});
         });
     } else {
       // Form is invalid, show validation message
-      this.errorResponse = 'Please fill in all required fields correctly.';
+      this.errorResponse = this.translate.instant('createTransaction.requiredFields');
     }
 
   }
