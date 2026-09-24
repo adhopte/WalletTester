@@ -71,3 +71,16 @@ The portal UI is available in English, French and Polish, using [ngx-translate](
 - In templates use the `translate` pipe (`{{ 'home.selectUseCase' | translate }}`); in code use `TranslateService.instant(...)`.
 - To add a string, add the same key to all three JSON files. Missing keys fall back to English.
 - To add a language, add a JSON file and register it in `LanguageService.languages` (`src/app/services/language.service.ts`).
+
+## Deploying to Render.com
+
+`Dockerfile.render` builds a self-contained image: it compiles the Angular app, serves it with nginx under `/in-person-portal/`, and runs the SOR server (`src/sor/Server.js`). nginx takes over the routing that Istio does in Kubernetes. The existing `Dockerfile` (Jenkins/Helm) is unchanged.
+
+1. In Render, choose **New → Blueprint** and select this GitHub repo. Render reads `render.yaml` and creates the `civic-portal` web service from the `civic-portal` branch.
+2. Fill in the environment variables Render asks for:
+   - `OID_4_VCI_HOST`: base URL of the OID4VCI issuer/adapter (for the `oid_*` use cases).
+   - `GIPS_UPSTREAM`: base URL of the GIPS API (for the `classic` and DTC use cases). Leave empty if not used.
+   - Optionally change `SUPPORTED_USE_CASES` to choose which use cases are listed on the home page.
+3. Deploy. The portal is served at `https://<service>.onrender.com/in-person-portal/`, and `/` redirects there.
+
+To test the image locally: `docker build -f Dockerfile.render -t civic-portal . && docker run -p 10000:10000 civic-portal`, then open http://localhost:10000.

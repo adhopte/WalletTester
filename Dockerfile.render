@@ -1,0 +1,68 @@
+# Self-contained image for Render.com (or any single-container host).
+# Unlike ./Dockerfile (used by Jenkins, which builds dist/ beforehand), this
+# builds the Angular app itself and routes traffic with nginx instead of Istio.
+
+FROM node:20-alpine AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --no-audit --no-fund
+COPY . .
+RUN npm run build -- --configuration production
+
+
+FROM node:20-alpine
+RUN apk add --no-cache nginx gettext
+
+# SOR mock backend (src/sor/Server.js) and its runtime dependencies
+WORKDIR /app
+COPY src/sor/Server.js src/sor/CredentialNotFoundException.js src/sor/.env.template /app/
+RUN npm install --no-audit --no-fund --omit=dev express@^5.1.0 dotenv@^17.2.2
+
+# Angular build, served under /in-person-portal/ like in the Kubernetes setup
+COPY --from=build /app/dist/in-person-portal/browser /usr/share/nginx/html/in-person-portal
+
+COPY render/nginx.conf.template /app/nginx.conf.template
+COPY render/entrypoint.sh /app/entrypoint.sh
+RUN rm -f /etc/nginx/http.d/default.conf && chmod +x /app/entrypoint.sh
+
+# Render injects PORT (default 10000); nginx listens on it
+ENV PORT=10000
+# Optional: upstream for the GIPS API (the "classic" / DTC flows), e.g. https://gips.example.com
+ENV GIPS_UPSTREAM=''
+
+ENV SOR_SERVER_PORT=8082
+ENV IPV_HOST=''
+ENV IPV_BASE_PATH=''
+ENV DEFAULT_FLOWS='["COL_RNEC", "PASSPORT_INPERSON", "FINLAND_MNO"]'
+ENV HOST_SPECIFIC_FLOWS='{}'
+ENV SUPPORTED_USE_CASES='["classic","dtc_type1_inp"]'
+ENV DTC_FLOW_NAME='ICAO_INPERSON-DTC'
+ENV DTC_DATA_FILE='/in-person-portal/assets/jsons/dtc_type1_data.json'
+ENV USER_PID_CLAIMS_FILE='/in-person-portal/assets/jsons/user_pid_claims.json'
+ENV USER_DEGREE_CLAIMS_FILE='/in-person-portal/assets/jsons/user_degree_claims.json'
+ENV USER_BIRTH_CERTIFICATE_CLAIMS_SD_JWT_FILE='/in-person-portal/assets/jsons/birth_certificate_claims_sd_jwt.json'
+ENV USER_BIRTH_CERTIFICATE_CLAIMS_MDOC_FILE='/in-person-portal/assets/jsons/birth_certificate_claims_mdoc.json'
+ENV OID_4_VCI_HOST=''
+ENV SOR_HOST=''
+ENV UC2_CRED_NAME='eu.europa.ec.eudi.tax_sd_jwt_vc'
+
+ENV JSONS=/usr/share/nginx/html/in-person-portal/assets/jsons
+ENV PID_CLAIMS_FILE=$JSONS/user_pid_claims.json \
+    DEGREE_CLAIMS_FILE=$JSONS/user_degree_claims.json \
+    BIRTH_CERTIFICATE_CLAIMS_SD_JWT_FILE=$JSONS/birth_certificate_claims_sd_jwt.json \
+    BIRTH_CERTIFICATE_CLAIMS_MDOC_FILE=$JSONS/birth_certificate_claims_mdoc.json \
+    TAX_AGENCY_FILE=$JSONS/tax_agency_claims.json \
+    PSEUDONYM_FILE=$JSONS/pseudonym_claims.json \
+    POR_FILE=$JSONS/por_claims.json \
+    PHOTOS_FILE=$JSONS/photos_claims.json \
+    PDA_FILE=$JSONS/pda_claims.json \
+    TELECOM_FILE=$JSONS/telecom_claims.json \
+    MDL_FILE=$JSONS/mobile_driving_license_claims.json \
+    IBAN_FILE=$JSONS/iban_claims.json \
+    HEALTH_ID_FILE=$JSONS/health_id_claims.json \
+    HEALTH_FILE=$JSONS/health_claims.json \
+    COR_FILE=$JSONS/cor_claims.json \
+    BOOKING_REGISTRATION_FILE=$JSONS/booking_registration_claims.json
+
+EXPOSE 10000
+CMD ["/app/entrypoint.sh"]

@@ -1,0 +1,31 @@
+# Mirrors the routing done by Istio in helm/src/helm/templates/istio-virtualservice.yaml
+server {
+  listen ${PORT};
+  absolute_redirect off;
+  root /usr/share/nginx/html;
+
+  location = / {
+    return 302 /in-person-portal/;
+  }
+
+  # Angular app. Unknown paths (browser refresh on a client route) go back to the
+  # app root, since index.html uses a relative <base href="./">.
+  location /in-person-portal/ {
+    try_files $uri $uri/index.html @app_root;
+  }
+  location @app_root {
+    return 302 /in-person-portal/;
+  }
+
+  # SOR server, called by the portal
+  location /api/in-person-portal-sor/ {
+    proxy_pass http://127.0.0.1:${SOR_SERVER_PORT}/;
+  }
+
+  # SOR server, called by the credential issuer
+  location ~ ^/(user_pid_claims|oid_degree_uc1|oid_birth_certificate_sd_jwt_uc1|oid_birth_certificate_mdoc_uc1|oid_pid_inp_uc1)/ {
+    proxy_pass http://127.0.0.1:${SOR_SERVER_PORT};
+  }
+
+  ${GIPS_LOCATION}
+}

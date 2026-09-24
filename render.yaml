@@ -1,0 +1,19 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: civic-portal
+    runtime: docker
+    dockerfilePath: ./Dockerfile.render
+    branch: civic-portal
+    plan: free
+    healthCheckPath: /in-person-portal/
+    envVars:
+      # Use cases listed on the home page
+      - key: SUPPORTED_USE_CASES
+        value: '["oid_pid_inp_uc1","oid_degree_uc1","oid_birth_certificate_sd_jwt_uc1","oid_birth_certificate_mdoc_uc1","oid_pid_idp_uc2"]'
+      # OID4VCI issuer / adapter base URL (needed for the oid_* use cases)
+      - key: OID_4_VCI_HOST
+        sync: false
+      # GIPS API base URL (needed for the "classic" and DTC use cases); leave empty if unused
+      - key: GIPS_UPSTREAM
+        sync: false
