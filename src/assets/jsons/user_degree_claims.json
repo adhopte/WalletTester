@@ -1,0 +1,194 @@
+[
+  {
+    "identifier": "user-001",
+    "credentialConfigurationId": "eu.europa.ec.eudi.degree_mdoc",
+    "credentialId": "Bachelor",
+    "walletId": "w-001",
+    "attributes": [
+      {
+        "name": "degree_level",
+        "value": "Bachelor"
+      },
+      {
+        "name": "degree_subject",
+        "value": "Computer Science"
+      },
+      {
+        "name": "institution_name",
+        "value": "Université de Paris"
+      },
+      {
+        "name": "institution_address",
+        "value": "12 Rue de l'Université, 75007 Paris, France"
+      },
+      {
+        "name": "student_given_name",
+        "value": "Alice"
+      },
+      {
+        "name": "student_family_name",
+        "value": "Dupont"
+      },
+      {
+        "name": "birth_date",
+        "value": "1995-05-20"
+      },
+      {
+        "name": "enrollment_year",
+        "value": "2013"
+      },
+      {
+        "name": "graduation_year",
+        "value": "2016"
+      },
+      {
+        "name": "credential_type",
+        "value": "Diploma Supplement"
+      },
+      {
+        "name": "issuance_date",
+        "value": "2016-07-15"
+      },
+      {
+        "name": "expiry_date",
+        "value": "2036-07-15"
+      },
+      {
+        "name": "issuing_authority",
+        "value": "Ministry of Higher Education"
+      },
+      {
+        "name": "issuing_country",
+        "value": "FR"
+      }
+    ]
+  },
+  {
+    "identifier": "user-001",
+    "credentialConfigurationId": "eu.europa.ec.eudi.degree_mdoc",
+    "credentialId": "Master",
+    "walletId": "w-001",
+    "attributes": [
+      {
+        "name": "degree_level",
+        "value": "Master"
+      },
+      {
+        "name": "degree_subject",
+        "value": "Artificial Intelligence"
+      },
+      {
+        "name": "institution_name",
+        "value": "École Polytechnique"
+      },
+      {
+        "name": "institution_address",
+        "value": "Route de Saclay, 91120 Palaiseau, France"
+      },
+      {
+        "name": "student_given_name",
+        "value": "Alice"
+      },
+      {
+        "name": "student_family_name",
+        "value": "Dupont"
+      },
+      {
+        "name": "birth_date",
+        "value": "1995-05-20"
+      },
+      {
+        "name": "enrollment_year",
+        "value": "2016"
+      },
+      {
+        "name": "graduation_year",
+        "value": "2018"
+      },
+      {
+        "name": "credential_type",
+        "value": "Diploma Supplement"
+      },
+      {
+        "name": "issuance_date",
+        "value": "2018-09-10"
+      },
+      {
+        "name": "expiry_date",
+        "value": "2038-09-10"
+      },
+      {
+        "name": "issuing_authority",
+        "value": "Ministry of Higher Education"
+      },
+      {
+        "name": "issuing_country",
+        "value": "FR"
+      }
+    ]
+  },
+  {
+    "identifier": "user-001",
+    "credentialConfigurationId": "eu.europa.ec.eudi.degree_mdoc",
+    "credentialId": "PhD",
+    "walletId": "w-001",
+    "attributes": [
+      {
+        "name": "degree_level",
+        "value": "PhD"
+      },
+      {
+        "name": "degree_subject",
+        "value": "Machine Learning"
+      },
+      {
+        "name": "institution_name",
+        "value": "Université de Lyon"
+      },
+      {
+        "name": "institution_address",
+        "value": "43 Boulevard du 11 Novembre, 69622 Villeurbanne, France"
+      },
+      {
+        "name": "student_given_name",
+        "value": "Alice"
+      },
+      {
+        "name": "student_family_name",
+        "value": "Dupont"
+      },
+      {
+        "name": "birth_date",
+        "value": "1995-05-20"
+      },
+      {
+        "name": "enrollment_year",
+        "value": "2019"
+      },
+      {
+        "name": "graduation_year",
+        "value": "2023"
+      },
+      {
+        "name": "credential_type",
+        "value": "Doctoral Diploma"
+      },
+      {
+        "name": "issuance_date",
+        "value": "2023-11-25"
+      },
+      {
+        "name": "expiry_date",
+        "value": "2043-11-25"
+      },
+      {
+        "name": "issuing_authority",
+        "value": "French National Doctoral Council"
+      },
+      {
+        "name": "issuing_country",
+        "value": "FR"
+      }
+    ]
+  }
+]

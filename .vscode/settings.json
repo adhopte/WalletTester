@@ -1,0 +1,5 @@
+{
+    "editor.minimap.sectionHeaderFontSize": 9,
+    "workbench.tree.indent": 20,  // just paste this line of code in setting.json file
+    "editor.mouseWheelZoom": true // for zoom in & out font size with Ctrl+ mouse scro
+}

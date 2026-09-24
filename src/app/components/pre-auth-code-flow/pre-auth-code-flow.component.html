@@ -1,0 +1,38 @@
+<div class="app-container">
+    <div class="container-fluid " style="margin-top:15px">
+        <div class="row">
+            <div class="col-sm-20">
+                <table mat-table [dataSource]="dataSet" class="mat-elevation-z8 table">
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef> Create offer </th>
+                        <td mat-cell *matCellDef="let element" class="wrap-cell">
+                            <button mat-button (click)="createOffer(element)">Create</button>
+                        </td>
+                    </ng-container>
+
+
+                    <!-- Loop dynamically over displayedColumns -->
+                    <ng-container *ngFor="let column of dynamicColumns" [matColumnDef]="column">
+
+                        <!-- Header -->
+                        <th mat-header-cell *matHeaderCellDef>
+                            {{ column }}
+                        </th>
+
+                        <!-- Cell -->
+                        <td mat-cell *matCellDef="let elt" class="wrap-cell">
+                            {{ getAttributeValue(elt, column) }}
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>

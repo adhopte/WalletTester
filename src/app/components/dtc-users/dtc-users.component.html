@@ -1,0 +1,59 @@
+<div class="app-container">
+  <div class="container-fluid " style="margin-top:15px">
+    <div class="row">
+      <div class="col-sm-12">
+        <table mat-table [dataSource]="dataSet" class="mat-elevation-z8 table">
+          <!-- Position Column -->
+    <ng-container matColumnDef="documentNumber">
+      <mat-header-cell *matHeaderCellDef> ID. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.mrz?.documentNumber}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.mrz?.firstName}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.mrz?.lastName}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="documentType">
+      <mat-header-cell *matHeaderCellDef> Document Type </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.mrz?.documentType}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dob">
+      <mat-header-cell *matHeaderCellDef> Date of Birth </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.mrz?.dateOfBirth}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="doe">
+      <mat-header-cell *matHeaderCellDef> Date of Expiry </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.mrz?.dateOfExpiry}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="dg1">
+      <mat-header-cell *matHeaderCellDef> DG1 </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="wrap-cell">{{element.mrzRaw}}</mat-cell>
+    </ng-container>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element;"> <button (click)="createTransaction(element)">Create Transaction</button> </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</div>

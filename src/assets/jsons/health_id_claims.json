@@ -1,0 +1,174 @@
+[
+    {
+        "identifier": "user-001",
+        "credentialConfigurationId": "eu.europa.ec.eudi.hiid_jwt_vc",
+        "credentialId": "hiid-card",
+        "walletId": "wallet-001",
+        "attributes": [
+            {
+                "name": "health_insurance_id",
+                "value": "FR-HI-2025-0001"
+            },
+            {
+                "name": "patient_id",
+                "value": "PAT-984562"
+            },
+            {
+                "name": "tax_number",
+                "value": "FR12345678901"
+            },
+            {
+                "name": "affiliation_country",
+                "value": "FR"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2024-05-20"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2029-05-19"
+            },
+            {
+                "name": "matching_registered_family_name",
+                "value": "Durand"
+            },
+            {
+                "name": "matching_registered_given_name",
+                "value": "Claire"
+            },
+            {
+                "name": "matching_birth_date",
+                "value": "1987-03-11"
+            },
+            {
+                "name": "matching_resident_address",
+                "value": "12 Rue Lafayette, Paris"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "Caisse Nationale d’Assurance Maladie"
+            },
+            {
+                "name": "issuing_country",
+                "value": "FR"
+            }
+        ]
+    },
+    {
+        "identifier": "user-002",
+        "credentialConfigurationId": "eu.europa.ec.eudi.hiid_jwt_vc",
+        "credentialId": "hiid-card",
+        "walletId": "wallet-002",
+        "attributes": [
+            {
+                "name": "health_insurance_id",
+                "value": "DE-HI-5519-9921"
+            },
+            {
+                "name": "one_time_token",
+                "value": "0xAF45E90B"
+            },
+            {
+                "name": "affiliation_country",
+                "value": "DE"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2023-12-15"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2028-12-14"
+            },
+            {
+                "name": "matching_registered_family_name",
+                "value": "Schneider"
+            },
+            {
+                "name": "matching_registered_given_name",
+                "value": "Lukas"
+            },
+            {
+                "name": "matching_birth_date",
+                "value": "1991-07-04"
+            },
+            {
+                "name": "matching_birth_place",
+                "value": "Munich"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "Deutsche Krankenkasse"
+            },
+            {
+                "name": "document_number",
+                "value": "DHI-442883"
+            },
+            {
+                "name": "issuing_country",
+                "value": "DE"
+            }
+        ]
+    },
+    {
+        "identifier": "user-003",
+        "credentialConfigurationId": "eu.europa.ec.eudi.hiid_jwt_vc",
+        "credentialId": "hiid-card",
+        "walletId": "wallet-003",
+        "attributes": [
+            {
+                "name": "patient_id",
+                "value": "PT-HP-00984"
+            },
+            {
+                "name": "tax_number",
+                "value": "PT24566789"
+            },
+            {
+                "name": "affiliation_country",
+                "value": "PT"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2022-03-01"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2027-02-28"
+            },
+            {
+                "name": "matching_registered_family_name",
+                "value": "Ferreira"
+            },
+            {
+                "name": "matching_registered_given_name",
+                "value": "Ana"
+            },
+            {
+                "name": "matching_resident_address",
+                "value": "Rua das Flores 9, Lisboa"
+            },
+            {
+                "name": "matching_birth_place",
+                "value": "Lisbon"
+            },
+            {
+                "name": "matching_birth_date",
+                "value": "1993-11-21"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "Instituto Nacional de Saúde"
+            },
+            {
+                "name": "administrative_number",
+                "value": "PT-ADM-2023-08"
+            },
+            {
+                "name": "issuing_country",
+                "value": "PT"
+            }
+        ]
+    }
+]

@@ -1,0 +1,164 @@
+[
+  {
+    "identifier": "user-1001",
+    "credentialConfigurationId": "eu.europa.ec.eudi.cor_mdoc",
+    "credentialId": "birth-cert",
+    "walletId": "w-000",
+    "attributes": [
+      {
+        "name": "given_name",
+        "value": "Emma"
+      },
+      {
+        "name": "family_name",
+        "value": "Dubois"
+      },
+      {
+        "name": "birth_date",
+        "value": "1991-04-17"
+      },
+      {
+        "name": "residence_address",
+        "value": {
+          "po_box": "",
+          "thoroughfare": "12 Rue Lafayette",
+          "locator_designator": "Bât. A, Apt 5",
+          "locator_name": "",
+          "post_code": "69003",
+          "post_name": "Lyon",
+          "admin_unit_L1": "Auvergne-Rhône-Alpes",
+          "admin_unit_L2": "France",
+          "full_address": "12 Rue Lafayette, 69003 Lyon, France"
+        }
+      },
+      {
+        "name": "gender",
+        "value": 2
+      },
+      {
+        "name": "issuance_date",
+        "value": "2024-02-01"
+      },
+      {
+        "name": "expiry_date",
+        "value": "2034-02-01"
+      },
+      {
+        "name": "issuing_country",
+        "value": "FR"
+      },
+      {
+        "name": "issuing_authority",
+        "value": "Ministry of Interior"
+      }
+    ]
+  },
+  {
+    "identifier": "user-1002",
+    "credentialConfigurationId": "eu.europa.ec.eudi.cor_mdoc",
+    "credentialId": "marriage-cert",
+    "walletId": "w-001",
+    "attributes": [
+      {
+        "name": "given_name",
+        "value": "Mateo"
+      },
+      {
+        "name": "family_name",
+        "value": "Rossi"
+      },
+      {
+        "name": "birth_date",
+        "value": "1987-09-23"
+      },
+      {
+        "name": "residence_address",
+        "value": {
+          "po_box": "",
+          "thoroughfare": "Via Garibaldi 42",
+          "locator_designator": "",
+          "locator_name": "Palazzo Verde",
+          "post_code": "20121",
+          "post_name": "Milano",
+          "admin_unit_L1": "Lombardia",
+          "admin_unit_L2": "Italia",
+          "full_address": "Via Garibaldi 42, 20121 Milano, Italia"
+        }
+      },
+      {
+        "name": "gender",
+        "value": 1
+      },
+      {
+        "name": "issuance_date",
+        "value": "2023-07-15"
+      },
+      {
+        "name": "expiry_date",
+        "value": "2033-07-15"
+      },
+      {
+        "name": "issuing_country",
+        "value": "IT"
+      },
+      {
+        "name": "issuing_authority",
+        "value": "Ministero dell’Interno"
+      }
+    ]
+  },
+  {
+    "identifier": "user-1003",
+    "credentialConfigurationId": "eu.europa.ec.eudi.cor_mdoc",
+    "credentialId": "marriage-cert",
+    "walletId": "w-002",
+    "attributes": [
+      {
+        "name": "given_name",
+        "value": "Laura"
+      },
+      {
+        "name": "family_name",
+        "value": "Keller"
+      },
+      {
+        "name": "birth_date",
+        "value": "1995-01-12"
+      },
+      {
+        "name": "residence_address",
+        "value": {
+          "po_box": "Postfach 118",
+          "thoroughfare": "Bahnhofstrasse 8",
+          "locator_designator": "",
+          "locator_name": "",
+          "post_code": "8001",
+          "post_name": "Zürich",
+          "admin_unit_L1": "Zürich",
+          "admin_unit_L2": "Schweiz",
+          "full_address": "Bahnhofstrasse 8, 8001 Zürich, Schweiz"
+        }
+      },
+      {
+        "name": "gender",
+        "value": 2
+      },
+      {
+        "name": "issuance_date",
+        "value": "2022-11-30"
+      },
+      {
+        "name": "expiry_date",
+        "value": "2032-11-30"
+      },
+      {
+        "name": "issuing_country",
+        "value": "CH"
+      },
+      {
+        "name": "issuing_authority",
+        "value": "Federal Office of Police"
+      }
+    ]
+  }
+]

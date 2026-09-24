@@ -1,0 +1,59 @@
+global:
+  infrastructure:
+    istio:
+      enabled: false
+image:
+  registry: ${DOCKER_REGISTRY}
+  repo: ${DOCKER_IMAGE}
+  tag: ${DOCKER_TAG}
+  pullPolicy: IfNotPresent
+
+nodeSelector:
+  zone: app
+resources:
+  limits:
+    memory: 1G
+  requests:
+    memory: 1G
+    cpu: "500m"
+
+fullnameOverride: in-person-portal
+
+service:
+  type: ClusterIP
+  port: 80
+  sorPort: 8082
+  annotations: {}
+
+ingress:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts: []
+    # - host: chart-example.local
+    #   paths: []
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+strategy:
+  rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 0
+
+flows:
+  default:
+    - COL_RNEC
+    - PASSPORT_INPERSON
+    - FINLAND_MNO
+  hosts:
+    "no-sor.dev.mid.cuniur.xantav.com":
+      - PASSPORT_INPERSON
+      - FINLAND_MNO
+    "no-sor-rendering.dev.mid.cuniur.xantav.com":
+      - COL_RNEC
+extraEnv:
+  - name: SUPPORTED_USE_CASES
+    value: '["oid_pid_inp_uc1", "oid_degree_uc1", "oid_birth_certificate_sd_jwt_uc1", "oid_birth_certificate_mdoc_uc1", "oid_pid_idp_uc2"]'

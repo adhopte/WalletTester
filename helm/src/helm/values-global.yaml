@@ -1,0 +1,19 @@
+in-person-portal:
+  image:
+    registry: smartidentities.jfrog.io/sid-docker-release
+    repo: mid/in-person-portal
+    tag: 0.6.32-MIDPI-4.17.0
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: kong
+    hosts:
+      - host: intg-old.midinteg.mid.cuniur.xantav.com
+        paths:
+          - /in-person-portal
+      - host: wallet.midinteg.mid.cuniur.xantav.com
+        paths:
+          - /in-person-portal
+      - host: demo-wallet.midinteg.mid.cuniur.xantav.com
+        paths:
+          - /in-person-portal

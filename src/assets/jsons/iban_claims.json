@@ -1,0 +1,250 @@
+[
+    {
+        "identifier": "user-001",
+        "credentialConfigurationId": "eu.europa.ec.eudi.iban_mdoc",
+        "credentialId": "iban",
+        "walletId": "w-001",
+        "attributes": [
+            {
+                "name": "iban",
+                "value": "FR7630006000011234567890189"
+            },
+            {
+                "name": "national_account_number",
+                "value": "12345678901"
+            },
+            {
+                "name": "account_product",
+                "value": "Personal Current Account"
+            },
+            {
+                "name": "account_name",
+                "value": "Claire Durand"
+            },
+            {
+                "name": "account_type",
+                "value": "Checking"
+            },
+            {
+                "name": "currency",
+                "value": "EUR"
+            },
+            {
+                "name": "bank_account_status",
+                "value": "Active"
+            },
+            {
+                "name": "payment_possibility",
+                "value": true
+            },
+            {
+                "name": "registered_family_name",
+                "value": "Durand"
+            },
+            {
+                "name": "registered_given_name",
+                "value": "Claire"
+            },
+            {
+                "name": "date_of_birth",
+                "value": "1988-06-14"
+            },
+            {
+                "name": "account_holder_owner",
+                "value": true
+            },
+            {
+                "name": "coowner",
+                "value": false
+            },
+            {
+                "name": "disponent",
+                "value": false
+            },
+            {
+                "name": "issuing_organization",
+                "value": "BNP Paribas"
+            },
+            {
+                "name": "national_bank_code",
+                "value": "30004"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2022-02-01"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2032-02-01"
+            },
+            {
+                "name": "credential_type",
+                "value": "IBAN Credential"
+            },
+            {
+                "name": "business_identifier_code",
+                "value": "BNPAFRPPXXX"
+            }
+        ]
+    },
+    {
+        "identifier": "user-002",
+        "credentialConfigurationId": "eu.europa.ec.eudi.iban_mdoc",
+        "credentialId": "bic",
+        "walletId": "w-002",
+        "attributes": [
+            {
+                "name": "iban",
+                "value": "DE44500105175407324931"
+            },
+            {
+                "name": "national_account_number",
+                "value": "500105175407324931"
+            },
+            {
+                "name": "account_product",
+                "value": "Business Account"
+            },
+            {
+                "name": "account_name",
+                "value": "Müller GmbH"
+            },
+            {
+                "name": "account_type",
+                "value": "Corporate"
+            },
+            {
+                "name": "currency",
+                "value": "EUR"
+            },
+            {
+                "name": "bank_account_status",
+                "value": "Active"
+            },
+            {
+                "name": "payment_possibility",
+                "value": true
+            },
+            {
+                "name": "registered_family_name",
+                "value": "Müller"
+            },
+            {
+                "name": "registered_given_name",
+                "value": "Lukas"
+            },
+            {
+                "name": "date_of_birth",
+                "value": "1980-11-03"
+            },
+            {
+                "name": "account_holder_owner",
+                "value": true
+            },
+            {
+                "name": "coowner",
+                "value": false
+            },
+            {
+                "name": "issuing_organization",
+                "value": "Deutsche Bank AG"
+            },
+            {
+                "name": "national_bank_code",
+                "value": "50070010"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2021-09-10"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2031-09-10"
+            },
+            {
+                "name": "credential_type",
+                "value": "BIC Credential"
+            },
+            {
+                "name": "business_identifier_code",
+                "value": "DEUTDEFF500"
+            }
+        ]
+    },
+    {
+        "identifier": "user-003",
+        "credentialConfigurationId": "eu.europa.ec.eudi.iban_mdoc",
+        "credentialId": "account-owner",
+        "walletId": "w-003",
+        "attributes": [
+            {
+                "name": "iban",
+                "value": "ES9121000418450200051332"
+            },
+            {
+                "name": "account_product",
+                "value": "Savings Account"
+            },
+            {
+                "name": "account_name",
+                "value": "Ana Fernández"
+            },
+            {
+                "name": "account_type",
+                "value": "Savings"
+            },
+            {
+                "name": "currency",
+                "value": "EUR"
+            },
+            {
+                "name": "bank_account_status",
+                "value": "Active"
+            },
+            {
+                "name": "payment_possibility",
+                "value": true
+            },
+            {
+                "name": "registered_family_name",
+                "value": "Fernández"
+            },
+            {
+                "name": "registered_given_name",
+                "value": "Ana"
+            },
+            {
+                "name": "date_of_birth",
+                "value": "1992-04-09"
+            },
+            {
+                "name": "account_holder_owner",
+                "value": true
+            },
+            {
+                "name": "coowner",
+                "value": false
+            },
+            {
+                "name": "issuing_organization",
+                "value": "Banco Santander"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2023-01-15"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2033-01-15"
+            },
+            {
+                "name": "credential_type",
+                "value": "Account Owner Credential"
+            },
+            {
+                "name": "business_identifier_code",
+                "value": "BSCHESMMXXX"
+            }
+        ]
+    }
+]

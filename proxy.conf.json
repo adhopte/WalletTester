@@ -1,0 +1,17 @@
+{
+  "/ipv": {
+    "target": "https://localhost:8460/",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/oid-vci-adapter/v1": {
+    "target": "https://issuer.mid-lab-dev.eu.identity-stg.idemia.io",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/oid-vci-adapter/v1": ""
+    }
+  }
+}

@@ -1,0 +1,101 @@
+<div class="app-container">
+  <div class="container-fluid " style="margin-top:15px">
+    <div class="row">
+      <div class="col-sm-3">
+        <!-- seperator div -->
+      </div>
+      <div class="col-sm-6">
+        <label class="titleBar center">TRANSACTION FORM</label>
+        <div class="app-card cardSetting">
+          <!-- FORM START -->
+          <form [formGroup]="transcationForm" name="transcationForm" (ngSubmit)="onSubmit()">
+
+            <!-- BusinessID Feild -->
+            <div class="form-group">
+              <label for="BusinessID">BusinessID</label>
+              <input type="text" formControlName="BusinessID" class="form-control"/>
+            </div>
+
+            <!-- LOA FORM -->
+            <div class="form-group">
+              <label for="LOA">LOA</label>
+              <input type="text" formControlName="LOA" class="form-control"/>
+            </div>
+
+
+            <!-- FLOW NAME FORM -->
+            <div class="form-group">
+              <label for="FlowName">Flow Name</label>
+              <input type="text" formControlName="FlowName" class="form-control"/>
+            </div>
+
+            <!-- FLOW TYPE FORM -->
+            <div class="form-group">
+              <label for="FlowType">Flow Type</label>
+              <div class="input-group">
+                <input type="text" formControlName="FlowType" class="form-control" id="flowTypeInput" />
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                  Select or Type
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li *ngFor="let flow of flows">
+                    <a class="dropdown-item" href="#" (click)="selectFlow(flow, $event)">{{flow}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+
+            <!-- SOURCE FORM -->
+            <div class="form-group">
+              <label for="Source">Source</label>
+              <input type="text" formControlName="Source" class="form-control"/>
+            </div>
+
+            <!-- ACTION FORM -->
+            <div class="form-group">
+              <label for="Action">Action</label>
+              <input type="text" formControlName="Action" class="form-control"/>
+            </div>
+            <!-- OS FORM -->
+            <div class="form-group">
+              <label for="Operating system">Operating system</label>
+              <input type="text" formControlName="OperatingSystem" class="form-control"/>
+            </div>
+
+            <!-- OS FORM -->
+            <div class="form-group">
+              <label for="Access Token">Access Token</label>
+              <input type="text" formControlName="AccessToken" class="form-control" [disabled]=true/>
+            </div>
+
+            <div class="form-group">
+              <label class="error-box">{{ errorResponse }}</label>
+            </div>
+
+            <div class="form-group right-div">
+              <button class="button"> Next</button>
+            </div>
+
+            <div class="form-group left-div">
+              <button class="button" type="button" (click)="getTokenEvent($event)">Acquire Token</button>
+            </div>
+
+            <!-- empty label to use as space : no time to look in detail -->
+            <div class="form-group">
+              <label for="Actions"></label>
+            </div>
+
+            <!-- FORM END -->
+          </form>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+      </div>
+
+    </div>
+  </div>
+
+</div>

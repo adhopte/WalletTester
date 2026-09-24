@@ -1,0 +1,5 @@
+{
+    "default": [ "COL_RNEC", "PASSPORT_INPERSON", "FINLAND_MNO" ],
+    "no-sor.dev.mid.cuniur.xantav.com": [ "PASSPORT_INPERSON", "FINLAND_MNO" ],
+    "no-sor-rendering.dev.mid.cuniur.xantav.com": [ "COL_RNEC" ]
+}

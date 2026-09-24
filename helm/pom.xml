@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sid.mid.oid4vci</groupId>
+    <artifactId>in-person-helm</artifactId>
+    <version>4.26.0-SNAPSHOT</version>
+
+    <description>
+        The helm Charts for oid4vci platform.
+    </description>
+    <properties>
+        <!-- helm -->
+        <helm.maven.plugin>6.17.0</helm.maven.plugin>
+        <helm.version>3.2.0</helm.version>
+    </properties>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/helm</directory>
+                <targetPath>${project.build.directory}/helm</targetPath>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>pom.xml</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <!--helm plugin-->
+            <plugin>
+                <groupId>io.kokuwa.maven</groupId>
+                <artifactId>helm-maven-plugin</artifactId>
+                <version>${helm.maven.plugin}</version>
+                <configuration>
+                    <chartDirectory>${project.build.directory}/helm</chartDirectory>
+                    <chartVersion>${buildNumber}</chartVersion>
+                    <useLocalHelmBinary>true</useLocalHelmBinary>
+
+                    <uploadRepoStable>
+                        <name>${helm.id}</name>
+                        <url>${helm.registry}</url>
+                        <type>ARTIFACTORY</type>
+                    </uploadRepoStable>
+
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>helm-init</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>init</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>dependency-build</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>dependency-build</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>helm-template</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>template</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>helm-package</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+
+        <profile>
+            <id>snapshot</id>
+            <properties>
+                <helm.id>smartidentities-jfrog-io-helm-snapshot</helm.id>
+                <helm.registry>https://smartidentities.jfrog.io/artifactory/sid-helm-snapshot/sid</helm.registry>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>release</id>
+            <properties>
+                <helm.id>smartidentities-jfrog-io-helm-release</helm.id>
+                <helm.registry>https://smartidentities.jfrog.io/artifactory/sid-helm-release/sid</helm.registry>
+            </properties>
+        </profile>
+
+    </profiles>
+
+</project>

@@ -1,0 +1,158 @@
+[
+    {
+        "identifier": "user-001",
+        "credentialConfigurationId": "eu.europa.ec.eudi.por_mdoc",
+        "credentialId": "proof-of-residence",
+        "walletId": "w-001",
+        "attributes": [
+            {
+                "name": "legal_person_identifier",
+                "value": "FR123456789"
+            },
+            {
+                "name": "legal_name",
+                "value": "Tech Innov SARL"
+            },
+            {
+                "name": "full_powers",
+                "value": true
+            },
+            {
+                "name": "eService",
+                "value": "Business Register Access"
+            },
+            {
+                "name": "effective_from_date",
+                "value": "2023-03-01"
+            },
+            {
+                "name": "effective_until_date",
+                "value": "2028-03-01"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2023-03-02"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2028-03-02"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "Ministry of Economy"
+            },
+            {
+                "name": "issuing_jurisdiction",
+                "value": "Île-de-France"
+            },
+            {
+                "name": "issuing_country",
+                "value": "FR"
+            }
+        ]
+    },
+    {
+        "identifier": "user-002",
+        "credentialConfigurationId": "eu.europa.ec.eudi.por_mdoc",
+        "credentialId": "proof-of-residence",
+        "walletId": "w-002",
+        "attributes": [
+            {
+                "name": "legal_person_identifier",
+                "value": "DE987654321"
+            },
+            {
+                "name": "legal_name",
+                "value": "Data Systems GmbH"
+            },
+            {
+                "name": "full_powers",
+                "value": false
+            },
+            {
+                "name": "eService",
+                "value": "Corporate Identity Verification"
+            },
+            {
+                "name": "effective_from_date",
+                "value": "2024-01-10"
+            },
+            {
+                "name": "effective_until_date",
+                "value": "2029-01-10"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2024-01-12"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2029-01-12"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "Bundesministerium für Wirtschaft"
+            },
+            {
+                "name": "issuing_jurisdiction",
+                "value": "Berlin"
+            },
+            {
+                "name": "issuing_country",
+                "value": "DE"
+            }
+        ]
+    },
+    {
+        "identifier": "user-003",
+        "credentialConfigurationId": "eu.europa.ec.eudi.por_mdoc",
+        "credentialId": "proof-of-residence",
+        "walletId": "w-002",
+        "attributes": [
+            {
+                "name": "legal_person_identifier",
+                "value": "DE987654321"
+            },
+            {
+                "name": "legal_name",
+                "value": "Data Systems GmbH"
+            },
+            {
+                "name": "full_powers",
+                "value": false
+            },
+            {
+                "name": "eService",
+                "value": "Corporate Identity Verification"
+            },
+            {
+                "name": "effective_from_date",
+                "value": "2024-01-10"
+            },
+            {
+                "name": "effective_until_date",
+                "value": "2029-01-10"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2024-01-12"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2029-01-12"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "Bundesministerium für Wirtschaft"
+            },
+            {
+                "name": "issuing_jurisdiction",
+                "value": "Berlin"
+            },
+            {
+                "name": "issuing_country",
+                "value": "DE"
+            }
+        ]
+    }
+]

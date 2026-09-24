@@ -1,0 +1,45 @@
+[
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "username": "alicej",
+      "email": "alice.johnson@example.com",
+      "phone": "+1-555-1234",
+      "address": {
+        "street": "123 Maple Street",
+        "city": "Springfield",
+        "state": "IL",
+        "zip": "62704"
+      },
+      "registered_at": "2022-05-10T14:32:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Bob Smith",
+      "username": "bobsmith",
+      "email": "bob.smith@example.com",
+      "phone": "+1-555-5678",
+      "address": {
+        "street": "456 Oak Avenue",
+        "city": "Fairview",
+        "state": "CA",
+        "zip": "90210"
+      },
+      "registered_at": "2021-11-22T09:18:45Z"
+    },
+    {
+      "id": 3,
+      "name": "Carol Davis",
+      "username": "carold",
+      "email": "carol.davis@example.com",
+      "phone": "+1-555-9012",
+      "address": {
+        "street": "789 Pine Lane",
+        "city": "Rivertown",
+        "state": "TX",
+        "zip": "73301"
+      },
+      "registered_at": "2023-02-14T17:05:30Z"
+    }
+  ]
+  

@@ -1,0 +1,302 @@
+[
+    {
+        "identifier": "user-sd-jwt-001",
+        "credentialConfigurationId": "eu.europa.ec.eudi.pid_vc_sd_jwt",
+        "credentialId": "credential_id_1",
+        "attributes": [
+            {
+                "name": "given_name",
+                "value": "Erika"
+            },
+            {
+                "name": "family_name",
+                "value": "Mustermann"
+            },
+            {
+                "name": "email_address",
+                "value": "user-sd-jwt@test.com"
+            },
+            {
+                "name": "mobile_phone_number",
+                "value": "0606060606"
+            },
+            {
+                "name": "birthdate",
+                "value": "1963-08-12"
+            },
+            {
+                "name": "address",
+                "value": "Heidestrase 17"
+            },
+            {
+                "name": "country",
+                "value": "DE"
+            },
+            {
+                "name": "locality",
+                "value": "Koeln"
+            },
+            {
+                "name": "postalCode",
+                "value": "51147"
+            },
+            {
+                "name": "nationalities",
+                "value": "DE"
+            },
+            {
+                "name": "sex",
+                "value": "2"
+            },
+            {
+                "name": "lastName2",
+                "value": "Gabler"
+            },
+            {
+                "name": "place_of_birth",
+                "value": "Berlin"
+            },
+            {
+                "name": "country_of_birth",
+                "value": "GER"
+            },
+            {
+                "name": "country_code",
+                "value": "GER"
+            },
+            {
+                "name": "is16",
+                "value": "true"
+            },
+            {
+                "name": "is18",
+                "value": "true"
+            },
+            {
+                "name": "is21",
+                "value": "true"
+            },
+            {
+                "name": "is65",
+                "value": "false"
+            },
+            {
+                "name": "ageInYears",
+                "value": "62"
+            },
+            {
+                "name": "birthYear",
+                "value": "1963"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2020-03-11"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2030-03-12"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "DE"
+            },
+            {
+                "name": "issuing_country",
+                "value": "DE"
+            }
+        ]
+    },
+    {
+        "identifier": "user-001",
+        "credentialConfigurationId": "eu.europa.ec.eudi.pid_vc_sd_jwt",
+        "credentialId": "credential_id_1",
+        "attributes": [
+        { "name": "given_name", "value": "Anna" },
+        { "name": "family_name", "value": "Müller" },
+        {
+            "name": "email_address",
+            "value": "user-001@test.com"
+        },
+        {
+            "name": "mobile_phone_number",
+            "value": "0606060601"
+        },
+        { "name": "birthdate", "value": "1985-03-12" },
+        { "name": "address", "value": "Leopoldstrasse 45, Munich, Germany" },
+        { "name": "country", "value": "Germany" },
+        { "name": "locality", "value": "Munich" },
+        { "name": "postalCode", "value": "80802" },
+        { "name": "nationalities", "value": "German" },
+        { "name": "sex", "value": "2" },
+        { "name": "lastName2", "value": "Schmidt" },
+        { "name": "place_of_birth", "value": "Munich" },
+        { "name": "country_of_birth", "value": "Germany" },
+        { "name": "country_code", "value": "DE" },
+        { "name": "is16", "value": "true" },
+        { "name": "is18", "value": "true" },
+        { "name": "is21", "value": "true" },
+        { "name": "is65", "value": "false" },
+        { "name": "ageInYears", "value": "40" },
+        { "name": "birthYear", "value": "1985" },
+        { "name": "issuance_date", "value": "2015-05-01" },
+        { "name": "expiry_date", "value": "2025-05-01" },
+        { "name": "issuing_authority", "value": "Stadt München" },
+        { "name": "issuing_country", "value": "DE" }
+        ]
+    },
+    {
+        "identifier": "user-002",
+        "credentialConfigurationId": "eu.europa.ec.eudi.pid_vc_sd_jwt",
+        "credentialId": "credential_id_1",
+        "attributes": [
+        { "name": "given_name", "value": "Jean" },
+        { "name": "family_name", "value": "Dupont" },
+        {
+            "name": "email_address",
+            "value": "user-002@test.com"
+        },
+        {
+            "name": "mobile_phone_number",
+            "value": "0606060602"
+        },
+        { "name": "birthdate", "value": "1990-09-08" },
+        { "name": "address", "value": "12 Rue de la République, Lyon, France" },
+        { "name": "country", "value": "France" },
+        { "name": "locality", "value": "Lyon" },
+        { "name": "postalCode", "value": "69002" },
+        { "name": "nationalities", "value": "French" },
+        { "name": "sex", "value": "1" },
+        { "name": "lastName2", "value": "Durand" },
+        { "name": "place_of_birth", "value": "Lyon" },
+        { "name": "country_of_birth", "value": "France" },
+        { "name": "country_code", "value": "FR" },
+        { "name": "is16", "value": "true" },
+        { "name": "is18", "value": "true" },
+        { "name": "is21", "value": "true" },
+        { "name": "is65", "value": "false" },
+        { "name": "ageInYears", "value": "35" },
+        { "name": "birthYear", "value": "1990" },
+        { "name": "issuance_date", "value": "2016-03-10" },
+        { "name": "expiry_date", "value": "2026-03-10" },
+        { "name": "issuing_authority", "value": "Préfecture du Rhône" },
+        { "name": "issuing_country", "value": "FR" }
+        ]
+    },
+    {
+        "identifier": "user-003",
+        "credentialConfigurationId": "eu.europa.ec.eudi.pid_vc_sd_jwt",
+        "credentialId": "credential_id_1",
+        "attributes": [
+        { "name": "given_name", "value": "Oliver" },
+        { "name": "family_name", "value": "Smith" },
+        {
+            "name": "email_address",
+            "value": "user-003@test.com"
+        },
+        {
+            "name": "mobile_phone_number",
+            "value": "0606060603"
+        },
+
+        { "name": "birthdate", "value": "1979-12-01" },
+        { "name": "address", "value": "221B Baker Street, London, UK" },
+        { "name": "country", "value": "United Kingdom" },
+        { "name": "locality", "value": "London" },
+        { "name": "postalCode", "value": "NW1 6XE" },
+        { "name": "nationalities", "value": "British" },
+        { "name": "sex", "value": "1" },
+        { "name": "lastName2", "value": "Johnson" },
+        { "name": "place_of_birth", "value": "London" },
+        { "name": "country_of_birth", "value": "United Kingdom" },
+        { "name": "country_code", "value": "GB" },
+        { "name": "is16", "value": "true" },
+        { "name": "is18", "value": "true" },
+        { "name": "is21", "value": "true" },
+        { "name": "is65", "value": "false" },
+        { "name": "ageInYears", "value": "45" },
+        { "name": "birthYear", "value": "1979" },
+        { "name": "issuance_date", "value": "2014-07-22" },
+        { "name": "expiry_date", "value": "2024-07-22" },
+        { "name": "issuing_authority", "value": "HM Passport Office" },
+        { "name": "issuing_country", "value": "GB" }
+        ]
+    },
+    {
+        "identifier": "user-004",
+        "credentialConfigurationId": "eu.europa.ec.eudi.pid_vc_sd_jwt",
+        "credentialId": "credential_id_1",
+        "attributes": [
+        { "name": "given_name", "value": "Luca" },
+        { "name": "family_name", "value": "Rossi" },
+        {
+            "name": "email_address",
+            "value": "user-004@test.com"
+        },
+        {
+            "name": "mobile_phone_number",
+            "value": "0606060604"
+        },
+
+        { "name": "birthdate", "value": "1982-07-20" },
+        { "name": "address", "value": "10 Via Roma, Milan, Italy" },
+        { "name": "country", "value": "Italy" },
+        { "name": "locality", "value": "Milan" },
+        { "name": "postalCode", "value": "20121" },
+        { "name": "nationalities", "value": "Italian" },
+        { "name": "sex", "value": "1" },
+        { "name": "lastName2", "value": "Bianchi" },
+        { "name": "place_of_birth", "value": "Milan" },
+        { "name": "country_of_birth", "value": "Italy" },
+        { "name": "country_code", "value": "IT" },
+        { "name": "is16", "value": "true" },
+        { "name": "is18", "value": "true" },
+        { "name": "is21", "value": "true" },
+        { "name": "is65", "value": "false" },
+        { "name": "ageInYears", "value": "43" },
+        { "name": "birthYear", "value": "1982" },
+        { "name": "issuance_date", "value": "2018-09-15" },
+        { "name": "expiry_date", "value": "2028-09-15" },
+        { "name": "issuing_authority", "value": "Comune di Milano" },
+        { "name": "issuing_country", "value": "IT" }
+        ]
+    },
+    {
+        "identifier": "user-005",
+        "credentialConfigurationId": "eu.europa.ec.eudi.pid_vc_sd_jwt",
+        "credentialId": "credential_id_1",
+        "attributes": [
+        { "name": "given_name", "value": "María" },
+        { "name": "family_name", "value": "García" },
+        {
+            "name": "email_address",
+            "value": "user-005@test.com"
+        },
+        {
+            "name": "mobile_phone_number",
+            "value": "0606060605"
+        },
+
+        { "name": "birthdate", "value": "1995-05-18" },
+        { "name": "address", "value": "Calle Mayor 24, Madrid, Spain" },
+        { "name": "country", "value": "Spain" },
+        { "name": "locality", "value": "Madrid" },
+        { "name": "postalCode", "value": "28013" },
+        { "name": "nationalities", "value": "Spanish" },
+        { "name": "sex", "value": "2" },
+        { "name": "lastName2", "value": "Lopez" },
+        { "name": "place_of_birth", "value": "Madrid" },
+        { "name": "country_of_birth", "value": "Spain" },
+        { "name": "country_code", "value": "ES" },
+        { "name": "is16", "value": "true" },
+        { "name": "is18", "value": "true" },
+        { "name": "is21", "value": "true" },
+        { "name": "is65", "value": "false" },
+        { "name": "ageInYears", "value": "30" },
+        { "name": "birthYear", "value": "1995" },
+        { "name": "issuance_date", "value": "2020-02-25" },
+        { "name": "expiry_date", "value": "2030-02-25" },
+        { "name": "issuing_authority", "value": "Ministerio del Interior" },
+        { "name": "issuing_country", "value": "ES" }
+        ]
+    }
+]

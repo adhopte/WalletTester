@@ -1,0 +1,112 @@
+[
+  {
+    "identifier": "user-001",
+    "attributes": [
+      { "name": "family_name", "value": "Müller" },
+      { "name": "given_name", "value": "Anna" },
+      { "name": "birth_date", "value": "1985-03-12" },
+      { "name": "sub_family_name", "value": "Müller" },
+      { "name": "sub_given_name", "value": "Lena" },
+      { "name": "sub_birth_date", "value": "2010-08-14" },
+      { "name": "social_security_pin", "value": "DE850312A123" },
+      { "name": "starting_date", "value": "2015-05-01" },
+      { "name": "ending_date", "value": "2015-05-01" },
+      { "name": "document_id", "value": "DOC-DE-001" },
+      { "name": "institution_id", "value": "INST-DE-01" },
+      { "name": "institution_name", "value": "Bundesagentur für Arbeit" },
+      { "name": "country_code", "value": "DE" },
+      { "name": "issuance_date", "value": "2015-05-01" },
+      { "name": "expiry_date", "value": "2025-05-01" },
+      { "name": "issuing_authority", "value": "Stadt Frankfurt" },
+      { "name": "issuing_country", "value": "DE" }
+    ]
+  },
+  {
+    "identifier": "user-002",
+    "attributes": [
+      { "name": "family_name", "value": "Dupont" },
+      { "name": "given_name", "value": "Jean" },
+      { "name": "birth_date", "value": "1990-09-08" },
+      { "name": "sub_family_name", "value": "Dupont" },
+      { "name": "sub_given_name", "value": "Émilie" },
+      { "name": "sub_birth_date", "value": "2012-04-19" },
+      { "name": "social_security_pin", "value": "FR900908123456" },
+      { "name": "starting_date", "value": "2018-03-10" },
+      { "name": "ending_date", "value": "2028-03-10" },
+      { "name": "document_id", "value": "DOC-FR-002" },
+      { "name": "institution_id", "value": "INST-FR-01" },
+      { "name": "institution_name", "value": "Pôle Emploi" },
+      { "name": "country_code", "value": "FR" },
+      { "name": "issuance_date", "value": "2018-03-10" },
+      { "name": "expiry_date", "value": "2028-03-10" },
+      { "name": "issuing_authority", "value": "Préfecture de Paris" },
+      { "name": "issuing_country", "value": "FR" }
+    ]
+  },
+  {
+    "identifier": "user-003",
+    "attributes": [
+      { "name": "family_name", "value": "Smith" },
+      { "name": "given_name", "value": "Oliver" },
+      { "name": "birth_date", "value": "1979-12-01" },
+      { "name": "sub_family_name", "value": "Smith" },
+      { "name": "sub_given_name", "value": "Harry" },
+      { "name": "sub_birth_date", "value": "2008-11-22" },
+      { "name": "social_security_pin", "value": "UK791201123A" },
+      { "name": "starting_date", "value": "2014-07-22" },
+      { "name": "ending_date", "value": "2024-07-22" },
+      { "name": "document_id", "value": "DOC-UK-003" },
+      { "name": "institution_id", "value": "INST-UK-01" },
+      { "name": "institution_name", "value": "HMRC" },
+      { "name": "country_code", "value": "GB" },
+      { "name": "issuance_date", "value": "2014-07-22" },
+      { "name": "expiry_date", "value": "2024-07-22" },
+      { "name": "issuing_authority", "value": "HM Passport Office" },
+      { "name": "issuing_country", "value": "GB" }
+    ]
+  },
+  {
+    "identifier": "user-004",
+    "attributes": [
+      { "name": "family_name", "value": "Rossi" },
+      { "name": "given_name", "value": "Luca" },
+      { "name": "birth_date", "value": "1982-07-20" },
+      { "name": "sub_family_name", "value": "Rossi" },
+      { "name": "sub_given_name", "value": "Giulia" },
+      { "name": "sub_birth_date", "value": "2015-02-03" },
+      { "name": "social_security_pin", "value": "IT820720LXXR" },
+      { "name": "starting_date", "value": "2018-09-15" },
+      { "name": "ending_date", "value": "2028-09-15" },
+      { "name": "document_id", "value": "DOC-IT-004" },
+      { "name": "institution_id", "value": "INST-IT-01" },
+      { "name": "institution_name", "value": "INPS" },
+      { "name": "country_code", "value": "IT" },
+      { "name": "issuance_date", "value": "2018-09-15" },
+      { "name": "expiry_date", "value": "2028-09-15" },
+      { "name": "issuing_authority", "value": "Comune di Milano" },
+      { "name": "issuing_country", "value": "IT" }
+    ]
+  },
+  {
+    "identifier": "user-005",
+    "attributes": [
+      { "name": "family_name", "value": "García" },
+      { "name": "given_name", "value": "María" },
+      { "name": "birth_date", "value": "1995-05-18" },
+      { "name": "sub_family_name", "value": "García" },
+      { "name": "sub_given_name", "value": "Sofía" },
+      { "name": "sub_birth_date", "value": "2016-06-25" },
+      { "name": "social_security_pin", "value": "ES950518M12" },
+      { "name": "starting_date", "value": "2020-02-25" },
+      { "name": "ending_date", "value": "2030-02-25" },
+      { "name": "document_id", "value": "DOC-ES-005" },
+      { "name": "institution_id", "value": "INST-ES-01" },
+      { "name": "institution_name", "value": "Seguridad Social" },
+      { "name": "country_code", "value": "ES" },
+      { "name": "issuance_date", "value": "2020-02-25" },
+      { "name": "expiry_date", "value": "2030-02-25" },
+      { "name": "issuing_authority", "value": "Ministerio del Trabajo" },
+      { "name": "issuing_country", "value": "ES" }
+    ]
+  }
+]

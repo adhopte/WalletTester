@@ -1,0 +1,140 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import "scss-variables";
+
+//@import "~bootstrap/dist/css/bootstrap.css";
+// @import url("//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+// @import url("//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css");
+
+
+html,body{
+  height:100%;
+}
+
+.app-container {
+  height: 100%;
+  display: block;
+  overflow-y: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+  position: absolute;
+  background-color:#eee;
+  width: 100%;
+}
+
+* {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  /* Style the header */
+  .header {
+    background-color: white ;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+  }
+
+  // .app-card {
+  //   width: inherit;
+  //   margin: 0 auto;
+  //   box-shadow: 0 2px 0 #a8a8a8;
+  //   border-radius: 4px;
+  //   padding-left: 5px;
+  //   padding-right: 5px;
+  //   margin-left: 5px;
+  //   margin-right: 5px;
+  //   margin-bottom: 10px;
+  //   background-color: #ffffff;
+  //   padding: 6px;
+  // }
+
+
+  .app-card {
+    // width: inherit;
+    box-shadow: 0 2px 0 #a8a8a8;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: #ffffff;
+    padding: 5px;
+  }
+
+
+  .cardSetting{
+    margin-top: -8px
+  }
+
+  .center{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    justify-content: center;
+    display: flex;
+}
+
+.button{
+    width: 140px;
+    height: 40px;
+    color: white;
+    font-size: 15px;
+    background-color: #192c70;
+}
+
+.potrait {
+  height: auto;
+  width: 55%;
+  justify-content: center
+}
+
+.right-div{
+  float:right;
+  margin-right: 10px;
+}
+
+.margin-top{
+  margin-top: 10px
+}
+
+.btn_next{
+  margin-bottom: 9px !important;
+}
+
+.card_header{
+  height: 30px;
+  width: 100%;
+  background-color: #8d66c2;
+}
+
+
+.titleBar{
+  width: 100%;
+  height: 38px;
+  line-height: 38px;
+  color: white;
+  background-color: #192c70;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-family: 'Roboto-Medium',sans-serif;
+  font-size: 19px;
+}
+
+
+.error-box{
+    width: 100%;
+    color: maroon
+}
+
+.font_roboto_Regular{
+font-family: 'Roboto-Regular',sans-serif !important;
+font-size: 15px;
+}
+
+.loadingPage{
+height: 100%;
+width: 100%;
+background-color: #192c70;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

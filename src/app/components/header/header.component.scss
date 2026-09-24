@@ -1,0 +1,20 @@
+nav {
+    display: flex;
+    width: 100%;
+    background:#192c70 !important;
+    align-items: center;
+    justify-content: center;
+    padding: 1px
+}
+
+.logo{
+    height: 80px;
+}
+
+.logo-label{
+    font-size: 30px;
+    font-weight: bold;
+    color: #192c70;
+    margin: 0px;
+    padding-left: 10px;
+}

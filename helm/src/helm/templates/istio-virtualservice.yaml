@@ -1,0 +1,98 @@
+{{- if .Values.global.infrastructure.istio.enabled }}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ .Chart.Name }}
+spec:
+  hosts:
+    - {{ .Values.global.infrastructure.ingress.host }}
+  gateways:
+    - {{.Values.global.infrastructure.istio.gatewayName}}
+  http:
+    - match:
+        - uri:
+            exact: /
+      redirect:
+        redirectCode: 302
+        uri: /in-person-portal/
+    - match:
+        - headers:
+            accept:
+              regex: .*text/html.*
+          method:
+            exact: GET
+          uri:
+            regex: ^/in-person-portal/.+
+      redirect:
+        redirectCode: 302
+        uri: /in-person-portal/
+    - match:
+        - uri:
+            regex: \/in-person-portal.*
+          {{ if .Values.global.infrastructure.istio.adminPanelProtection }}
+          headers:
+            x-forwarded-for:
+              regex: {{ .Values.whiteListIP }}
+          {{- end }}
+      route:
+        - destination:
+            host: {{ .Chart.Name }}.{{.Release.Namespace}}.svc.cluster.local
+            port:
+              number: {{ .Values.service.port }}
+    - match:
+        - uri:
+            prefix: /user_pid_claims/
+          {{ if .Values.global.infrastructure.istio.adminPanelProtection }}
+          headers:
+            x-forwarded-for:
+              regex: {{ .Values.whiteListIP }}
+          {{- end }}
+        - uri:
+            prefix: /oid_degree_uc1/
+          {{ if .Values.global.infrastructure.istio.adminPanelProtection }}
+          headers:
+            x-forwarded-for:
+              regex: {{ .Values.whiteListIP }}
+          {{- end }}
+        - uri:
+            prefix: /oid_birth_certificate_sd_jwt_uc1/
+          {{ if .Values.global.infrastructure.istio.adminPanelProtection }}
+          headers:
+            x-forwarded-for:
+              regex: {{ .Values.whiteListIP }}
+          {{- end }}
+        - uri:
+            prefix: /oid_birth_certificate_mdoc_uc1/
+          {{ if .Values.global.infrastructure.istio.adminPanelProtection }}
+          headers:
+            x-forwarded-for:
+              regex: {{ .Values.whiteListIP }}
+          {{- end }}
+        - uri:
+            prefix: /oid_pid_inp_uc1/
+          {{ if .Values.global.infrastructure.istio.adminPanelProtection }}
+          headers:
+            x-forwarded-for:
+              regex: {{ .Values.whiteListIP }}
+          {{- end }}
+      route:
+        - destination:
+            host: {{ .Chart.Name }}.{{ .Release.Namespace }}.svc.cluster.local
+            port:
+              number: {{ .Values.service.sorPort }}
+    - match:
+        - uri:
+            prefix: /api/in-person-portal-sor/
+          {{ if .Values.global.infrastructure.istio.adminPanelProtection }}
+          headers:
+            x-forwarded-for:
+              regex: {{ .Values.whiteListIP }}
+          {{- end }}
+      rewrite:
+        uri: /
+      route:
+        - destination:
+            host: {{ .Chart.Name }}.{{ .Release.Namespace }}.svc.cluster.local
+            port:
+              number: {{ .Values.service.sorPort }}
+{{- end }}

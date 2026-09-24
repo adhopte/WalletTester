@@ -1,0 +1,314 @@
+[
+    {
+        "identifier": "user-dl-001",
+        "credentialConfigurationId": "eu.europa.ec.eudi.mdl_mdoc",
+        "credentialId": "driving-license",
+        "walletId": "w-001",
+        "attributes": [
+            {
+                "name": "family_name",
+                "value": "Martin"
+            },
+            {
+                "name": "given_name",
+                "value": "Sophie"
+            },
+            {
+                "name": "birth_date",
+                "value": "1990-03-12"
+            },
+            {
+                "name": "issue_date",
+                "value": "2021-05-20"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2031-05-20"
+            },
+            {
+                "name": "issuing_country",
+                "value": "FR"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "Préfecture de Paris"
+            },
+            {
+                "name": "document_number",
+                "value": "DL12345678"
+            },
+            {
+                "name": "portrait",
+                "value": "base64jpegdata1"
+            },
+            {
+                "name": "driving_privileges",
+                "value": "B"
+            },
+            {
+                "name": "un_distinguishing_sign",
+                "value": "FRA"
+            },
+            {
+                "name": "sex",
+                "value": 2
+            },
+            {
+                "name": "height",
+                "value": 168
+            },
+            {
+                "name": "weight",
+                "value": 62
+            },
+            {
+                "name": "eye_colour",
+                "value": "Brown"
+            },
+            {
+                "name": "hair_colour",
+                "value": "Blonde"
+            },
+            {
+                "name": "birth_place",
+                "value": "Lyon"
+            },
+            {
+                "name": "resident_city",
+                "value": "Paris"
+            },
+            {
+                "name": "resident_state",
+                "value": "Île-de-France"
+            },
+            {
+                "name": "resident_postal_code",
+                "value": "75012"
+            },
+            {
+                "name": "resident_country",
+                "value": "FR"
+            },
+            {
+                "name": "age_in_years",
+                "value": 33
+            },
+            {
+                "name": "age_birth_year",
+                "value": 1990
+            },
+            {
+                "name": "age_over_18",
+                "value": true
+            }
+        ]
+    },
+    {
+        "identifier": "user-dl-002",
+        "credentialConfigurationId": "eu.europa.ec.eudi.mdl_mdoc",
+        "credentialId": "driving-license",
+        "walletId": "w-002",
+        "attributes": [
+            {
+                "name": "family_name",
+                "value": "Rossi"
+            },
+            {
+                "name": "given_name",
+                "value": "Marco"
+            },
+            {
+                "name": "birth_date",
+                "value": "1985-08-22"
+            },
+            {
+                "name": "issue_date",
+                "value": "2020-07-10"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2030-07-10"
+            },
+            {
+                "name": "issuing_country",
+                "value": "IT"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "Motorizzazione Civile Roma"
+            },
+            {
+                "name": "document_number",
+                "value": "DL87654321"
+            },
+            {
+                "name": "portrait",
+                "value": "base64jpegdata2"
+            },
+            {
+                "name": "driving_privileges",
+                "value": "B, C"
+            },
+            {
+                "name": "un_distinguishing_sign",
+                "value": "ITA"
+            },
+            {
+                "name": "sex",
+                "value": 1
+            },
+            {
+                "name": "height",
+                "value": 180
+            },
+            {
+                "name": "weight",
+                "value": 75
+            },
+            {
+                "name": "eye_colour",
+                "value": "Blue"
+            },
+            {
+                "name": "hair_colour",
+                "value": "Brown"
+            },
+            {
+                "name": "birth_place",
+                "value": "Milan"
+            },
+            {
+                "name": "resident_city",
+                "value": "Rome"
+            },
+            {
+                "name": "resident_state",
+                "value": "Lazio"
+            },
+            {
+                "name": "resident_postal_code",
+                "value": "00184"
+            },
+            {
+                "name": "resident_country",
+                "value": "IT"
+            },
+            {
+                "name": "age_in_years",
+                "value": 38
+            },
+            {
+                "name": "age_birth_year",
+                "value": 1985
+            },
+            {
+                "name": "age_over_18",
+                "value": true
+            }
+        ]
+    },
+    {
+        "identifier": "user-vid-003",
+        "credentialConfigurationId": "eu.europa.ec.eudi.mdl_mdoc",
+        "credentialId": "vehicle-id",
+        "walletId": "w-003",
+        "attributes": [
+            {
+                "name": "family_name",
+                "value": "Schneider"
+            },
+            {
+                "name": "given_name",
+                "value": "Lena"
+            },
+            {
+                "name": "birth_date",
+                "value": "1993-11-05"
+            },
+            {
+                "name": "issue_date",
+                "value": "2022-01-15"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2032-01-15"
+            },
+            {
+                "name": "issuing_country",
+                "value": "DE"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "Kraftfahrt-Bundesamt"
+            },
+            {
+                "name": "document_number",
+                "value": "VID99887766"
+            },
+            {
+                "name": "portrait",
+                "value": "base64jpegdata3"
+            },
+            {
+                "name": "driving_privileges",
+                "value": "B"
+            },
+            {
+                "name": "un_distinguishing_sign",
+                "value": "DEU"
+            },
+            {
+                "name": "sex",
+                "value": 2
+            },
+            {
+                "name": "height",
+                "value": 165
+            },
+            {
+                "name": "weight",
+                "value": 60
+            },
+            {
+                "name": "eye_colour",
+                "value": "Green"
+            },
+            {
+                "name": "hair_colour",
+                "value": "Black"
+            },
+            {
+                "name": "birth_place",
+                "value": "Berlin"
+            },
+            {
+                "name": "resident_city",
+                "value": "Hamburg"
+            },
+            {
+                "name": "resident_state",
+                "value": "Hamburg"
+            },
+            {
+                "name": "resident_postal_code",
+                "value": "20095"
+            },
+            {
+                "name": "resident_country",
+                "value": "DE"
+            },
+            {
+                "name": "age_in_years",
+                "value": 31
+            },
+            {
+                "name": "age_birth_year",
+                "value": 1993
+            },
+            {
+                "name": "age_over_18",
+                "value": true
+            }
+        ]
+    }
+]

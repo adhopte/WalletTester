@@ -1,0 +1,106 @@
+[
+  {
+    "identifier": "user-bc-mdoc-001",
+    "credentialConfigurationId": "eu.europa.ec.eudi.birth_certificate_mdoc",
+    "credentialId": "birth_certificate_full_data",
+    "walletId": "w-002",
+    "attributes": [
+      {
+        "name": "family_name",
+        "value": "Dubois"
+      },
+      {
+        "name": "given_name",
+        "value": "Lucas"
+      },
+      {
+        "name": "birthdate",
+        "value": "2026-04-10"
+      },
+      {
+        "name": "birth_date",
+        "value": "2026-04-10"
+      },
+      {
+        "name": "country_code",
+        "value": "FR"
+      },
+      {
+        "name": "expiry_date",
+        "value": "2126-04-12"
+      },
+      {
+        "name": "issuing_country",
+        "value": "FR"
+      },
+      {
+        "name": "place_of_birth",
+        "value": "Paris, FR"
+      },
+      {
+        "name": "country_of_birth",
+        "value": "FR"
+      },
+      {
+        "name": "locality",
+        "value": "Paris"
+      },
+      {
+        "name": "issuance_date",
+        "value": "2026-04-12"
+      },
+      {
+        "name": "issuing_authority",
+        "value": "Mairie de Paris 15e"
+      },
+      {
+        "name": "doctor",
+        "value": "Dr. Jean-Pierre Martin"
+      },
+      {
+        "name": "hospital",
+        "value": "Hôpital Necker-Enfants Malades"
+      }
+    ]
+  },
+  {
+    "identifier": "user-bc-mdoc-002",
+    "credentialConfigurationId": "eu.europa.ec.eudi.birth_certificate_mdoc",
+    "credentialId": "birth_certificate",
+    "walletId": "w-003",
+    "attributes": [
+      {
+        "name": "family_name",
+        "value": "Leroy"
+      },
+      {
+        "name": "given_name",
+        "value": "Chloé"
+      },
+      {
+        "name": "birthdate",
+        "value": "2025-01-02"
+      },
+      {
+        "name": "birth_date",
+        "value": "2025-01-02"
+      },
+      {
+        "name": "country_code",
+        "value": "FR"
+      },
+      {
+        "name": "expiry_date",
+        "value": "2125-01-10"
+      },
+      {
+        "name": "issuing_country",
+        "value": "FR"
+      },
+      {
+        "name": "issuance_date",
+        "value": "2025-01-10"
+      }
+    ]
+  }
+]

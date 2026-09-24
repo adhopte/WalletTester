@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Decode QRCode from image using javascript</title>
+</head>
+<body>
+<script type="text/javascript" src="grid.js"></script>
+<script type="text/javascript" src="version.js"></script>
+<script type="text/javascript" src="detector.js"></script>
+<script type="text/javascript" src="formatinf.js"></script>
+<script type="text/javascript" src="errorlevel.js"></script>
+<script type="text/javascript" src="bitmat.js"></script>
+<script type="text/javascript" src="datablock.js"></script>
+<script type="text/javascript" src="bmparser.js"></script>
+<script type="text/javascript" src="datamask.js"></script>
+<script type="text/javascript" src="rsdecoder.js"></script>
+<script type="text/javascript" src="gf256poly.js"></script>
+<script type="text/javascript" src="gf256.js"></script>
+<script type="text/javascript" src="decoder.js"></script>
+<script type="text/javascript" src="qrcode.js"></script>
+<script type="text/javascript" src="findpat.js"></script>
+<script type="text/javascript" src="alignpat.js"></script>
+<script type="text/javascript" src="databr.js"></script>
+<script>
+  // A qrcode with "ourcodeworld.com" as value in format base64 encoded
+  var imageURI = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASIAAAEiAQMAAABncE31AAAABlBMVEX///8AAABVwtN+AAABA0lEQVRoge3ZUQ6CMAzG8SYcwCNx9R2JA5jU0a6ARKIP60z0/z0wZD+fmm1siBBCCPmfaMu93t/sEk8KKlv5jwrq3VT7jO4dqEy1lsT65mVS92vBUAOVKupbKmYm1DhljffpB/MXqp/aVmQfIuXNuo3qp46p4KIHlaFiTKzXRdrS4GszKlnJHCPBhkgF2z9RyWqvkNWlUdWrOqL6qZiP2kuoVWivGipT+cAosfsNOqHy1cm34txOuwBUhtKW2Hf52Zu8XLdRnVWxZtt3+duQ3gU1QD2d+kSFBDVUFX8ytZcj1Eh1OHMWQQ1Q1kSF2hb4ev5CdVTHFVl1/86FSleEEEJ+PQ/ANYzwx13NHQAAAABJRU5ErkJggg==";
+
+  /**
+   * The function decodeImageFromBase64 expects as first parameter a base64 string from a QRCode.
+   * As second parameter the callback that expects the data from the QRCode as first parameter.
+   */
+  function decodeImageFromBase64(data, callback){
+    // set callback
+    qrcode.callback = callback;
+    // Start decoding
+    qrcode.decode(data)
+  }
+
+  decodeImageFromBase64(imageURI, function(decodedInformation){
+    console.log(decodedInformation);
+    return decodedInformation;
+  });
+</script>
+</body>
+</html>

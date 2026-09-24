@@ -1,0 +1,224 @@
+<div class="app-container">
+  <div class="container-fluid " style="margin-top:15px">
+    <!-- FORM START -->
+    <form [formGroup]="attributeForm" name="attributeForm" (ngSubmit)="onSubmit()">
+      <div class="row row-eq-height">
+        <!--<div class="col-sm-2">
+           </div>-->
+        <div class="col-sm-4">
+          <div class="row">
+            <div class="col">
+              <label class="titleBar center">DOCUMENT DETAILS</label>
+              <div class="app-card cardSetting">
+                <!-- DOC NUMBER -->
+                <div class="form-group">
+                  <label for="documentNumber">Credential Number</label>
+                  <input type="text" formControlName="documentNumber" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                  <label for="documentType">Credential type</label>
+                  <input type="text" formControlName="documentType" class="form-control" />
+                </div>
+
+
+                <div class="form-group">
+                  <label for="firstIssueDatePlace">First Issue Date Place</label>
+                  <input type="text" formControlName="firstIssueDatePlace" class="form-control" />
+                </div>
+                
+                <div class="form-group">
+                  <label for="jurisdictionId">Jurisdiction ID</label>
+                  <input type="text" formControlName="jurisdictionId" class="form-control" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <br>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label class="titleBar center">SIGNATURE</label>
+              <div class="app-card cardSetting">
+                <div class="form-group">
+                  <label for="signature">Signature value</label>
+                  <input type="text" formControlName="signature" class="form-control" />
+                </div>
+                <div class="image-box small">W: 472 H: 94</div>
+                <div class="image-box">
+                  <div class="image-upload">
+                    <label for="text-input">
+                      <img src="./assets/images/add-potrait.png" />
+                    </label>
+                    <input id="text-input" type="file" (change)="signatureChangeEvent($event)" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Identity Details -->
+        <div class="col-sm-4">
+          <label class="titleBar center">IDENTITY DETAILS</label>
+          <div class="app-card cardSetting">
+            <div class="form-group">
+              <div>
+                <input id="givenNames" type="text" formControlName="givenNames" class="form-control" />
+                <div style="margin-top: 5px;">
+                  <img class="imgAddname" src="./assets/images/add-name.png" style="margin-bottom: 10px" (click)="addGivenNames()" />
+                  <div class="chip" *ngFor="let item of arrayGivenNames; let i = index">
+                    {{arrayGivenNames[i]}}
+                    <span class="closebtn" (click)="deleteGivenNames(i)">&times;</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- SURNAME FORM -->
+            <div class="form-group">
+              <label for="surname">Last Name</label>
+              <input type="text" formControlName="surname" class="form-control" />
+              <div class="form-control-feedback" *ngIf="surname?.errors && (surname?.dirty || surname?.touched)">
+                <p *ngIf="surname?.errors['required']">Surname is required</p>
+              </div>
+            </div>
+            <!-- GENDER -->
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select formControlName="gender" class="form-control" >
+                <option value="M" selected >Male</option>
+                <option value="F">Female</option>
+                <option value="X">Others</option>
+              </select>
+            </div>
+            <!-- PLACE OF BIRTH FEILD -->
+            <div class="form-group">
+              <label for="placeOfBirth">Birth Town</label>
+              <input type="text" formControlName="placeOfBirth" class="form-control" />
+            </div>
+            <!-- DATE OF BIRTH  FEILD-->
+            <div class="form-group">
+              <label for="dateOfBirth">Date Of Birth</label>
+              <input type="input" formControlName="dateOfBirth" class="form-control" />
+            </div>
+            <!-- PERSONAL NUMBER FEILD-->
+            <div class="form-group">
+              <label for="personalNumber">PUI</label>
+              <input type="text" formControlName="personalNumber" class="form-control" />
+            </div>
+            <!-- NATIONALITY FORM -->
+            <div class="form-group">
+              <label for="nationality">Nationality</label>
+              <input type="text" formControlName="nationality" class="form-control" />
+            </div>
+            <!-- HEIGHT FORM -->
+            <div class="form-group">
+              <label for="height">Height</label>
+              <input type="text" formControlName="height" class="form-control" />
+            </div>
+            <!-- HEIGHT UNIT FORM -->
+            <div class="form-group">
+              <label for="heightUnit">Height Unit</label>
+              <input type="text" formControlName="heightUnit" class="form-control" />
+            </div>
+            <!-- DATE OF EXPIRY -->
+            <div class="form-group">
+              <label for="dateOfExpiry">Date of Expiry</label>
+              <input type="text" formControlName="dateOfExpiry" class="form-control" />
+            </div>
+            <!-- ISSUE DATE -->
+            <div class="form-group">
+              <label for="issueDate">Date of Issue</label>
+              <input type="text" formControlName="issueDate" class="form-control" />
+            </div>
+            <!-- BLOOD TYPE FORM -->
+            <div class="form-group">
+              <label for="bloodType">Blood Type</label>
+              <input type="input" formControlName="bloodType" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label for="is18">Is over 18</label>
+              <input type="checkbox" formControlName="is18" class="form-control" />
+            </div>
+            <!-- empty label to use as space : no time to look in detail -->
+            <div class="form-group">
+              <label for="Actions"></label>
+            </div>
+          </div>
+        </div>
+        <!-- Image and additional attribute feild -->
+        <div class="col-sm-4">
+          <label class="titleBar center">ADDITIONAL DATA</label>
+          <div class="app-card cardSetting" >
+            <div>
+              <div class="image-box">
+                <img class="potrait" id="preview" [src]="urlBase64" border="3">
+              </div>
+              <div class="image-box small">W: 400 H: 492</div>
+              <div class="image-box">
+                <div class="image-upload">
+                  <label for="file-input">
+                    <img src="./assets/images/add-potrait.png" />
+                  </label>
+                  <input id="file-input" type="file" (change)="fileChangeEvent($event)" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group" style="text-align: center;">
+              <div style="width:100%">
+                <label class="lineTitle">ADDITIONAL ATTRIBUTE</label>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-group">
+                    <label for="key"> Name</label>
+                    <input type="text" formControlName="key" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label for="value">Value</label>
+                    <input type="text" formControlName="value" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="center">
+                    <img class="imgAddname" src="./assets/images/add-name.png" (click)="addAdditionalAttributes()" />
+                  </div>
+                </div>
+                <div style="width: 100%;">
+                  <div class="fullview" *ngFor="let item of attributeArray; let i = index">
+                    <div class="attrContainer" style="background-color:#f9cd88;">
+                      <label class="text">
+                        <b>{{item.name}}</b><br>
+                        <i>{{item.value.substr(0,200)}}.....</i>
+                      </label>
+                      <div style="height: 20px">
+                        <label class="attrDelete" (click)="deleteAttribute(i)">Delete</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="error-box">{{errorResponse}}</label>
+            </div>
+            <div class="right-div">
+              <button class="button" style="margin-bottom: 10px" (onClick)="onSubmit()" [disabled]="isDisabled()"> Submit </button>
+            </div>
+            <!-- empty label to use as space : no time to look in detail -->
+            <div class="form-group">
+              <label for="Actions"></label>
+            </div>
+          </div>
+        </div>
+        <!--<div class="col-sm-2">
+           </div>-->
+      </div>
+      <!-- FORM END -->
+    </form>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+[
+  {
+    "identifier": "user-001",
+    "credentialConfigurationId": "eu.europa.ec.eudi.tax_jwt_vc",
+    "credentialId": "tax-id",
+    "walletId": "w-001",
+    "attributes": [
+      { "name": "tax_number", "value": "DE123456789" },
+      { "name": "affiliation_country", "value": "Germany" },
+      { "name": "registered_given_name", "value": "Lukas" },
+      { "name": "registered_family_name", "value": "Meyer" },
+      { "name": "resident_address", "value": "Hauptstrasse 12, 10115 Berlin" },
+      { "name": "birth_date", "value": "1988-04-21" },
+      { "name": "church_tax_ID", "value": "CTX-47892" },
+      { "name": "iban", "value": "DE89370400440532013000" },
+      { "name": "credential_type", "value": "Personal Tax Identification" },
+      { "name": "issuance_date", "value": "2024-06-15" },
+      { "name": "expiry_date", "value": "2034-06-15" },
+      { "name": "issuing_authority", "value": "German Federal Tax Office" },
+      { "name": "issuing_country", "value": "DE" }
+    ]
+  },
+  {
+    "identifier": "user-002",
+    "credentialConfigurationId": "eu.europa.ec.eudi.tax_jwt_vc",
+    "credentialId": "vat-id",
+    "walletId": "w-002",
+    "attributes": [
+      { "name": "tax_number", "value": "FR987654321" },
+      { "name": "affiliation_country", "value": "France" },
+      { "name": "registered_given_name", "value": "Élodie" },
+      { "name": "registered_family_name", "value": "Durand" },
+      { "name": "resident_address", "value": "25 Rue Lafayette, 75009 Paris" },
+      { "name": "birth_date", "value": "1992-09-10" },
+      { "name": "iban", "value": "FR7612345987654321098765432" },
+      { "name": "credential_type", "value": "VAT Identification" },
+      { "name": "issuance_date", "value": "2023-11-20" },
+      { "name": "expiry_date", "value": "2033-11-20" },
+      { "name": "issuing_authority", "value": "Direction Générale des Finances Publiques" },
+      { "name": "issuing_country", "value": "FR" }
+    ]
+  },
+  {
+    "identifier": "user-003",
+    "credentialConfigurationId": "eu.europa.ec.eudi.tax_jwt_vc",
+    "credentialId": "fiscal-cert",
+    "walletId": "w-003",
+    "attributes": [
+      { "name": "tax_number", "value": "IT5566778899" },
+      { "name": "affiliation_country", "value": "Italy" },
+      { "name": "registered_given_name", "value": "Giulia" },
+      { "name": "registered_family_name", "value": "Rossi" },
+      { "name": "resident_address", "value": "Via Roma 45, 00184 Roma" },
+      { "name": "birth_date", "value": "1985-12-02" },
+      { "name": "iban", "value": "IT60X0542811101000000123456" },
+      { "name": "credential_type", "value": "Fiscal Residence Certificate" },
+      { "name": "issuance_date", "value": "2025-01-10" },
+      { "name": "expiry_date", "value": "2035-01-10" },
+      { "name": "issuing_authority", "value": "Agenzia delle Entrate" },
+      { "name": "issuing_country", "value": "IT" }
+    ]
+  }
+]

@@ -1,0 +1,98 @@
+[
+    {
+        "identifier": "user-001",
+        "credentialConfigurationId": "eu.europa.ec.eudi.pseudonym_over18_mdoc",
+        "credentialId": "pseudonym-over18",
+        "walletId": "w-001",
+        "attributes": [
+            {
+                "name": "user_pseudonym",
+                "value": "shadow_fox"
+            },
+            {
+                "name": "age_over_18",
+                "value": true
+            },
+            {
+                "name": "issuance_date",
+                "value": "2024-04-12"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2029-04-12"
+            },
+            {
+                "name": "issuing_country",
+                "value": "FR"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "Ministry of Digital Affairs"
+            }
+        ]
+    },
+    {
+        "identifier": "user-002",
+        "credentialConfigurationId": "eu.europa.ec.eudi.pseudonym_over18_mdoc",
+        "credentialId": "pseudonym-over18",
+        "walletId": "w-002",
+        "attributes": [
+            {
+                "name": "user_pseudonym",
+                "value": "cyberwave92"
+            },
+            {
+                "name": "age_over_18",
+                "value": true
+            },
+            {
+                "name": "issuance_date",
+                "value": "2023-09-01"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2028-09-01"
+            },
+            {
+                "name": "issuing_country",
+                "value": "DE"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "Federal Office for Digital Identity"
+            }
+        ]
+    },
+    {
+        "identifier": "user-003",
+        "credentialConfigurationId": "eu.europa.ec.eudi.pseudonym_over18_mdoc",
+        "credentialId": "pseudonym-over18",
+        "walletId": "w-002",
+        "attributes": [
+            {
+                "name": "user_pseudonym",
+                "value": "cyberwave92"
+            },
+            {
+                "name": "age_over_18",
+                "value": true
+            },
+            {
+                "name": "issuance_date",
+                "value": "2023-09-01"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2028-09-01"
+            },
+            {
+                "name": "issuing_country",
+                "value": "DE"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "Federal Office for Digital Identity"
+            }
+        ]
+    }
+]

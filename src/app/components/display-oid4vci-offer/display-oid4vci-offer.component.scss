@@ -1,0 +1,36 @@
+.breaking-div{
+  white-space: pre-wrap;      /* CSS3 */
+  white-space: -moz-pre-wrap; /* Firefox */
+  white-space: -pre-wrap;     /* Opera <7 */
+  white-space: -o-pre-wrap;   /* Opera 7 */
+  word-wrap: break-word;      /* IE */
+}
+
+.image-box-qr{
+  margin: auto;
+  width: 50%;
+}
+
+.deeplink-frame {
+  display: flex;               /* align items horizontally */
+  align-items: center;         /* vertically center the text and icon */
+  justify-content: space-between; /* push the icon to the right */
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.deeplink-text {
+  flex: 1;                     /* take all available space */
+  word-break: break-all;       /* wrap long text */
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 8px;
+}

@@ -1,0 +1,170 @@
+[
+    {
+        "identifier": "user-001",
+        "credentialConfigurationId": "eu.europa.ec.eudi.msisdn_mdoc",
+        "credentialId": "phone-number",
+        "walletId": "w-001",
+        "attributes": [
+            {
+                "name": "phone_number",
+                "value": "+33612345678"
+            },
+            {
+                "name": "registered_family_name",
+                "value": "Dupont"
+            },
+            {
+                "name": "registered_given_name",
+                "value": "Claire"
+            },
+            {
+                "name": "contract_owner",
+                "value": true
+            },
+            {
+                "name": "end_user",
+                "value": true
+            },
+            {
+                "name": "mobile_operator",
+                "value": "Orange"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2023-01-15"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2026-01-15"
+            },
+            {
+                "name": "credential_type",
+                "value": "phone-number"
+            },
+            {
+                "name": "issuing_organization",
+                "value": "Orange France"
+            },
+            {
+                "name": "phone_number_in_use",
+                "value": 1
+            },
+            {
+                "name": "document_number",
+                "value": "DOC12345"
+            }
+        ]
+    },
+    {
+        "identifier": "user-002",
+        "credentialConfigurationId": "eu.europa.ec.eudi.msisdn_mdoc",
+        "credentialId": "subscriber-id",
+        "walletId": "w-002",
+        "attributes": [
+            {
+                "name": "phone_number",
+                "value": "+4915123456789"
+            },
+            {
+                "name": "registered_family_name",
+                "value": "Müller"
+            },
+            {
+                "name": "registered_given_name",
+                "value": "Lukas"
+            },
+            {
+                "name": "contract_owner",
+                "value": true
+            },
+            {
+                "name": "end_user",
+                "value": false
+            },
+            {
+                "name": "mobile_operator",
+                "value": "Telekom DE"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2022-08-01"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2025-08-01"
+            },
+            {
+                "name": "credential_type",
+                "value": "subscriber-id"
+            },
+            {
+                "name": "issuing_organization",
+                "value": "Telekom Deutschland"
+            },
+            {
+                "name": "phone_number_in_use",
+                "value": 0
+            },
+            {
+                "name": "document_number",
+                "value": "DOC67890"
+            }
+        ]
+    },
+    {
+        "identifier": "user-003",
+        "credentialConfigurationId": "eu.europa.ec.eudi.msisdn_mdoc",
+        "credentialId": "phone-number",
+        "walletId": "w-003",
+        "attributes": [
+            {
+                "name": "phone_number",
+                "value": "+447912345678"
+            },
+            {
+                "name": "registered_family_name",
+                "value": "Smith"
+            },
+            {
+                "name": "registered_given_name",
+                "value": "Emma"
+            },
+            {
+                "name": "contract_owner",
+                "value": false
+            },
+            {
+                "name": "end_user",
+                "value": true
+            },
+            {
+                "name": "mobile_operator",
+                "value": "Vodafone UK"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2021-06-20"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2024-06-20"
+            },
+            {
+                "name": "credential_type",
+                "value": "phone-number"
+            },
+            {
+                "name": "issuing_organization",
+                "value": "Vodafone Limited"
+            },
+            {
+                "name": "phone_number_in_use",
+                "value": 1
+            },
+            {
+                "name": "document_number",
+                "value": "DOC54321"
+            }
+        ]
+    }
+]

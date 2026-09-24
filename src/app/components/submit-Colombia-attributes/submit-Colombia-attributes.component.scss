@@ -1,0 +1,124 @@
+
+.image-box{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.potrait{
+    width: 150px;
+    // height: 100px;
+    padding: 5px;
+}
+
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    cursor: pointer;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.imgAddname{
+    height: 30px;
+}
+
+.lbl-addName{
+   justify-content: left;
+   vertical-align:middle; 
+   display:table-cell;
+    
+}
+
+.attrContainer{
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 40%;
+    padding: 10px;
+  }
+  
+
+
+  // for additional attributes
+  .fullview{
+    width: 90%;
+    justify-content: center;
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+
+  .attrDelete{
+    width: 100%;
+    text-align: right;
+    padding-right: 5px;
+    color: maroon;
+  }
+
+  .text {
+    display: block; /* or inline-block */
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    text-align: left;
+    // overflow: scroll;
+}
+
+.chip {
+     display: inline-block;
+    padding: 0 10px;
+    height: 38px;
+    font-size: 18px;
+    line-height: 38px;
+    border-radius: 25px;
+    background-color:#f9cd88;
+    margin-bottom: 3px;
+    margin-left: 2px;
+}
+
+.closebtn {
+  padding-left: 10px;
+  color: #888;
+  font-weight: bold;
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.closebtn:hover {
+  color: #000;
+}
+
+.lineTitle{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-transform: uppercase;
+    background-color:#f9cd88;
+}
+
+small, .small {
+    font-size: 72%;
+    font-weight: bold;
+    color: #c1820d;
+}
+
+.button:disabled {
+    background-color: grey;
+}

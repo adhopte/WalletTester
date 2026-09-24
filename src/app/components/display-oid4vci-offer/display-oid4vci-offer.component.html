@@ -1,0 +1,51 @@
+<div class="app-container">
+    <div class="container-fluid " style="margin-top:15px">
+
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+
+            <div class="col-sm-6">
+                <label class="titleBar center">OFFER</label>
+                <div class="app-card cardSetting">
+
+                    <label><b>QrCode: </b></label>
+
+                    <div class="image-box" style="text-align: center;">
+                        <img class="potrait" id="preview" [src]="base64QrCode" border="3">
+                    </div>
+                    <br />
+                    <br />
+
+                    <div *ngIf="offer?.tx_code">
+                        <label><b>Transaction code:</b> {{offer?.tx_code}}</label>
+                        <br />
+                        <br />
+                    </div>
+
+                    <div *ngIf="offer?.authorization_code">
+                        <label>
+                            <b>Authorization code: </b>{{offer?.authorization_code}}</label>
+                        <br />
+                        <br />
+                    </div>
+
+                    <label><b>Deeplink: </b></label><br>
+                    <div class="deeplink-frame">
+                        <span class="deeplink-text">
+                            <a href="{{offer.uri}}" >{{decodedUri}}"</a>
+                        </span>
+                        <button class="copy-btn" (click)="copyDeeplink()">
+                            <mat-icon>file_copy</mat-icon>
+                        </button>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,182 @@
+[
+  {
+    "identifier": "user-5678",
+    "credentialConfigurationId": "eu.europa.ec.eudi.booking_registration_mdoc",
+    "credentialId": "booking-reference",
+    "walletId": "w-000",
+    "attributes": [
+      {
+        "name": "booking_service_name",
+        "value": "Booking.com"
+      },
+      {
+        "name": "reservation_id",
+        "value": "BK2025PAR123"
+      },
+      {
+        "name": "reservation_date",
+        "value": "2025-03-15"
+      },
+      {
+        "name": "service_provider_name",
+        "value": "Hotel Le Marais"
+      },
+      {
+        "name": "location",
+        "value": "Paris, France"
+      },
+      {
+        "name": "check_in_date",
+        "value": "2025-04-02"
+      },
+      {
+        "name": "check_out_date",
+        "value": "2025-04-06"
+      },
+      {
+        "name": "guests",
+        "value": "2 adults, 1 child"
+      },
+      {
+        "name": "car_rental",
+        "value": false
+      },
+      {
+        "name": "num_of_rooms",
+        "value": "1"
+      },
+      {
+        "name": "family_name",
+        "value": "Martin"
+      },
+      {
+        "name": "given_name",
+        "value": "Sophie"
+      },
+      {
+        "name": "birth_date",
+        "value": "1987-09-22"
+      }
+    ]
+  },
+  {
+    "identifier": "user-9123",
+    "credentialConfigurationId": "eu.europa.ec.eudi.booking_registration_mdoc",
+    "credentialId": "reservation-code",
+    "walletId": "w-001",
+    "attributes": [
+      {
+        "name": "booking_service_name",
+        "value": "Expedia"
+      },
+      {
+        "name": "reservation_id",
+        "value": "EXP-4567-MAD"
+      },
+      {
+        "name": "reservation_date",
+        "value": "2025-06-10"
+      },
+      {
+        "name": "service_provider_name",
+        "value": "Gran Hotel Madrid"
+      },
+      {
+        "name": "location",
+        "value": "Madrid, Spain"
+      },
+      {
+        "name": "check_in_date",
+        "value": "2025-07-01"
+      },
+      {
+        "name": "check_out_date",
+        "value": "2025-07-08"
+      },
+      {
+        "name": "guests",
+        "value": "1 adult"
+      },
+      {
+        "name": "car_rental",
+        "value": true
+      },
+      {
+        "name": "num_of_rooms",
+        "value": "1"
+      },
+      {
+        "name": "family_name",
+        "value": "Lopez"
+      },
+      {
+        "name": "given_name",
+        "value": "Carlos"
+      },
+      {
+        "name": "birth_date",
+        "value": "1990-02-14"
+      }
+    ]
+  },
+  {
+    "identifier": "user-8842",
+    "credentialConfigurationId": "eu.europa.ec.eudi.booking_registration_mdoc",
+    "credentialId": "booking-reference",
+    "walletId": "w-002",
+    "attributes": [
+      {
+        "name": "booking_service_name",
+        "value": "Airbnb"
+      },
+      {
+        "name": "reservation_id",
+        "value": "ABNB-90876-LIS"
+      },
+      {
+        "name": "reservation_date",
+        "value": "2025-08-22"
+      },
+      {
+        "name": "service_provider_name",
+        "value": "Casa do Bairro"
+      },
+      {
+        "name": "location",
+        "value": "Lisbon, Portugal"
+      },
+      {
+        "name": "check_in_date",
+        "value": "2025-09-10"
+      },
+      {
+        "name": "check_out_date",
+        "value": "2025-09-17"
+      },
+      {
+        "name": "guests",
+        "value": "3 adults"
+      },
+      {
+        "name": "car_rental",
+        "value": false
+      },
+      {
+        "name": "num_of_rooms",
+        "value": "2"
+      },
+      {
+        "name": "family_name",
+        "value": "Moreira"
+      },
+      {
+        "name": "given_name",
+        "value": "Inês"
+      },
+      {
+        "name": "birth_date",
+        "value": "1992-11-30"
+      }
+    ]
+  }
+]
