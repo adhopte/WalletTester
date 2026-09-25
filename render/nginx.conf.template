@@ -27,5 +27,9 @@ server {
     proxy_pass http://127.0.0.1:${SOR_SERVER_PORT};
   }
 
+  # Credential issuer (OID4VCI) offer endpoint, when OID_4_VCI_HOST is set
+  ${OFFER_LOCATION}
+
+  # GIPS API, when GIPS_UPSTREAM is set
   ${GIPS_LOCATION}
 }

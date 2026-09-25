@@ -77,8 +77,8 @@ The portal UI is available in English, French and Polish, using [ngx-translate](
 `Dockerfile.render` builds a self-contained image: it compiles the Angular app, serves it with nginx under `/in-person-portal/`, and runs the SOR server (`src/sor/Server.js`). nginx takes over the routing that Istio does in Kubernetes. The existing `Dockerfile` (Jenkins/Helm) is unchanged.
 
 1. In Render, choose **New → Blueprint** and select this GitHub repo. Render reads `render.yaml` and creates the `civic-portal` web service from the `civic-portal` branch.
-2. Fill in the environment variables Render asks for:
-   - `OID_4_VCI_HOST`: base URL of the OID4VCI issuer/adapter (for the `oid_*` use cases).
+2. Check the environment variables:
+   - `OID_4_VCI_HOST`: base URL of the OID4VCI credential issuer (for the `oid_*` use cases). Preset to `https://issuer.mid-lab-dev.stg.smartid.nuagein.io`, whose metadata is at `/.well-known/openid-credential-issuer`. The portal's `POST /offer` calls go through this service's nginx, so the issuer does not need CORS for the Render domain.
    - `GIPS_UPSTREAM`: base URL of the GIPS API (for the `classic` and DTC use cases). Leave empty if not used.
    - Optionally change `SUPPORTED_USE_CASES` to choose which use cases are listed on the home page.
 3. Deploy. The portal is served at `https://<service>.onrender.com/in-person-portal/`, and `/` redirects there.

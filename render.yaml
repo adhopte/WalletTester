@@ -11,9 +11,10 @@ services:
       # Use cases listed on the home page
       - key: SUPPORTED_USE_CASES
         value: '["oid_pid_inp_uc1","oid_degree_uc1","oid_birth_certificate_sd_jwt_uc1","oid_birth_certificate_mdoc_uc1","oid_pid_idp_uc2"]'
-      # OID4VCI issuer / adapter base URL (needed for the oid_* use cases)
+      # OID4VCI credential issuer (well-known: <this URL>/.well-known/openid-credential-issuer).
+      # Offers are proxied through this service's nginx, so no CORS setup is needed on the issuer.
       - key: OID_4_VCI_HOST
-        sync: false
+        value: https://issuer.mid-lab-dev.stg.smartid.nuagein.io
       # GIPS API base URL (needed for the "classic" and DTC use cases); leave empty if unused
       - key: GIPS_UPSTREAM
         sync: false
