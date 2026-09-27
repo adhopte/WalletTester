@@ -64,7 +64,9 @@
     "copied": "Deeplink copied to clipboard!",
     "failed": "The credential offer could not be created. Please check the issuer and try again.",
     "missing": "No credential offer to display. Create an offer from the home page.",
-    "backHome": "Back to home"
+    "backHome": "Back to home",
+    "issuerUnreachable": "The portal server could not reach the credential issuer.",
+    "issuerResponse": "Issuer response:"
   },
   "preAuth": {
     "createOffer": "Create offer",

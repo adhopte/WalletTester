@@ -1,3 +1,5 @@
+import { TranslateService } from '@ngx-translate/core';
+
 
 export class Offer {
     qr_code: string
@@ -59,4 +61,17 @@ export class AuthorizationDetail {
     type: string
     credential_configuration_id: string
     credential_identifiers: string[]
+}
+
+
+/** User-facing message for a failed credential offer request */
+export function offerErrorMessage(translate: TranslateService, error: { status: number, detail: string } | null): string {
+    let message = translate.instant('offer.failed');
+    if (!error) {
+        return message;
+    }
+    if ([0, 502, 503, 504].includes(error.status)) {
+        message += '\n\n' + translate.instant('offer.issuerUnreachable');
+    }
+    return message + '\n\n' + translate.instant('offer.issuerResponse') + ' ' + error.detail;
 }

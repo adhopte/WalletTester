@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { environment } from "../../../environments/environment"
 import { ConfigService } from '../../services/config-service';
-import { AuthorizationDetail, CodeRequest, DEFAULT_WALLET_IDENTIFIER, Offer, useCaseMap } from '../../models/Oid4vciModels';
+import { AuthorizationDetail, CodeRequest, DEFAULT_WALLET_IDENTIFIER, Offer, offerErrorMessage, useCaseMap } from '../../models/Oid4vciModels';
 import { RestControllerService } from '../../services/rest-controller.service';
 
 
@@ -73,7 +73,7 @@ export class HomeComponent implements OnInit {
     this.restService.generateOffer('/offer', JSON.stringify(createOfferRequest)).subscribe(
       (offertRequest: Offer) => {
         if (!offertRequest?.uri) {
-          alert(this.translate.instant('offer.failed'));
+          alert(offerErrorMessage(this.translate, this.restService.lastOfferError));
           return;
         }
         this.router.navigate(['display-oid4vci-offer'], { state: offertRequest });

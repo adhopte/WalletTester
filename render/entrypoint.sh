@@ -7,7 +7,9 @@ HTML=/usr/share/nginx/html/in-person-portal
 # Proxy that through nginx so the call is same-origin (no CORS needed on the
 # issuer), and point the app at the proxy.
 if [ -n "$OID_4_VCI_HOST" ]; then
-  export OFFER_LOCATION="location = /offer { proxy_pass ${OID_4_VCI_HOST%/}/offer; proxy_ssl_server_name on; proxy_set_header Host \$proxy_host; }"
+  # Origin/Referer are dropped so the issuer sees a plain server-to-server call
+  # (like the Bruno collection), not a cross-origin browser request.
+  export OFFER_LOCATION="location = /offer { proxy_pass ${OID_4_VCI_HOST%/}/offer; proxy_ssl_server_name on; proxy_set_header Host \$proxy_host; proxy_set_header Origin \"\"; proxy_set_header Referer \"\"; proxy_connect_timeout 10s; proxy_read_timeout 30s; }"
   OID_4_VCI_HOST=""
 else
   export OFFER_LOCATION=""

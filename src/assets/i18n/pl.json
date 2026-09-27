@@ -64,7 +64,9 @@
     "copied": "Deeplink skopiowano do schowka!",
     "failed": "Nie udało się utworzyć oferty poświadczenia. Sprawdź wystawcę i spróbuj ponownie.",
     "missing": "Brak oferty poświadczenia do wyświetlenia. Utwórz ofertę na stronie głównej.",
-    "backHome": "Powrót do strony głównej"
+    "backHome": "Powrót do strony głównej",
+    "issuerUnreachable": "Serwer portalu nie mógł połączyć się z wystawcą poświadczeń.",
+    "issuerResponse": "Odpowiedź wystawcy:"
   },
   "preAuth": {
     "createOffer": "Utwórz ofertę",

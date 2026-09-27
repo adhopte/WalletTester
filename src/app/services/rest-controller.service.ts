@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http'
 import { Observable, of } from 'rxjs'
 import { catchError, tap } from 'rxjs/operators'
 import { ResponseParser } from './../utils/ResponseParser'
@@ -113,14 +113,30 @@ export class RestControllerService {
   }
 
 
+  /** Details of the last failed generateOffer call, for display to the user */
+  lastOfferError: { status: number, detail: string } | null = null;
+
   generateOffer(url: string, params: string): Observable<any> {
+    this.lastOfferError = null;
     return this.httpClient.post(this.configs.oid4vciHost() + oid4vciBasePath + url, params, this.httpOptions).pipe(
       tap((res) => {
         console.info("generate offer")
         console.dir(res)
       }),
-      catchError(this.handleError<any>('generateOffer'))
+      catchError((err: HttpErrorResponse) => {
+        this.lastOfferError = { status: err.status, detail: RestControllerService.errorDetail(err) };
+        return this.handleError<any>('generateOffer')(err);
+      })
     );
+  }
+
+  private static errorDetail(err: HttpErrorResponse): string {
+    const body = err.error;
+    let text = typeof body === 'string' ? body : (body ? JSON.stringify(body) : '');
+    // nginx error pages are HTML - keep only the text
+    text = text.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    const status = err.status ? `HTTP ${err.status} ${err.statusText ?? ''}`.trim() : 'No response';
+    return (text ? `${status}: ${text}` : status).slice(0, 500);
   }
 
   submitAttribute(url: string, params: string): Observable<any> {

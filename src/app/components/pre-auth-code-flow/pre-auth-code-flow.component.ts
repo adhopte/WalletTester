@@ -5,7 +5,7 @@ import { RestControllerService } from '../../services/rest-controller.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
-import { CodeRequest, DEFAULT_WALLET_IDENTIFIER, Offer, UseCaseId, UserAttributes } from '../../models/Oid4vciModels';
+import { CodeRequest, DEFAULT_WALLET_IDENTIFIER, Offer, offerErrorMessage, UseCaseId, UserAttributes } from '../../models/Oid4vciModels';
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -93,7 +93,7 @@ export class PreAuthCodeFlowComponent implements OnInit {
     this._rest.generateOffer('/offer', JSON.stringify(createOfferRequest)).subscribe(
       (offertRequest: Offer) => {
         if (!offertRequest?.uri) {
-          alert(this.translate.instant('offer.failed'));
+          alert(offerErrorMessage(this.translate, this._rest.lastOfferError));
           return;
         }
         this.router.navigate(['display-oid4vci-offer'], { state: offertRequest });
