@@ -1,4 +1,4 @@
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Component, OnInit, inject } from '@angular/core';
 import { NgForOf } from '@angular/common';
 import { RestControllerService } from '../../services/rest-controller.service';
@@ -19,6 +19,7 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class PreAuthCodeFlowComponent implements OnInit {
   route = inject(ActivatedRoute);
+  private translate = inject(TranslateService);
   dataSet: UserAttributes[] = [];
 
   staticColumns = ['action'];
@@ -91,6 +92,10 @@ export class PreAuthCodeFlowComponent implements OnInit {
     }
     this._rest.generateOffer('/offer', JSON.stringify(createOfferRequest)).subscribe(
       (offertRequest: Offer) => {
+        if (!offertRequest?.uri) {
+          alert(this.translate.instant('offer.failed'));
+          return;
+        }
         this.router.navigate(['display-oid4vci-offer'], { state: offertRequest });
       })
   }

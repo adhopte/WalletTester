@@ -61,7 +61,10 @@
     "transactionCode": "Code de transaction :",
     "authorizationCode": "Code d'autorisation :",
     "copyDeeplink": "Copier le lien profond",
-    "copied": "Lien profond copié dans le presse-papiers !"
+    "copied": "Lien profond copié dans le presse-papiers !",
+    "failed": "L'offre d'attestation n'a pas pu être créée. Veuillez vérifier l'émetteur et réessayer.",
+    "missing": "Aucune offre d'attestation à afficher. Créez une offre depuis la page d'accueil.",
+    "backHome": "Retour à l'accueil"
   },
   "preAuth": {
     "createOffer": "Créer une offre",

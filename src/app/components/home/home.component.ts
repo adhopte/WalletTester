@@ -1,4 +1,4 @@
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   selected: string;
   restService = inject(RestControllerService);
   configs = inject(ConfigService)
+  private translate = inject(TranslateService);
 
   constructor(private router: Router) {
   }
@@ -71,7 +72,11 @@ export class HomeComponent implements OnInit {
     createOfferRequest.authorization_details.push(this.createAuthorizationDetail());
     this.restService.generateOffer('/offer', JSON.stringify(createOfferRequest)).subscribe(
       (offertRequest: Offer) => {
-          this.router.navigate(['display-oid4vci-offer'], { state: offertRequest });
+        if (!offertRequest?.uri) {
+          alert(this.translate.instant('offer.failed'));
+          return;
+        }
+        this.router.navigate(['display-oid4vci-offer'], { state: offertRequest });
       })
   }
 

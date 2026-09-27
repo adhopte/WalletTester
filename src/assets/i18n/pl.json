@@ -61,7 +61,10 @@
     "transactionCode": "Kod transakcji:",
     "authorizationCode": "Kod autoryzacji:",
     "copyDeeplink": "Kopiuj deeplink",
-    "copied": "Deeplink skopiowano do schowka!"
+    "copied": "Deeplink skopiowano do schowka!",
+    "failed": "Nie udało się utworzyć oferty poświadczenia. Sprawdź wystawcę i spróbuj ponownie.",
+    "missing": "Brak oferty poświadczenia do wyświetlenia. Utwórz ofertę na stronie głównej.",
+    "backHome": "Powrót do strony głównej"
   },
   "preAuth": {
     "createOffer": "Utwórz ofertę",
