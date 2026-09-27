@@ -2,7 +2,6 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MatSelectModule } from '@angular/material/select';
 import { environment } from "../../../environments/environment"
 import { ConfigService } from '../../services/config-service';
 import { AuthorizationDetail, CodeRequest, DEFAULT_WALLET_IDENTIFIER, Offer, offerErrorMessage, useCaseMap } from '../../models/Oid4vciModels';
@@ -13,7 +12,7 @@ import { RestControllerService } from '../../services/rest-controller.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [CommonModule, MatSelectModule, TranslatePipe],
+  imports: [CommonModule, TranslatePipe],
   standalone: true
 })
 export class HomeComponent implements OnInit {
@@ -34,6 +33,25 @@ export class HomeComponent implements OnInit {
     this.useCases = Array.from(map.entries());
     this.selected = this.useCases[0][0];
     console.log(this.useCases);
+  }
+
+  private static readonly ICONS: Record<string, string> = {
+    classic: 'bi-person-badge',
+    dtc_type1_inp: 'bi-passport',
+    oid_pid_inp_uc1: 'bi-person-vcard',
+    oid_degree_uc1: 'bi-mortarboard',
+    oid_birth_certificate_sd_jwt_uc1: 'bi-file-earmark-person',
+    oid_birth_certificate_mdoc_uc1: 'bi-phone',
+    oid_pid_idp_uc2: 'bi-box-arrow-in-right',
+  };
+
+  iconFor(useCaseId: string): string {
+    return HomeComponent.ICONS[useCaseId] ?? 'bi-patch-check';
+  }
+
+  select(useCaseId: string) {
+    this.selected = useCaseId;
+    this.onSubmit();
   }
 
   onSubmit() {

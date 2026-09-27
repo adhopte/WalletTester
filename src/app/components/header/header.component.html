@@ -1,14 +1,33 @@
-<div class="header" (click)="goHome()">
-  <img class="logo" src="assets/images/ANIP_logo.png"/>
-  <label class="logo-label">{{ 'app.portalName' | translate }}</label>
-  <div class="language-switcher" role="group" [attr.aria-label]="'language.label' | translate" (click)="$event.stopPropagation()">
-    @for (lang of languageService.languages; track lang.code) {
-      <button type="button"
-              [class.active]="lang.code === languageService.current"
-              [attr.aria-pressed]="lang.code === languageService.current"
-              [attr.lang]="lang.code"
-              [title]="lang.label"
-              (click)="changeLanguage(lang.code)">{{ lang.code | uppercase }}</button>
-    }
+<a class="skip-link" href="#main-content">{{ 'app.skipToContent' | translate }}</a>
+
+<div class="tricolour" aria-hidden="true"></div>
+
+<div class="gov-bar">
+  <div class="gov-bar__inner">
+    <span class="gov-bar__label">{{ 'app.republic' | translate }}</span>
+    <div class="language-switcher" role="group" [attr.aria-label]="'language.label' | translate">
+      <i class="bi bi-globe2" aria-hidden="true"></i>
+      @for (lang of languageService.languages; track lang.code) {
+        <button type="button"
+                [class.active]="lang.code === languageService.current"
+                [attr.aria-pressed]="lang.code === languageService.current"
+                [attr.lang]="lang.code"
+                [title]="lang.label"
+                (click)="changeLanguage(lang.code)">{{ lang.code | uppercase }}</button>
+      }
+    </div>
   </div>
 </div>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="#" (click)="goHome(); $event.preventDefault()" [attr.aria-label]="'app.homeLink' | translate">
+      <img class="brand__logo" src="assets/images/anip-logo.png" alt="ANIP – Agence Nationale d'Identification des Personnes, Présidence de la République du Bénin"/>
+      <img class="brand__arms" src="assets/images/benin-arms.png" alt="" aria-hidden="true"/>
+    </a>
+    <div class="portal">
+      <span class="portal__name">{{ 'app.portalName' | translate }}</span>
+      <span class="portal__tagline">{{ 'app.tagline' | translate }}</span>
+    </div>
+  </div>
+</header>

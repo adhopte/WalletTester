@@ -2,9 +2,8 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { Component, OnInit, inject } from '@angular/core';
 import { NgForOf } from '@angular/common';
 import { RestControllerService } from '../../services/rest-controller.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
-import { MatSelectModule } from '@angular/material/select';
 import { CodeRequest, DEFAULT_WALLET_IDENTIFIER, Offer, offerErrorMessage, UseCaseId, UserAttributes } from '../../models/Oid4vciModels';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -12,7 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'pre-auth-code-flow',
-  imports: [MatTableModule, MatSelectModule, NgForOf, TranslatePipe],
+  imports: [MatTableModule, NgForOf, TranslatePipe, RouterLink],
   templateUrl: './pre-auth-code-flow.component.html',
   styleUrl: './pre-auth-code-flow.component.scss',
   standalone: true
@@ -66,6 +65,18 @@ export class PreAuthCodeFlowComponent implements OnInit {
       default:
         throw new Error("no use case id found for " + useCaseId)
     }
+  }
+
+  /** Translated claim name, or given_name -> Given name when there is no translation */
+  columnLabel(column: string): string {
+    const key = 'claims.' + column;
+    const label = this.translate.instant(key);
+    return label !== key ? label : this.humanize(column);
+  }
+
+  humanize(column: string): string {
+    const text = column.replace(/_/g, ' ');
+    return text.charAt(0).toUpperCase() + text.slice(1);
   }
 
   getAttributeValue(element: UserAttributes, column: string): string {

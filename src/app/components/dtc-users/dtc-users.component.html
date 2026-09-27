@@ -1,8 +1,12 @@
 <div class="app-container">
-  <div class="container-fluid " style="margin-top:15px">
-    <div class="row">
-      <div class="col-sm-12">
-        <table mat-table [dataSource]="dataSet" class="mat-elevation-z8 table">
+  <a class="back-link" routerLink="/home"><i class="bi bi-arrow-left" aria-hidden="true"></i> {{ 'common.back' | translate }}</a>
+  <h1 class="page-title">{{ 'useCases.dtc_type1_inp' | translate }}</h1>
+  <p class="page-subtitle">{{ 'preAuth.subtitle' | translate }}</p>
+
+  <label class="titleBar">{{ 'preAuth.holders' | translate }}</label>
+  <div class="app-card cardSetting table-card">
+    <div class="table-wrap">
+      <table mat-table [dataSource]="dataSet" class="mat-elevation-z8 table">
           <!-- Position Column -->
     <ng-container matColumnDef="documentNumber">
       <mat-header-cell *matHeaderCellDef> {{ 'dtcUsers.id' | translate }} </mat-header-cell>
@@ -51,9 +55,6 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </table>
-      </div>
-
     </div>
   </div>
-
 </div>

@@ -1,26 +1,42 @@
 {
   "app": {
-    "title": "Aplikacje demonstracyjne",
-    "portalName": "Portal CIVIC"
+    "title": "Portal CIVIC – ANIP Benin",
+    "portalName": "Portal CIVIC",
+    "republic": "Republika Beninu",
+    "tagline": "Wydawanie poświadczeń cyfrowych",
+    "skipToContent": "Przejdź do treści głównej",
+    "homeLink": "Strona główna Portalu CIVIC"
   },
   "language": {
     "label": "Język"
   },
+  "footer": {
+    "agency": "Agence Nationale d’Identification des Personnes",
+    "motto": "Fraternité · Justice · Travail",
+    "demoNotice": "Środowisko demonstracyjne – wyłącznie dane testowe"
+  },
   "common": {
-    "go": "Dalej",
     "next": "Dalej",
     "submit": "Wyślij",
     "close": "Zamknij",
     "delete": "Usuń",
     "deeplink": "Deeplink:",
-    "errorPrefix": "Błąd: {{message}}"
+    "errorPrefix": "Błąd: {{message}}",
+    "start": "Rozpocznij",
+    "back": "Wstecz",
+    "backHome": "Powrót do strony głównej"
   },
   "home": {
-    "useCaseSelection": "Wybór przypadku użycia",
     "selectUseCase": "Wybierz przypadek użycia",
-    "chooseOption": "Wybierz opcję",
-    "description": "Opis",
-    "descriptionText": "Przepływ z kodem wstępnie autoryzowanym (Pre-Authorized Code Flow) umożliwia użytkownikom otrzymywanie cyfrowych poświadczeń w portfelu EUDI poprzez proste zeskanowanie kodu QR. Wystawca generuje kod QR zawierający ofertę poświadczenia oraz kod wstępnie autoryzowany, który użytkownik skanuje swoim portfelem. Następnie portfel bezpiecznie łączy się z wystawcą, realizuje kod wstępnie autoryzowany i pobiera weryfikowalne poświadczenie bez konieczności autoryzacji w przeglądarce. Po weryfikacji i wystawieniu poświadczenie jest bezpiecznie przechowywane w portfelu użytkownika, co zapewnia płynny, bezpieczny i przyjazny proces wydawania poświadczeń."
+    "descriptionText": "Przepływ z kodem wstępnie autoryzowanym (Pre-Authorized Code Flow) umożliwia użytkownikom otrzymywanie cyfrowych poświadczeń w portfelu EUDI poprzez proste zeskanowanie kodu QR. Wystawca generuje kod QR zawierający ofertę poświadczenia oraz kod wstępnie autoryzowany, który użytkownik skanuje swoim portfelem. Następnie portfel bezpiecznie łączy się z wystawcą, realizuje kod wstępnie autoryzowany i pobiera weryfikowalne poświadczenie bez konieczności autoryzacji w przeglądarce. Po weryfikacji i wystawieniu poświadczenie jest bezpiecznie przechowywane w portfelu użytkownika, co zapewnia płynny, bezpieczny i przyjazny proces wydawania poświadczeń.",
+    "eyebrow": "Portfel EUDI · OpenID4VCI",
+    "heroTitle": "Wydawaj poświadczenia cyfrowe do portfeli obywateli",
+    "selectUseCaseHint": "Wybierz usługę, za pomocą której chcesz wydać poświadczenie.",
+    "howItWorks": "Jak to działa",
+    "step1": "Wybierz przypadek użycia i rekord obywatela.",
+    "step2": "Portal tworzy ofertę poświadczenia i wyświetla kod QR.",
+    "step3": "Obywatel skanuje kod QR portfelem EUDI, aby otrzymać poświadczenie.",
+    "heroLead": "Bezpiecznie wydawaj stacjonarnie poświadczenia tożsamości i stanu cywilnego do Europejskiego Portfela Tożsamości Cyfrowej."
   },
   "useCases": {
     "classic": "Klasyczny agent stacjonarny",
@@ -64,13 +80,18 @@
     "copied": "Deeplink skopiowano do schowka!",
     "failed": "Nie udało się utworzyć oferty poświadczenia. Sprawdź wystawcę i spróbuj ponownie.",
     "missing": "Brak oferty poświadczenia do wyświetlenia. Utwórz ofertę na stronie głównej.",
-    "backHome": "Powrót do strony głównej",
     "issuerUnreachable": "Serwer portalu nie mógł połączyć się z wystawcą poświadczeń.",
-    "issuerResponse": "Odpowiedź wystawcy:"
+    "issuerResponse": "Odpowiedź wystawcy:",
+    "scanTitle": "Zeskanuj, aby otrzymać poświadczenie",
+    "scanStep1": "Otwórz aplikację Portfel EUDI na telefonie.",
+    "scanStep2": "Zeskanuj ten kod QR lub otwórz poniższy link na telefonie.",
+    "scanStep3": "Gdy pojawi się prośba, wpisz kod transakcji."
   },
   "preAuth": {
     "createOffer": "Utwórz ofertę",
-    "create": "Utwórz"
+    "create": "Utwórz",
+    "subtitle": "Wybierz obywatela, aby utworzyć ofertę poświadczenia dla jego portfela.",
+    "holders": "Rekordy obywateli"
   },
   "dtc": {
     "firstName": "Imię",
@@ -139,5 +160,24 @@
     "value": "Wartość",
     "emptyFields": "Co najmniej jedno pole formularza jest puste. Wypełnij wymagane pola.",
     "attributeExists": "Wartość jest pusta lub już istnieje"
+  },
+  "claims": {
+    "given_name": "Imię",
+    "family_name": "Nazwisko",
+    "birthdate": "Data urodzenia",
+    "birth_date": "Data urodzenia",
+    "email_address": "E-mail",
+    "mobile_phone_number": "Telefon komórkowy",
+    "issuance_date": "Data wydania",
+    "expiry_date": "Data ważności",
+    "student_given_name": "Imię studenta",
+    "student_family_name": "Nazwisko studenta",
+    "degree_level": "Stopień",
+    "degree_subject": "Kierunek",
+    "institution_name": "Uczelnia",
+    "graduation_year": "Rok ukończenia",
+    "issuing_authority": "Organ wydający",
+    "doctor": "Lekarz",
+    "hospital": "Szpital"
   }
 }

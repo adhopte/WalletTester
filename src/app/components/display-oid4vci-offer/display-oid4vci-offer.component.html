@@ -1,59 +1,48 @@
-<div class="app-container">
-    <div class="container-fluid " style="margin-top:15px">
+<div class="app-container offer-page">
+    <a class="back-link" routerLink="/home"><i class="bi bi-arrow-left" aria-hidden="true"></i> {{ 'common.backHome' | translate }}</a>
 
-        <div class="row">
-            <div class="col-sm-3">
-            </div>
+    <label class="titleBar">{{ 'offer.title' | translate }}</label>
+    <div class="app-card cardSetting">
 
-            <div class="col-sm-6">
-                <label class="titleBar center">{{ 'offer.title' | translate }}</label>
-                <div class="app-card cardSetting">
+        <div *ngIf="!offer?.uri" class="empty-state">
+            <i class="bi bi-exclamation-circle" aria-hidden="true"></i>
+            <p>{{ 'offer.missing' | translate }}</p>
+            <a class="button" routerLink="/home">{{ 'common.backHome' | translate }}</a>
+        </div>
 
-                    <div *ngIf="!offer?.uri">
-                        <label class="error-box">{{ 'offer.missing' | translate }}</label>
-                        <br />
-                        <a routerLink="/home">{{ 'offer.backHome' | translate }}</a>
-                    </div>
-
-                    <div *ngIf="offer?.uri">
-                    <label><b>{{ 'offer.qrCode' | translate }} </b></label>
-
-                    <div class="image-box" style="text-align: center;">
-                        <img *ngIf="issuerQrCode" class="potrait" id="preview" [src]="issuerQrCode" (error)="onIssuerQrError()" border="3">
-                        <qrcode *ngIf="!issuerQrCode" [qrdata]="offer.uri" [width]="320" [errorCorrectionLevel]="'M'"></qrcode>
-                    </div>
-                    <br />
-                    <br />
-
-                    <div *ngIf="offer?.tx_code">
-                        <label><b>{{ 'offer.transactionCode' | translate }}</b> {{offer?.tx_code}}</label>
-                        <br />
-                        <br />
-                    </div>
-
-                    <div *ngIf="offer?.authorization_code">
-                        <label>
-                            <b>{{ 'offer.authorizationCode' | translate }} </b>{{offer?.authorization_code}}</label>
-                        <br />
-                        <br />
-                    </div>
-
-                    <label><b>{{ 'common.deeplink' | translate }} </b></label><br>
-                    <div class="deeplink-frame">
-                        <span class="deeplink-text">
-                            <a href="{{offer.uri}}" >{{decodedUri}}</a>
-                        </span>
-                        <button class="copy-btn" (click)="copyDeeplink()" [title]="'offer.copyDeeplink' | translate">
-                            <mat-icon>file_copy</mat-icon>
-                        </button>
-                    </div>
-                    <br />
-                    <br />
-                    </div>
+        <div *ngIf="offer?.uri" class="offer">
+            <div class="offer__qr">
+                <div class="qr-frame">
+                    <img *ngIf="issuerQrCode" id="preview" [src]="issuerQrCode" (error)="onIssuerQrError()" [alt]="'offer.qrCode' | translate">
+                    <qrcode *ngIf="!issuerQrCode" [qrdata]="offer.uri" [width]="280" [margin]="1" [errorCorrectionLevel]="'M'"></qrcode>
                 </div>
             </div>
 
-            <div class="col-sm-3">
+            <div class="offer__details">
+                <h1 class="offer__title">{{ 'offer.scanTitle' | translate }}</h1>
+                <ol class="offer__steps">
+                    <li>{{ 'offer.scanStep1' | translate }}</li>
+                    <li>{{ 'offer.scanStep2' | translate }}</li>
+                    <li *ngIf="offer?.tx_code">{{ 'offer.scanStep3' | translate }}</li>
+                </ol>
+
+                <div *ngIf="offer?.tx_code" class="code-box">
+                    <span class="code-box__label">{{ 'offer.transactionCode' | translate }}</span>
+                    <span class="code-box__value">{{ offer?.tx_code }}</span>
+                </div>
+
+                <div *ngIf="offer?.authorization_code" class="code-box code-box--muted">
+                    <span class="code-box__label">{{ 'offer.authorizationCode' | translate }}</span>
+                    <span class="code-box__value code-box__value--small">{{ offer?.authorization_code }}</span>
+                </div>
+
+                <span class="deeplink-label">{{ 'common.deeplink' | translate }}</span>
+                <div class="deeplink-frame">
+                    <a class="deeplink-text" href="{{offer.uri}}">{{decodedUri}}</a>
+                    <button type="button" class="copy-btn" (click)="copyDeeplink()" [title]="'offer.copyDeeplink' | translate" [attr.aria-label]="'offer.copyDeeplink' | translate">
+                        <i class="bi bi-copy" aria-hidden="true"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

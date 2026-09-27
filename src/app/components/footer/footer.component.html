@@ -1,3 +1,19 @@
-<footer>
-    <p>Footer</p>
-  </footer>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img src="assets/images/benin-arms.png" alt="" aria-hidden="true" />
+      <div>
+        <strong>{{ 'footer.agency' | translate }}</strong>
+        <span>{{ 'app.republic' | translate }}</span>
+      </div>
+    </div>
+    <p class="site-footer__motto">{{ 'footer.motto' | translate }}</p>
+  </div>
+  <div class="site-footer__bottom">
+    <div class="site-footer__inner">
+      <span>© {{ year }} ANIP · {{ 'app.portalName' | translate }}</span>
+      <span class="site-footer__notice"><i class="bi bi-info-circle" aria-hidden="true"></i> {{ 'footer.demoNotice' | translate }}</span>
+    </div>
+  </div>
+  <div class="tricolour" aria-hidden="true"></div>
+</footer>

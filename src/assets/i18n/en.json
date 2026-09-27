@@ -1,26 +1,42 @@
 {
   "app": {
-    "title": "Demo Apps",
-    "portalName": "CIVIC Portal"
+    "title": "CIVIC Portal – ANIP Benin",
+    "portalName": "CIVIC Portal",
+    "republic": "Republic of Benin",
+    "tagline": "Digital credential issuance",
+    "skipToContent": "Skip to main content",
+    "homeLink": "CIVIC Portal home"
   },
   "language": {
     "label": "Language"
   },
+  "footer": {
+    "agency": "Agence Nationale d’Identification des Personnes",
+    "motto": "Fraternité · Justice · Travail",
+    "demoNotice": "Demonstration environment – test data only"
+  },
   "common": {
-    "go": "Go",
     "next": "Next",
     "submit": "Submit",
     "close": "Close",
     "delete": "Delete",
     "deeplink": "Deeplink:",
-    "errorPrefix": "Error: {{message}}"
+    "errorPrefix": "Error: {{message}}",
+    "start": "Start",
+    "back": "Back",
+    "backHome": "Back to home"
   },
   "home": {
-    "useCaseSelection": "Use case selection",
     "selectUseCase": "Select Use Case",
-    "chooseOption": "Choose an option",
-    "description": "Description",
-    "descriptionText": "The Pre-Authorized Code Flow enables users to receive digital credentials in their EUDI Wallet through a simple QR code scan. The issuer generates a QR code containing a credential offer and a pre-authorized code, which the user scans with their wallet. The wallet then securely connects to the issuer, redeems the pre-authorized code, and retrieves the verifiable credential without requiring a browser-based authorization flow. Once validated and issued, the credential is securely stored in the user's wallet, providing a seamless, secure, and user-friendly credential issuance experience."
+    "descriptionText": "The Pre-Authorized Code Flow enables users to receive digital credentials in their EUDI Wallet through a simple QR code scan. The issuer generates a QR code containing a credential offer and a pre-authorized code, which the user scans with their wallet. The wallet then securely connects to the issuer, redeems the pre-authorized code, and retrieves the verifiable credential without requiring a browser-based authorization flow. Once validated and issued, the credential is securely stored in the user's wallet, providing a seamless, secure, and user-friendly credential issuance experience.",
+    "eyebrow": "EUDI Wallet · OpenID4VCI",
+    "heroTitle": "Issue digital credentials to citizens’ wallets",
+    "selectUseCaseHint": "Choose the service you want to use to issue a credential.",
+    "howItWorks": "How it works",
+    "step1": "Choose a use case and select the citizen’s record.",
+    "step2": "The portal creates a credential offer and displays a QR code.",
+    "step3": "The citizen scans the QR code with their EUDI Wallet to receive the credential.",
+    "heroLead": "Issue identity and civil-status credentials securely, in person, to the European Digital Identity Wallet."
   },
   "useCases": {
     "classic": "Classic In Person agent",
@@ -64,13 +80,18 @@
     "copied": "Deeplink copied to clipboard!",
     "failed": "The credential offer could not be created. Please check the issuer and try again.",
     "missing": "No credential offer to display. Create an offer from the home page.",
-    "backHome": "Back to home",
     "issuerUnreachable": "The portal server could not reach the credential issuer.",
-    "issuerResponse": "Issuer response:"
+    "issuerResponse": "Issuer response:",
+    "scanTitle": "Scan to receive the credential",
+    "scanStep1": "Open the EUDI Wallet app on the phone.",
+    "scanStep2": "Scan this QR code, or open the link below on the phone.",
+    "scanStep3": "When asked, enter the transaction code."
   },
   "preAuth": {
     "createOffer": "Create offer",
-    "create": "Create"
+    "create": "Create",
+    "subtitle": "Select a citizen to create a credential offer for their wallet.",
+    "holders": "Citizen records"
   },
   "dtc": {
     "firstName": "First Name",
@@ -139,5 +160,24 @@
     "value": "Value",
     "emptyFields": "One or many fields are empty in the Form. Please fill up mandatory fields",
     "attributeExists": "Value is empty or already exists"
+  },
+  "claims": {
+    "given_name": "Given name",
+    "family_name": "Family name",
+    "birthdate": "Date of birth",
+    "birth_date": "Date of birth",
+    "email_address": "Email",
+    "mobile_phone_number": "Mobile number",
+    "issuance_date": "Issue date",
+    "expiry_date": "Expiry date",
+    "student_given_name": "Student given name",
+    "student_family_name": "Student family name",
+    "degree_level": "Degree level",
+    "degree_subject": "Subject",
+    "institution_name": "Institution",
+    "graduation_year": "Graduation year",
+    "issuing_authority": "Issuing authority",
+    "doctor": "Doctor",
+    "hospital": "Hospital"
   }
 }

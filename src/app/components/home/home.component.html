@@ -1,43 +1,34 @@
+<section class="hero">
+  <div class="hero__inner">
+    <p class="hero__eyebrow">{{ 'home.eyebrow' | translate }}</p>
+    <h1 class="hero__title">{{ 'home.heroTitle' | translate }}</h1>
+    <p class="hero__lead">{{ 'home.heroLead' | translate }}</p>
+  </div>
+</section>
+
 <div class="app-container">
-  <div class="container-fluid " style="margin-top:15px">
-    <div class="row">
-      <div class="col-sm-6">
-        <label class="titleBar center">{{ 'home.useCaseSelection' | translate }}</label>
-        <div class="app-card cardSetting">
-          <!-- FORM START -->
-              <h4>{{ 'home.selectUseCase' | translate }}</h4>
-              <mat-form-field appearance="fill" class="wide-select">
-                <mat-label>{{ 'home.chooseOption' | translate }}</mat-label>
-                <mat-select [(value)]="selected">
-                  <mat-option *ngFor="let uc of useCases" value="{{uc[0]}}">{{ ('useCases.' + uc[0]) | translate }}</mat-option>
-                </mat-select>
-              </mat-form-field>
+  <h2 class="section-title">{{ 'home.selectUseCase' | translate }}</h2>
+  <p class="page-subtitle">{{ 'home.selectUseCaseHint' | translate }}</p>
 
-
-            <div class="form-group right-div">
-              <button class="button" (click)="onSubmit()">{{ 'common.go' | translate }}</button>
-            </div>
-
-            <!-- empty label to use as space : no time to look in detail -->
-            <div class="form-group">
-              <label for="Actions"></label>
-            </div>
-
-            <!-- FORM END -->
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <label class="titleBar center">{{ 'home.description' | translate }}</label>
-        <div class="app-card cardSetting">
-          <p>
-            {{ 'home.descriptionText' | translate }}
-          </p>
-
-        </div>
-      </div>
-
-    </div>
+  <div class="use-cases">
+    @for (uc of useCases; track uc[0]) {
+      <button type="button" class="use-case" (click)="select(uc[0])">
+        <span class="use-case__icon"><i class="bi" [ngClass]="iconFor(uc[0])" aria-hidden="true"></i></span>
+        <span class="use-case__body">
+          <span class="use-case__name">{{ ('useCases.' + uc[0]) | translate }}</span>
+          <span class="use-case__cta">{{ 'common.start' | translate }} <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+        </span>
+      </button>
+    }
   </div>
 
+  <div class="steps">
+    <h2 class="section-title">{{ 'home.howItWorks' | translate }}</h2>
+    <ol>
+      <li><span class="steps__num">1</span><span>{{ 'home.step1' | translate }}</span></li>
+      <li><span class="steps__num">2</span><span>{{ 'home.step2' | translate }}</span></li>
+      <li><span class="steps__num">3</span><span>{{ 'home.step3' | translate }}</span></li>
+    </ol>
+    <p class="steps__about">{{ 'home.descriptionText' | translate }}</p>
+  </div>
 </div>

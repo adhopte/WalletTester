@@ -1,4 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-.orange {
-    background-color: orange !important;
+main {
+  flex: 1 0 auto;
 }

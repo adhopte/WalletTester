@@ -3,13 +3,12 @@ import { Component, inject } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { Offer } from '../../models/Oid4vciModels';
-import { MatIconModule } from '@angular/material/icon';
 import { ClipboardModule  } from '@angular/cdk/clipboard';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { QRCodeComponent } from 'angularx-qrcode';
 
 @Component({
-  imports: [ClipboardModule , MatIconModule, NgIf, TranslatePipe, QRCodeComponent, RouterLink],
+  imports: [ClipboardModule, NgIf, TranslatePipe, QRCodeComponent, RouterLink],
   selector: 'display-oid4vci-offer',
   templateUrl: './display-oid4vci-offer.component.html',
   styleUrl: './display-oid4vci-offer.component.scss',

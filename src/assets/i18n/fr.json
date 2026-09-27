@@ -1,26 +1,42 @@
 {
   "app": {
-    "title": "Applications de démonstration",
-    "portalName": "Portail CIVIC"
+    "title": "Portail CIVIC – ANIP Bénin",
+    "portalName": "Portail CIVIC",
+    "republic": "République du Bénin",
+    "tagline": "Délivrance d’attestations numériques",
+    "skipToContent": "Aller au contenu principal",
+    "homeLink": "Accueil du Portail CIVIC"
   },
   "language": {
     "label": "Langue"
   },
+  "footer": {
+    "agency": "Agence Nationale d’Identification des Personnes",
+    "motto": "Fraternité · Justice · Travail",
+    "demoNotice": "Environnement de démonstration – données de test uniquement"
+  },
   "common": {
-    "go": "Valider",
     "next": "Suivant",
     "submit": "Soumettre",
     "close": "Fermer",
     "delete": "Supprimer",
     "deeplink": "Lien profond :",
-    "errorPrefix": "Erreur : {{message}}"
+    "errorPrefix": "Erreur : {{message}}",
+    "start": "Commencer",
+    "back": "Retour",
+    "backHome": "Retour à l’accueil"
   },
   "home": {
-    "useCaseSelection": "Sélection du cas d'usage",
     "selectUseCase": "Sélectionnez un cas d'usage",
-    "chooseOption": "Choisissez une option",
-    "description": "Description",
-    "descriptionText": "Le flux à code pré-autorisé (Pre-Authorized Code Flow) permet aux utilisateurs de recevoir des attestations numériques dans leur portefeuille EUDI par un simple scan de QR code. L'émetteur génère un QR code contenant une offre d'attestation et un code pré-autorisé, que l'utilisateur scanne avec son portefeuille. Le portefeuille se connecte ensuite de manière sécurisée à l'émetteur, utilise le code pré-autorisé et récupère l'attestation vérifiable sans nécessiter de flux d'autorisation via un navigateur. Une fois validée et émise, l'attestation est stockée de manière sécurisée dans le portefeuille de l'utilisateur, offrant une expérience d'émission fluide, sûre et conviviale."
+    "descriptionText": "Le flux à code pré-autorisé (Pre-Authorized Code Flow) permet aux utilisateurs de recevoir des attestations numériques dans leur portefeuille EUDI par un simple scan de QR code. L'émetteur génère un QR code contenant une offre d'attestation et un code pré-autorisé, que l'utilisateur scanne avec son portefeuille. Le portefeuille se connecte ensuite de manière sécurisée à l'émetteur, utilise le code pré-autorisé et récupère l'attestation vérifiable sans nécessiter de flux d'autorisation via un navigateur. Une fois validée et émise, l'attestation est stockée de manière sécurisée dans le portefeuille de l'utilisateur, offrant une expérience d'émission fluide, sûre et conviviale.",
+    "eyebrow": "Portefeuille EUDI · OpenID4VCI",
+    "heroTitle": "Délivrez des attestations numériques dans le portefeuille des citoyens",
+    "selectUseCaseHint": "Choisissez le service à utiliser pour délivrer une attestation.",
+    "howItWorks": "Comment ça marche",
+    "step1": "Choisissez un cas d’usage et sélectionnez le dossier du citoyen.",
+    "step2": "Le portail crée une offre d’attestation et affiche un QR code.",
+    "step3": "Le citoyen scanne le QR code avec son portefeuille EUDI pour recevoir l’attestation.",
+    "heroLead": "Délivrez en toute sécurité, en présentiel, des attestations d’identité et d’état civil dans le portefeuille européen d’identité numérique."
   },
   "useCases": {
     "classic": "Agent en présentiel classique",
@@ -64,13 +80,18 @@
     "copied": "Lien profond copié dans le presse-papiers !",
     "failed": "L'offre d'attestation n'a pas pu être créée. Veuillez vérifier l'émetteur et réessayer.",
     "missing": "Aucune offre d'attestation à afficher. Créez une offre depuis la page d'accueil.",
-    "backHome": "Retour à l'accueil",
     "issuerUnreachable": "Le serveur du portail n'a pas pu joindre l'émetteur d'attestations.",
-    "issuerResponse": "Réponse de l'émetteur :"
+    "issuerResponse": "Réponse de l'émetteur :",
+    "scanTitle": "Scannez pour recevoir l’attestation",
+    "scanStep1": "Ouvrez l’application Portefeuille EUDI sur le téléphone.",
+    "scanStep2": "Scannez ce QR code ou ouvrez le lien ci-dessous sur le téléphone.",
+    "scanStep3": "Lorsque cela vous est demandé, saisissez le code de transaction."
   },
   "preAuth": {
     "createOffer": "Créer une offre",
-    "create": "Créer"
+    "create": "Créer",
+    "subtitle": "Sélectionnez un citoyen pour créer une offre d’attestation pour son portefeuille.",
+    "holders": "Dossiers des citoyens"
   },
   "dtc": {
     "firstName": "Prénom",
@@ -139,5 +160,24 @@
     "value": "Valeur",
     "emptyFields": "Un ou plusieurs champs du formulaire sont vides. Veuillez remplir les champs obligatoires.",
     "attributeExists": "La valeur est vide ou existe déjà"
+  },
+  "claims": {
+    "given_name": "Prénom",
+    "family_name": "Nom",
+    "birthdate": "Date de naissance",
+    "birth_date": "Date de naissance",
+    "email_address": "E-mail",
+    "mobile_phone_number": "Téléphone mobile",
+    "issuance_date": "Date de délivrance",
+    "expiry_date": "Date d’expiration",
+    "student_given_name": "Prénom de l’étudiant",
+    "student_family_name": "Nom de l’étudiant",
+    "degree_level": "Niveau du diplôme",
+    "degree_subject": "Discipline",
+    "institution_name": "Établissement",
+    "graduation_year": "Année d’obtention",
+    "issuing_authority": "Autorité de délivrance",
+    "doctor": "Médecin",
+    "hospital": "Hôpital"
   }
 }

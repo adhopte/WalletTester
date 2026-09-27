@@ -1,6 +1,6 @@
 import { TranslatePipe } from '@ngx-translate/core';
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Router, UrlSerializer} from '@angular/router';
+import {Router, UrlSerializer, RouterLink } from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {MatSelectModule} from '@angular/material/select';
 import { RestControllerService } from '../../services/rest-controller.service';
@@ -10,7 +10,7 @@ import { fromBER,OctetString } from 'asn1js';
   selector: 'dtc-users',
   templateUrl: './dtc-users.component.html',
   styleUrls: ['./dtc-users.component.scss'],
-  imports: [CommonModule, MatTableModule, TranslatePipe],
+  imports: [CommonModule, MatTableModule, TranslatePipe, RouterLink],
   standalone: true
 })
 export class DtcUsersComponent implements OnInit {
