@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { environment } from "../../../environments/environment"
 import { ConfigService } from '../../services/config-service';
-import { AuthorizationDetail, CodeRequest, Offer, useCaseMap } from '../../models/Oid4vciModels';
+import { AuthorizationDetail, CodeRequest, DEFAULT_WALLET_IDENTIFIER, Offer, useCaseMap } from '../../models/Oid4vciModels';
 import { RestControllerService } from '../../services/rest-controller.service';
 
 
@@ -64,7 +64,8 @@ export class HomeComponent implements OnInit {
   submitOfferRequest(): void {
     const createOfferRequest = {
       "identifier": "xyz-198772",
-      "walletIdentifier": "w-001",
+      "wallet_identifier": DEFAULT_WALLET_IDENTIFIER,
+      "walletIdentifier": DEFAULT_WALLET_IDENTIFIER,
       "authorization_details": []
     } as CodeRequest;
     createOfferRequest.authorization_details.push(this.createAuthorizationDetail());

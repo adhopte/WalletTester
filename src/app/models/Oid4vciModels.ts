@@ -41,10 +41,17 @@ export const useCaseMap: Record<string, string> = {
 };
 
 
+// The issuer's /offer API documents snake_case business_id / wallet_identifier
+// (see the SIGMA Core-ID Issuer Bruno collection); the camelCase fields are
+// kept for issuers that still expect them.
+export const DEFAULT_WALLET_IDENTIFIER = "w-001";
+
 export class CodeRequest {
     identifier: string
-    businessId: string
-    walletIdentifier: string
+    business_id?: string
+    wallet_identifier?: string
+    businessId?: string
+    walletIdentifier?: string
     authorization_details: AuthorizationDetail[]
 }
 

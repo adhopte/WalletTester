@@ -74,6 +74,8 @@ The portal UI is available in English, French and Polish, using [ngx-translate](
 
 ## Deploying to Render.com
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/adhopte/WalletTester/tree/civic-portal)
+
 `Dockerfile.render` builds a self-contained image: it compiles the Angular app, serves it with nginx under `/in-person-portal/`, and runs the SOR server (`src/sor/Server.js`). nginx takes over the routing that Istio does in Kubernetes. The existing `Dockerfile` (Jenkins/Helm) is unchanged.
 
 1. In Render, choose **New → Blueprint** and select this GitHub repo. Render reads `render.yaml` and creates the `civic-portal` web service from the `civic-portal` branch.

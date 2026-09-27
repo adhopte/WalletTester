@@ -5,7 +5,7 @@ import { RestControllerService } from '../../services/rest-controller.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
-import { CodeRequest, Offer, UseCaseId, UserAttributes } from '../../models/Oid4vciModels';
+import { CodeRequest, DEFAULT_WALLET_IDENTIFIER, Offer, UseCaseId, UserAttributes } from '../../models/Oid4vciModels';
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -73,10 +73,14 @@ export class PreAuthCodeFlowComponent implements OnInit {
   }
 
   createOffer(user: UserAttributes) {
+    const businessId = uuidv4();
+    const walletIdentifier = user.walletId || DEFAULT_WALLET_IDENTIFIER;
     var createOfferRequest = {
       "identifier": user.identifier,
-      "businessId": uuidv4(),
-      "walletIdentifier": user.walletId,
+      "business_id": businessId,
+      "wallet_identifier": walletIdentifier,
+      "businessId": businessId,
+      "walletIdentifier": walletIdentifier,
       "authorization_details": [{
         "type": "openid_credential",
         "credential_configuration_id": user.credentialConfigurationId ,
