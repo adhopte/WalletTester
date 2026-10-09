@@ -34,9 +34,9 @@ export class PreAuthCodeFlowComponent implements OnInit {
 
   staticColumns = ['action'];
   dynamicColumnsPid = ['given_name', 'family_name', 'birthdate', 'email_address', 'mobile_phone_number', 'issuance_date', 'expiry_date'];
-  dynamicColumnsPidMdoc = ['given_name', 'family_name', 'birth_place', 'document_number', 'expiry_date'];
+  dynamicColumnsPidMdoc = ['given_name', 'family_name', 'birth_place', 'expiry_date'];
   dynamicColumnsDegrees = ['student_given_name', 'student_family_name', 'degree_level', 'degree_subject', 'institution_name', 'graduation_year', 'issuing_authority'];
-  dynamicColumnsBirthCertificateSdJwt = ['given_name', 'family_name', 'place_of_birth', 'hospital', 'issuance_date'];
+  dynamicColumnsBirthCertificateSdJwt = ['given_name', 'family_name', 'birth_place', 'issuing_authority', 'issuance_date'];
   dynamicColumnsBirthCertificateMdoc = ['given_name', 'family_name', 'birth_date', 'doctor', 'hospital', 'issuance_date', 'expiry_date'];
 
   dynamicColumns :string[];
@@ -90,6 +90,9 @@ export class PreAuthCodeFlowComponent implements OnInit {
     if (this.requiresVerification) {
       this.displayedColumns.push('npi', 'status');
     }
+    if (useCaseId === UseCaseId.oid_pid_mdoc_uc1) {
+      this.displayedColumns.splice(1, 0, 'photo');
+    }
   }
 
   /** Translated claim name, or given_name -> Given name when there is no translation */
@@ -106,7 +109,16 @@ export class PreAuthCodeFlowComponent implements OnInit {
 
   getAttributeValue(element: UserAttributes, column: string): string {
     const attribute = element.attributes.find(c => c.name === column);
-    return attribute ? attribute.value : '';
+    return attribute ? String(attribute.value) : '';
+  }
+
+  /** Portrait claim (base64 JPEG) as an image source, if the record has one */
+  portrait(user: UserAttributes): string | null {
+    const value = user.attributes.find(a => a.name === 'portrait')?.value;
+    if (!value) {
+      return null;
+    }
+    return String(value).startsWith('data:') ? value : 'data:image/jpeg;base64,' + value;
   }
 
   fullName(user: UserAttributes): string {

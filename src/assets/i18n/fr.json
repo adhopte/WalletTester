@@ -192,22 +192,23 @@
     "listSubtitle": "Ces citoyens sont pré-autorisés. Vérifiez l’identité du citoyen pour délivrer l’attestation dans son Portefeuille ANIP.",
     "actionHeader": "Délivrer",
     "action": "Vérifier et délivrer",
-    "npi": "NPI",
+    "npi": "N° d’identification",
     "status": "Statut",
     "preAuthorized": "Pré-autorisé",
     "title": "Vérification d’identité",
     "subtitle": "Confirmez l’identité du citoyen auprès du registre national (RNPP) avant de délivrer l’attestation.",
     "holder": "Citoyen",
     "birthDate": "Date de naissance",
-    "npiLabel": "Numéro Personnel d’Identification (NPI)",
-    "npiPlaceholder": "10 chiffres",
-    "npiHelp": "Tel qu’indiqué sur la carte d’identité ANIP ou l’acte de naissance du citoyen.",
+    "npiLabel": "Numéro d’identification",
+    "npiPlaceholder": "NPI, n° de document ou n° d’acte",
+    "npiHelp": "NPI ou numéro de document du citoyen (carte d’identité), ou référence de l’acte / numéro de document (acte de naissance).",
     "submit": "Vérifier l’identité",
     "checking": "Vérification auprès du registre national…",
     "success": "Identité vérifiée",
     "issuing": "Création de l’offre d’attestation…",
     "failed": "Les informations ne correspondent pas au registre national. Tentative(s) restante(s) : {{attempts}}.",
     "locked": "Trop de tentatives échouées. La vérification est bloquée pour ce dossier.",
-    "footnote": "La vérification est journalisée par l’ANIP. Les données servent uniquement à délivrer cette attestation."
+    "footnote": "La vérification est journalisée par l’ANIP. Les données servent uniquement à délivrer cette attestation.",
+    "photo": "Photo"
   }
 }

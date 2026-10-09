@@ -192,22 +192,23 @@
     "listSubtitle": "Ci obywatele są wstępnie autoryzowani. Zweryfikuj tożsamość obywatela, aby wydać poświadczenie do jego Portfela ANIP.",
     "actionHeader": "Wydanie",
     "action": "Zweryfikuj i wydaj",
-    "npi": "NPI",
+    "npi": "Numer identyfikacyjny",
     "status": "Status",
     "preAuthorized": "Wstępnie autoryzowany",
     "title": "Weryfikacja tożsamości",
     "subtitle": "Potwierdź tożsamość obywatela w rejestrze krajowym (RNPP) przed wydaniem poświadczenia.",
     "holder": "Obywatel",
     "birthDate": "Data urodzenia",
-    "npiLabel": "Osobisty numer identyfikacyjny (NPI)",
-    "npiPlaceholder": "10 cyfr",
-    "npiHelp": "Taki jak na dowodzie osobistym ANIP lub akcie urodzenia obywatela.",
+    "npiLabel": "Numer identyfikacyjny",
+    "npiPlaceholder": "NPI, nr dokumentu lub nr aktu",
+    "npiHelp": "NPI lub numer dokumentu obywatela (dowód osobisty) albo numer aktu / numer dokumentu (akt urodzenia).",
     "submit": "Zweryfikuj tożsamość",
     "checking": "Sprawdzanie w rejestrze krajowym…",
     "success": "Tożsamość zweryfikowana",
     "issuing": "Tworzenie oferty poświadczenia…",
     "failed": "Dane nie zgadzają się z rejestrem krajowym. Pozostałe próby: {{attempts}}.",
     "locked": "Zbyt wiele nieudanych prób. Weryfikacja tego rekordu jest zablokowana.",
-    "footnote": "Weryfikacja jest rejestrowana przez ANIP. Dane służą wyłącznie do wydania tego poświadczenia."
+    "footnote": "Weryfikacja jest rejestrowana przez ANIP. Dane służą wyłącznie do wydania tego poświadczenia.",
+    "photo": "Zdjęcie"
   }
 }

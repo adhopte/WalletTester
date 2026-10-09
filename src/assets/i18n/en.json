@@ -192,22 +192,23 @@
     "listSubtitle": "These citizens are pre-authorized. Verify the citizen’s identity to issue the credential to their ANIP Wallet.",
     "actionHeader": "Issue",
     "action": "Verify & issue",
-    "npi": "NPI",
+    "npi": "ID number",
     "status": "Status",
     "preAuthorized": "Pre-authorized",
     "title": "Identity verification",
     "subtitle": "Confirm the citizen’s identity against the national register (RNPP) before issuing the credential.",
     "holder": "Citizen",
     "birthDate": "Date of birth",
-    "npiLabel": "Personal Identification Number (NPI)",
-    "npiPlaceholder": "10 digits",
-    "npiHelp": "As shown on the citizen’s ANIP identity card or birth certificate.",
+    "npiLabel": "ID number",
+    "npiPlaceholder": "NPI, document no. or birth record no.",
+    "npiHelp": "The citizen’s NPI or document number (identity card), or birth record reference / document number (birth certificate).",
     "submit": "Verify identity",
     "checking": "Checking with the national register…",
     "success": "Identity verified",
     "issuing": "Creating the credential offer…",
     "failed": "The details do not match the national register. {{attempts}} attempt(s) left.",
     "locked": "Too many failed attempts. Verification is blocked for this record.",
-    "footnote": "Verification is logged by ANIP. Data is used only to issue this credential."
+    "footnote": "Verification is logged by ANIP. Data is used only to issue this credential.",
+    "photo": "Photo"
   }
 }

@@ -25,7 +25,8 @@ export class UserAttributes {
 
 export class Attribute {
     name: string
-    value: string
+    // Claims can be strings, numbers (gender) or booleans (age_over_18)
+    value: any
 }
 
 export class UseCaseId {

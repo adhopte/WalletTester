@@ -123,8 +123,11 @@ export class RestControllerService {
     if (!environment.useSorServer) {
       // Records were read from a static file, which still contains the NPI
       const recordBirthDate = user.attributes.find(a => a.name === 'birth_date' || a.name === 'birthdate')?.value;
-      const clean = (v: string | undefined) => (v ?? '').replace(/\s+/g, '');
-      return of(!!user.npi && clean(npi) === clean(user.npi) && birthDate === recordBirthDate);
+      const clean = (v: unknown) => String(v ?? '').replace(/[\s-]+/g, '').toUpperCase();
+      const ids = [user.npi, ...user.attributes
+        .filter(a => ['personal_administrative_number', 'document_number', 'birth_record_reference'].includes(a.name))
+        .map(a => a.value)].filter(v => v !== undefined && v !== null && v !== '');
+      return of(clean(npi) !== '' && ids.some(id => clean(id) === clean(npi)) && birthDate === String(recordBirthDate));
     }
     const url = this.configs.sorHost() + environment.sorBasePath + "/" + useCaseId + "/sor/" + encodeURIComponent(user.identifier) + "/verify";
     return this.httpClient.post<{ verified: boolean }>(url, JSON.stringify({ birthDate, npi }), this.httpOptions).pipe(

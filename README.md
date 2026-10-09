@@ -87,10 +87,17 @@ The portal UI is available in English, French and Polish, using [ngx-translate](
 
 ### Issuance flow (PID mDoc, birth certificate)
 
-1. The agent picks a credential and a pre-authorized citizen record (`src/assets/jsons/pid_mdoc_claims.json`, `birth_certificate_claims_sd_jwt.json`).
-2. The citizen's date of birth and NPI are checked by the SOR server (`POST /api/in-person-portal-sor/<use case>/sor/<identifier>/verify`), which simulates a check against the national register. The NPI is never sent to the browser or to the issuer; the record list only shows its last 4 digits. Three failed attempts block the record until the page is reloaded.
+1. The agent picks a credential and a pre-authorized citizen record. The records are preloaded from `src/assets/jsons/pid_mdoc_claims.json` (PID mDoc) and `src/assets/jsons/birth_certificate_claims_sd_jwt.json` (birth certificate SD-JWT); the issuer reads the same records from the SOR server.
+2. The agent enters the citizen's date of birth and an ID number, checked by the SOR server (`POST /api/in-person-portal-sor/<use case>/sor/<identifier>/verify`), which simulates a check against the national register. Accepted ID numbers are the record's `personal_administrative_number` (NPI), `document_number` or `birth_record_reference` (case, spaces and dashes are ignored). These claims are left out of the record list sent to the browser, which only shows the last 4 characters of one of them; the issuer still receives the full record. Three failed attempts block the record until the page is reloaded.
 3. Only then is the credential offer created and its QR code shown. The `credential_configuration_id` is taken from the issuer's metadata (`src/app/services/credential-config.service.ts`), falling back to the id stored in the record.
 
-Test citizens (date of birth / NPI): Koffi Adjovi 1988-03-14 / 1203456781, Aïcha Dossou 1995-07-22 / 1304567892, Sèna Houngbédji 1979-11-02 / 1405678903, Rachida Bio 2001-01-30 / 1506789014 (PID); Mahougnon Agossou 2026-04-10 / 2504123456, Fifamè Kpadonou 2023-11-17 / 2504234567, Ayaba Zinsou 2025-08-05 / 2504345678 (birth certificate).
+Test citizens (date of birth / accepted ID numbers):
+
+| Credential | Citizen | Date of birth | ID number |
+|---|---|---|---|
+| PID mDoc | Mathieu Ahouandjinou | 1988-07-21 | `4827619305` (NPI) or `BJ19880721001` |
+| PID mDoc | Estelle Houngbedji | 2010-11-23 | `BJ20071123001` |
+| Birth certificate | Mathieu Ahouandjinou | 1988-07-21 | `COT-1988-013742` or `EX-NAISS-2026-013742` |
+| Birth certificate | Estelle Houngbedji | 2010-11-23 | `PNO-2010-007314` |
 
 To test the image locally: `docker build -f Dockerfile.render -t civic-portal . && docker run -p 10000:10000 civic-portal`, then open http://localhost:10000.

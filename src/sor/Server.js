@@ -38,9 +38,9 @@ app.get('/:credentialConfigurationId/sor/', async (req, res) => {
     const credentialConfigurationId = req.params['credentialConfigurationId'];
     const pathFile = findPathFile(credentialConfigurationId);
     const jsonData = await loadJson(pathFile);
-    // The national ID number (NPI) is only used to verify the citizen, so the
-    // list exposes its last digits, never the full number.
-    res.json(jsonData.map(({ npi, ...user }) => npi ? { ...user, npiHint: maskNpi(npi) } : user));
+    // ID numbers are used to verify the citizen, so the list only exposes
+    // the last characters of one of them, never the numbers themselves.
+    res.json(jsonData.map(listView));
   } catch (e) {
     handleException(e, res);
   }
@@ -59,9 +59,10 @@ app.post('/:credentialConfigurationId/sor/:identifier/verify', async (req, res) 
       return res.status(404).json({ verified: false, reason: 'not_found' });
     }
     const birthDate = (user.attributes || []).find(a => a.name === 'birth_date' || a.name === 'birthdate')?.value;
-    const npiOk = normalize(req.body?.npi) !== '' && normalize(req.body?.npi) === normalize(user.npi);
-    const birthDateOk = !!birthDate && String(req.body?.birthDate || '').trim() === birthDate;
-    if (npiOk && birthDateOk) {
+    const entered = normalize(req.body?.npi);
+    const idOk = entered !== '' && idNumbers(user).some(id => normalize(id) === entered);
+    const birthDateOk = !!birthDate && String(req.body?.birthDate || '').trim() === String(birthDate);
+    if (idOk && birthDateOk) {
       return res.json({ verified: true });
     }
     res.status(401).json({ verified: false, reason: 'mismatch' });
@@ -70,13 +71,35 @@ app.post('/:credentialConfigurationId/sor/:identifier/verify', async (req, res) 
   }
 });
 
-function normalize(value) {
-  return String(value ?? '').replace(/\s+/g, '');
+// Claims that identify the citizen and are accepted as "ID number" for verification,
+// in the order used for the masked hint (NPI first).
+const ID_CLAIMS = ['personal_administrative_number', 'document_number', 'birth_record_reference'];
+
+function idNumbers(user) {
+  const fromClaims = ID_CLAIMS
+    .map(name => (user.attributes || []).find(a => a.name === name)?.value)
+    .filter(v => v !== undefined && v !== null && v !== '');
+  return user.npi ? [user.npi, ...fromClaims] : fromClaims;
 }
 
-function maskNpi(npi) {
-  const digits = normalize(npi);
-  return '•'.repeat(Math.max(digits.length - 4, 0)) + digits.slice(-4);
+function listView(user) {
+  const { npi, attributes, ...rest } = user;
+  const ids = idNumbers(user);
+  return {
+    ...rest,
+    attributes: (attributes || []).filter(a => !ID_CLAIMS.includes(a.name)),
+    ...(ids.length ? { npiHint: mask(ids[0]) } : {})
+  };
+}
+
+// Case, spaces and dashes are ignored when comparing ID numbers
+function normalize(value) {
+  return String(value ?? '').replace(/[\s-]+/g, '').toUpperCase();
+}
+
+function mask(id) {
+  const value = String(id);
+  return '•'.repeat(Math.max(value.length - 4, 0)) + value.slice(-4);
 }
 
 app.listen(process.env.SOR_SERVER_PORT, () => {
