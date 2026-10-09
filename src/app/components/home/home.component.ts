@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
     classic: 'bi-person-badge',
     dtc_type1_inp: 'bi-passport',
     oid_pid_inp_uc1: 'bi-person-vcard',
+    oid_pid_mdoc_uc1: 'bi-person-vcard',
     oid_degree_uc1: 'bi-mortarboard',
     oid_birth_certificate_sd_jwt_uc1: 'bi-file-earmark-person',
     oid_birth_certificate_mdoc_uc1: 'bi-phone',
@@ -63,6 +64,7 @@ export class HomeComponent implements OnInit {
         this.router.navigate(['dtc-users']);
         break;
       case 'oid_pid_inp_uc1':
+      case 'oid_pid_mdoc_uc1':
         this.router.navigate(['pre-auth-code-flow/' + this.selected]);
         break;
       case 'oid_degree_uc1':

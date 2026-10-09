@@ -6,6 +6,8 @@ export class Offer {
     uri: string
     tx_code: string
     authorization_code: string
+    // Set by the portal when the holder's identity was verified before the offer was created
+    verifiedHolder?: string
 }
 
 
@@ -14,6 +16,10 @@ export class UserAttributes {
     credentialConfigurationId: string
     credentialId?: string
     walletId: string
+    // National ID number (NPI), only present when the records are read without the SOR server
+    npi?: string
+    // Last digits of the NPI, as returned by the SOR server
+    npiHint?: string
     attributes: Attribute[]
 }
 
@@ -26,6 +32,7 @@ export class UseCaseId {
     public static classic = "classic"
     public static readonly dtc_type1_inp = "dtc_type1_inp"
     public static readonly oid_pid_inp_uc1 = "oid_pid_inp_uc1"
+    public static readonly oid_pid_mdoc_uc1 = "oid_pid_mdoc_uc1"
     public static readonly oid_degree_uc1 = "oid_degree_uc1"
     public static readonly oid_birth_certificate_sd_jwt_uc1 = "oid_birth_certificate_sd_jwt_uc1"
     public static readonly oid_birth_certificate_mdoc_uc1 = "oid_birth_certificate_mdoc_uc1"
@@ -36,6 +43,7 @@ export const useCaseMap: Record<string, string> = {
     [UseCaseId.classic]: "Classic In Person agent",
     [UseCaseId.dtc_type1_inp]: "DTC Type 1 - In Person agent",
     [UseCaseId.oid_pid_inp_uc1]: "PID Issuance - In Person agent (UC-1)",
+    [UseCaseId.oid_pid_mdoc_uc1]: "Digital identity card (PID mDoc)",
     [UseCaseId.oid_degree_uc1]: 'Student University Login (UC-1)',
     [UseCaseId.oid_birth_certificate_sd_jwt_uc1]: 'Birth Certificate Login (SD-JWT)',
     [UseCaseId.oid_birth_certificate_mdoc_uc1]: 'Birth Certificate Login (MDOC)',

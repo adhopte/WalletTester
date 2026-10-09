@@ -23,7 +23,7 @@ server {
   }
 
   # SOR server, called by the credential issuer
-  location ~ ^/(user_pid_claims|oid_degree_uc1|oid_birth_certificate_sd_jwt_uc1|oid_birth_certificate_mdoc_uc1|oid_pid_inp_uc1)/ {
+  location ~ ^/(user_pid_claims|oid_pid_mdoc_uc1|oid_degree_uc1|oid_birth_certificate_sd_jwt_uc1|oid_birth_certificate_mdoc_uc1|oid_pid_inp_uc1)/ {
     proxy_pass http://127.0.0.1:${SOR_SERVER_PORT};
   }
 

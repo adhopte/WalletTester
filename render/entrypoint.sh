@@ -3,13 +3,21 @@ set -e
 
 HTML=/usr/share/nginx/html/in-person-portal
 
+# ISSUER_URL / PORTAL_USE_CASES take precedence over the older OID_4_VCI_HOST /
+# SUPPORTED_USE_CASES names, so a service created with the old names follows the
+# image defaults unless the new names are set explicitly.
+OID_4_VCI_HOST="${ISSUER_URL:-$OID_4_VCI_HOST}"
+export SUPPORTED_USE_CASES="${PORTAL_USE_CASES:-$SUPPORTED_USE_CASES}"
+
 # The portal POSTs credential offers to <oid4vciHost>/offer from the browser.
 # Proxy that through nginx so the call is same-origin (no CORS needed on the
 # issuer), and point the app at the proxy.
 if [ -n "$OID_4_VCI_HOST" ]; then
   # Origin/Referer are dropped so the issuer sees a plain server-to-server call
   # (like the Bruno collection), not a cross-origin browser request.
-  export OFFER_LOCATION="location = /offer { proxy_pass ${OID_4_VCI_HOST%/}/offer; proxy_ssl_server_name on; proxy_set_header Host \$proxy_host; proxy_set_header Origin \"\"; proxy_set_header Referer \"\"; proxy_connect_timeout 10s; proxy_read_timeout 30s; }"
+  ISSUER_PROXY="proxy_ssl_server_name on; proxy_set_header Host \$proxy_host; proxy_set_header Origin \"\"; proxy_set_header Referer \"\"; proxy_connect_timeout 10s; proxy_read_timeout 30s;"
+  # /offer creates offers; the metadata lets the portal pick valid credential configuration ids
+  export OFFER_LOCATION="location = /offer { proxy_pass ${OID_4_VCI_HOST%/}/offer; $ISSUER_PROXY } location = /.well-known/openid-credential-issuer { proxy_pass ${OID_4_VCI_HOST%/}/.well-known/openid-credential-issuer; proxy_set_header Accept application/json; $ISSUER_PROXY }"
   OID_4_VCI_HOST=""
 else
   export OFFER_LOCATION=""

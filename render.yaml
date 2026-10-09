@@ -8,13 +8,14 @@ services:
     plan: free
     healthCheckPath: /in-person-portal/
     envVars:
+      # OID4VCI credential issuer (metadata: <ISSUER_URL>/.well-known/openid-credential-issuer).
+      # Offer and metadata calls are proxied through this service's nginx, so no CORS setup is
+      # needed on the issuer. Defaults to the eu-wallet prep issuer when not set.
+      - key: ISSUER_URL
+        value: https://issuer.eu-wallet.prep.smartid.nuagein.io
       # Use cases listed on the home page
-      - key: SUPPORTED_USE_CASES
-        value: '["oid_pid_inp_uc1","oid_degree_uc1","oid_birth_certificate_sd_jwt_uc1","oid_birth_certificate_mdoc_uc1","oid_pid_idp_uc2"]'
-      # OID4VCI credential issuer (well-known: <this URL>/.well-known/openid-credential-issuer).
-      # Offers are proxied through this service's nginx, so no CORS setup is needed on the issuer.
-      - key: OID_4_VCI_HOST
-        value: https://issuer.mid-lab-dev.stg.smartid.nuagein.io
+      - key: PORTAL_USE_CASES
+        value: '["oid_pid_mdoc_uc1","oid_birth_certificate_sd_jwt_uc1"]'
       # GIPS API base URL (needed for the "classic" and DTC use cases); leave empty if unused
       - key: GIPS_UPSTREAM
         sync: false

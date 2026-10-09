@@ -24,28 +24,30 @@
     "errorPrefix": "Błąd: {{message}}",
     "start": "Rozpocznij",
     "back": "Wstecz",
-    "backHome": "Powrót do strony głównej"
+    "backHome": "Powrót do strony głównej",
+    "cancel": "Anuluj"
   },
   "home": {
     "selectUseCase": "Wybierz przypadek użycia",
-    "descriptionText": "Przepływ z kodem wstępnie autoryzowanym (Pre-Authorized Code Flow) umożliwia użytkownikom otrzymywanie cyfrowych poświadczeń w portfelu EUDI poprzez proste zeskanowanie kodu QR. Wystawca generuje kod QR zawierający ofertę poświadczenia oraz kod wstępnie autoryzowany, który użytkownik skanuje swoim portfelem. Następnie portfel bezpiecznie łączy się z wystawcą, realizuje kod wstępnie autoryzowany i pobiera weryfikowalne poświadczenie bez konieczności autoryzacji w przeglądarce. Po weryfikacji i wystawieniu poświadczenie jest bezpiecznie przechowywane w portfelu użytkownika, co zapewnia płynny, bezpieczny i przyjazny proces wydawania poświadczeń.",
-    "eyebrow": "Portfel EUDI · OpenID4VCI",
-    "heroTitle": "Wydawaj poświadczenia cyfrowe do portfeli obywateli",
+    "descriptionText": "Poświadczenia są wydawane w przepływie OpenID4VCI z kodem wstępnie autoryzowanym. Po zweryfikowaniu tożsamości obywatela w rejestrze krajowym portal tworzy ofertę poświadczenia i wyświetla ją jako kod QR. Obywatel skanuje go Portfelem ANIP, który bezpiecznie łączy się z wystawcą, realizuje kod wstępnie autoryzowany i zapisuje weryfikowalne poświadczenie w telefonie, bez logowania w przeglądarce.",
+    "eyebrow": "Portfel ANIP · OpenID4VCI",
+    "heroTitle": "Wydawaj poświadczenia cyfrowe do Portfeli ANIP obywateli",
     "selectUseCaseHint": "Wybierz usługę, za pomocą której chcesz wydać poświadczenie.",
     "howItWorks": "Jak to działa",
-    "step1": "Wybierz przypadek użycia i rekord obywatela.",
-    "step2": "Portal tworzy ofertę poświadczenia i wyświetla kod QR.",
-    "step3": "Obywatel skanuje kod QR portfelem EUDI, aby otrzymać poświadczenie.",
-    "heroLead": "Bezpiecznie wydawaj stacjonarnie poświadczenia tożsamości i stanu cywilnego do Europejskiego Portfela Tożsamości Cyfrowej."
+    "step1": "Wybierz poświadczenie i wstępnie autoryzowany rekord obywatela.",
+    "step2": "Zweryfikuj tożsamość obywatela za pomocą daty urodzenia i numeru NPI.",
+    "step3": "Obywatel skanuje kod QR Portfelem ANIP, aby otrzymać poświadczenie.",
+    "heroLead": "Zweryfikuj tożsamość obywatela, a następnie bezpiecznie wydaj jego cyfrowy dowód osobisty lub akt urodzenia do Portfela ANIP."
   },
   "useCases": {
     "classic": "Klasyczny agent stacjonarny",
     "dtc_type1_inp": "DTC Typ 1 - Agent stacjonarny",
     "oid_pid_inp_uc1": "Wydanie PID - Agent stacjonarny (UC-1)",
     "oid_degree_uc1": "Logowanie studenta uczelni (UC-1)",
-    "oid_birth_certificate_sd_jwt_uc1": "Logowanie aktem urodzenia (SD-JWT)",
+    "oid_birth_certificate_sd_jwt_uc1": "Cyfrowy akt urodzenia (SD-JWT)",
     "oid_birth_certificate_mdoc_uc1": "Logowanie aktem urodzenia (MDOC)",
-    "oid_pid_idp_uc2": "Wydanie - Na podstawie logowania IDP (UC-2)"
+    "oid_pid_idp_uc2": "Wydanie - Na podstawie logowania IDP (UC-2)",
+    "oid_pid_mdoc_uc1": "Cyfrowy dowód osobisty (PID mDoc)"
   },
   "createTransaction": {
     "title": "FORMULARZ TRANSAKCJI",
@@ -83,9 +85,10 @@
     "issuerUnreachable": "Serwer portalu nie mógł połączyć się z wystawcą poświadczeń.",
     "issuerResponse": "Odpowiedź wystawcy:",
     "scanTitle": "Zeskanuj, aby otrzymać poświadczenie",
-    "scanStep1": "Otwórz aplikację Portfel EUDI na telefonie.",
+    "scanStep1": "Otwórz aplikację Portfel ANIP na telefonie.",
     "scanStep2": "Zeskanuj ten kod QR lub otwórz poniższy link na telefonie.",
-    "scanStep3": "Gdy pojawi się prośba, wpisz kod transakcji."
+    "scanStep3": "Gdy pojawi się prośba, wpisz kod transakcji.",
+    "verifiedFor": "Tożsamość zweryfikowana: {{name}}"
   },
   "preAuth": {
     "createOffer": "Utwórz ofertę",
@@ -178,6 +181,33 @@
     "graduation_year": "Rok ukończenia",
     "issuing_authority": "Organ wydający",
     "doctor": "Lekarz",
-    "hospital": "Szpital"
+    "hospital": "Szpital",
+    "birth_place": "Miejsce urodzenia",
+    "place_of_birth": "Miejsce urodzenia",
+    "nationality": "Obywatelstwo",
+    "document_number": "Numer dokumentu"
+  },
+  "verify": {
+    "listTitle": "Rekordy wstępnie autoryzowane",
+    "listSubtitle": "Ci obywatele są wstępnie autoryzowani. Zweryfikuj tożsamość obywatela, aby wydać poświadczenie do jego Portfela ANIP.",
+    "actionHeader": "Wydanie",
+    "action": "Zweryfikuj i wydaj",
+    "npi": "NPI",
+    "status": "Status",
+    "preAuthorized": "Wstępnie autoryzowany",
+    "title": "Weryfikacja tożsamości",
+    "subtitle": "Potwierdź tożsamość obywatela w rejestrze krajowym (RNPP) przed wydaniem poświadczenia.",
+    "holder": "Obywatel",
+    "birthDate": "Data urodzenia",
+    "npiLabel": "Osobisty numer identyfikacyjny (NPI)",
+    "npiPlaceholder": "10 cyfr",
+    "npiHelp": "Taki jak na dowodzie osobistym ANIP lub akcie urodzenia obywatela.",
+    "submit": "Zweryfikuj tożsamość",
+    "checking": "Sprawdzanie w rejestrze krajowym…",
+    "success": "Tożsamość zweryfikowana",
+    "issuing": "Tworzenie oferty poświadczenia…",
+    "failed": "Dane nie zgadzają się z rejestrem krajowym. Pozostałe próby: {{attempts}}.",
+    "locked": "Zbyt wiele nieudanych prób. Weryfikacja tego rekordu jest zablokowana.",
+    "footnote": "Weryfikacja jest rejestrowana przez ANIP. Dane służą wyłącznie do wydania tego poświadczenia."
   }
 }

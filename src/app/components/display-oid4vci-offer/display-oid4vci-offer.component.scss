@@ -151,3 +151,21 @@
     color: var(--danger);
   }
 }
+
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--brand-strong);
+  background: var(--brand-soft);
+  border: 1px solid #bfdccc;
+  border-radius: 999px;
+
+  .bi {
+    color: var(--brand);
+  }
+}

@@ -24,28 +24,30 @@
     "errorPrefix": "Error: {{message}}",
     "start": "Start",
     "back": "Back",
-    "backHome": "Back to home"
+    "backHome": "Back to home",
+    "cancel": "Cancel"
   },
   "home": {
     "selectUseCase": "Select Use Case",
-    "descriptionText": "The Pre-Authorized Code Flow enables users to receive digital credentials in their EUDI Wallet through a simple QR code scan. The issuer generates a QR code containing a credential offer and a pre-authorized code, which the user scans with their wallet. The wallet then securely connects to the issuer, redeems the pre-authorized code, and retrieves the verifiable credential without requiring a browser-based authorization flow. Once validated and issued, the credential is securely stored in the user's wallet, providing a seamless, secure, and user-friendly credential issuance experience.",
-    "eyebrow": "EUDI Wallet · OpenID4VCI",
-    "heroTitle": "Issue digital credentials to citizens’ wallets",
+    "descriptionText": "Credentials are issued with the OpenID4VCI pre-authorized code flow. Once the citizen’s identity has been verified against the national register, the portal creates a credential offer and displays it as a QR code. The citizen scans it with the ANIP Wallet, which connects securely to the issuer, redeems the pre-authorized code and stores the verifiable credential on the phone, without any browser-based login.",
+    "eyebrow": "ANIP Wallet · OpenID4VCI",
+    "heroTitle": "Issue digital credentials to citizens’ ANIP Wallets",
     "selectUseCaseHint": "Choose the service you want to use to issue a credential.",
     "howItWorks": "How it works",
-    "step1": "Choose a use case and select the citizen’s record.",
-    "step2": "The portal creates a credential offer and displays a QR code.",
-    "step3": "The citizen scans the QR code with their EUDI Wallet to receive the credential.",
-    "heroLead": "Issue identity and civil-status credentials securely, in person, to the European Digital Identity Wallet."
+    "step1": "Choose a credential and select the citizen’s pre-authorized record.",
+    "step2": "Verify the citizen’s identity with their date of birth and NPI.",
+    "step3": "The citizen scans the QR code with their ANIP Wallet to receive the credential.",
+    "heroLead": "Verify the citizen’s identity, then securely issue their digital identity card or birth certificate to the ANIP Wallet."
   },
   "useCases": {
     "classic": "Classic In Person agent",
     "dtc_type1_inp": "DTC Type 1 - In Person agent",
     "oid_pid_inp_uc1": "PID Issuance - In Person agent (UC-1)",
     "oid_degree_uc1": "Student University Login (UC-1)",
-    "oid_birth_certificate_sd_jwt_uc1": "Birth Certificate Login (SD-JWT)",
+    "oid_birth_certificate_sd_jwt_uc1": "Digital birth certificate (SD-JWT)",
     "oid_birth_certificate_mdoc_uc1": "Birth Certificate Login (MDOC)",
-    "oid_pid_idp_uc2": "Issuance - Based on IDP login (UC-2)"
+    "oid_pid_idp_uc2": "Issuance - Based on IDP login (UC-2)",
+    "oid_pid_mdoc_uc1": "Digital identity card (PID mDoc)"
   },
   "createTransaction": {
     "title": "TRANSACTION FORM",
@@ -83,9 +85,10 @@
     "issuerUnreachable": "The portal server could not reach the credential issuer.",
     "issuerResponse": "Issuer response:",
     "scanTitle": "Scan to receive the credential",
-    "scanStep1": "Open the EUDI Wallet app on the phone.",
+    "scanStep1": "Open the ANIP Wallet app on the phone.",
     "scanStep2": "Scan this QR code, or open the link below on the phone.",
-    "scanStep3": "When asked, enter the transaction code."
+    "scanStep3": "When asked, enter the transaction code.",
+    "verifiedFor": "Identity verified: {{name}}"
   },
   "preAuth": {
     "createOffer": "Create offer",
@@ -178,6 +181,33 @@
     "graduation_year": "Graduation year",
     "issuing_authority": "Issuing authority",
     "doctor": "Doctor",
-    "hospital": "Hospital"
+    "hospital": "Hospital",
+    "birth_place": "Place of birth",
+    "place_of_birth": "Place of birth",
+    "nationality": "Nationality",
+    "document_number": "Document number"
+  },
+  "verify": {
+    "listTitle": "Pre-authorized records",
+    "listSubtitle": "These citizens are pre-authorized. Verify the citizen’s identity to issue the credential to their ANIP Wallet.",
+    "actionHeader": "Issue",
+    "action": "Verify & issue",
+    "npi": "NPI",
+    "status": "Status",
+    "preAuthorized": "Pre-authorized",
+    "title": "Identity verification",
+    "subtitle": "Confirm the citizen’s identity against the national register (RNPP) before issuing the credential.",
+    "holder": "Citizen",
+    "birthDate": "Date of birth",
+    "npiLabel": "Personal Identification Number (NPI)",
+    "npiPlaceholder": "10 digits",
+    "npiHelp": "As shown on the citizen’s ANIP identity card or birth certificate.",
+    "submit": "Verify identity",
+    "checking": "Checking with the national register…",
+    "success": "Identity verified",
+    "issuing": "Creating the credential offer…",
+    "failed": "The details do not match the national register. {{attempts}} attempt(s) left.",
+    "locked": "Too many failed attempts. Verification is blocked for this record.",
+    "footnote": "Verification is logged by ANIP. Data is used only to issue this credential."
   }
 }

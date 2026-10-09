@@ -1,17 +1,27 @@
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { Component, OnInit, inject } from '@angular/core';
-import { NgForOf } from '@angular/common';
+import { Component, ElementRef, HostListener, OnInit, ViewChild, inject } from '@angular/core';
+import { NgForOf, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { RestControllerService } from '../../services/rest-controller.service';
+import { CredentialConfigService } from '../../services/credential-config.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { CodeRequest, DEFAULT_WALLET_IDENTIFIER, Offer, offerErrorMessage, UseCaseId, UserAttributes } from '../../models/Oid4vciModels';
 import { v4 as uuidv4 } from 'uuid';
+import { forkJoin, timer } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
+type VerificationState = 'form' | 'checking' | 'failed' | 'locked' | 'verified' | 'issuing';
 
+/** Use cases where the citizen must be verified (date of birth + NPI) before the offer is created */
+const VERIFIED_USE_CASES: string[] = [UseCaseId.oid_pid_mdoc_uc1, UseCaseId.oid_birth_certificate_sd_jwt_uc1];
+const MAX_ATTEMPTS = 3;
+// Minimum time the "checking with the national register" step is shown
+const CHECK_DELAY_MS = 1200;
 
 @Component({
   selector: 'pre-auth-code-flow',
-  imports: [MatTableModule, NgForOf, TranslatePipe, RouterLink],
+  imports: [MatTableModule, NgForOf, NgIf, FormsModule, TranslatePipe, RouterLink],
   templateUrl: './pre-auth-code-flow.component.html',
   styleUrl: './pre-auth-code-flow.component.scss',
   standalone: true
@@ -19,17 +29,28 @@ import { v4 as uuidv4 } from 'uuid';
 export class PreAuthCodeFlowComponent implements OnInit {
   route = inject(ActivatedRoute);
   private translate = inject(TranslateService);
+  private credentialConfigs = inject(CredentialConfigService);
   dataSet: UserAttributes[] = [];
 
   staticColumns = ['action'];
   dynamicColumnsPid = ['given_name', 'family_name', 'birthdate', 'email_address', 'mobile_phone_number', 'issuance_date', 'expiry_date'];
+  dynamicColumnsPidMdoc = ['given_name', 'family_name', 'birth_place', 'document_number', 'expiry_date'];
   dynamicColumnsDegrees = ['student_given_name', 'student_family_name', 'degree_level', 'degree_subject', 'institution_name', 'graduation_year', 'issuing_authority'];
-  dynamicColumnsBirthCertificateSdJwt = ['given_name', 'family_name', 'birthdate', 'doctor', 'hospital', 'issuance_date', 'expiry_date'];
+  dynamicColumnsBirthCertificateSdJwt = ['given_name', 'family_name', 'place_of_birth', 'hospital', 'issuance_date'];
   dynamicColumnsBirthCertificateMdoc = ['given_name', 'family_name', 'birth_date', 'doctor', 'hospital', 'issuance_date', 'expiry_date'];
 
   dynamicColumns :string[];
   displayedColumns :string[];
   useCaseId = "";
+  requiresVerification = false;
+
+  // Verification dialog
+  selected: UserAttributes | null = null;
+  state: VerificationState = 'form';
+  attempts = 0;
+  birthDate = '';
+  npi = '';
+  @ViewChild('firstField') firstField?: ElementRef<HTMLInputElement>;
 
   constructor(private router: Router, private _rest: RestControllerService) {
   }
@@ -38,9 +59,10 @@ export class PreAuthCodeFlowComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.useCaseId = params["useCaseId"];
     });
+    this.requiresVerification = VERIFIED_USE_CASES.includes(this.useCaseId);
     this.buildDisplayedColumns(this.useCaseId);
     this._rest.loadOidDataUser(this.useCaseId).subscribe((res: any) => {
-      this.dataSet = res;
+      this.dataSet = res ?? [];
     });
   }
 
@@ -48,22 +70,25 @@ export class PreAuthCodeFlowComponent implements OnInit {
     switch(useCaseId){
       case UseCaseId.oid_pid_inp_uc1:
         this.dynamicColumns = this.dynamicColumnsPid;
-        this.displayedColumns = [...this.staticColumns, ...this.dynamicColumnsPid];
+        break;
+      case UseCaseId.oid_pid_mdoc_uc1:
+        this.dynamicColumns = this.dynamicColumnsPidMdoc;
         break;
       case UseCaseId.oid_degree_uc1:
         this.dynamicColumns = this.dynamicColumnsDegrees;
-        this.displayedColumns = [...this.staticColumns, ...this.dynamicColumnsDegrees];
         break;
       case UseCaseId.oid_birth_certificate_sd_jwt_uc1:
         this.dynamicColumns = this.dynamicColumnsBirthCertificateSdJwt;
-        this.displayedColumns = [...this.staticColumns, ...this.dynamicColumnsBirthCertificateSdJwt];
         break;
       case UseCaseId.oid_birth_certificate_mdoc_uc1:
         this.dynamicColumns = this.dynamicColumnsBirthCertificateMdoc;
-        this.displayedColumns = [...this.staticColumns, ...this.dynamicColumnsBirthCertificateMdoc];
         break;
       default:
         throw new Error("no use case id found for " + useCaseId)
+    }
+    this.displayedColumns = [...this.staticColumns, ...this.dynamicColumns];
+    if (this.requiresVerification) {
+      this.displayedColumns.push('npi', 'status');
     }
   }
 
@@ -84,35 +109,93 @@ export class PreAuthCodeFlowComponent implements OnInit {
     return attribute ? attribute.value : '';
   }
 
-  createOffer(user: UserAttributes) {
-    const businessId = uuidv4();
-    const walletIdentifier = user.walletId || DEFAULT_WALLET_IDENTIFIER;
-    var createOfferRequest = {
-      "identifier": user.identifier,
-      "business_id": businessId,
-      "wallet_identifier": walletIdentifier,
-      "businessId": businessId,
-      "walletIdentifier": walletIdentifier,
-      "authorization_details": [{
-        "type": "openid_credential",
-        "credential_configuration_id": user.credentialConfigurationId ,
-      }]
-    } as CodeRequest;
-    if(user.credentialId){
-      createOfferRequest.authorization_details[0].credential_identifiers = [user.credentialId];
-    }
-    this._rest.generateOffer('/offer', JSON.stringify(createOfferRequest)).subscribe(
-      (offertRequest: Offer) => {
-        if (!offertRequest?.uri) {
-          alert(offerErrorMessage(this.translate, this._rest.lastOfferError));
-          return;
-        }
-        this.router.navigate(['display-oid4vci-offer'], { state: offertRequest });
-      })
+  fullName(user: UserAttributes): string {
+    return [this.getAttributeValue(user, 'given_name'), this.getAttributeValue(user, 'family_name')].filter(Boolean).join(' ');
   }
 
+  npiHint(user: UserAttributes): string {
+    if (user.npiHint) {
+      return user.npiHint;
+    }
+    const digits = (user.npi ?? '').replace(/\s+/g, '');
+    return digits ? '•'.repeat(Math.max(digits.length - 4, 0)) + digits.slice(-4) : '';
+  }
 
+  start(user: UserAttributes) {
+    if (!this.requiresVerification) {
+      this.createOffer(user);
+      return;
+    }
+    this.selected = user;
+    this.state = 'form';
+    this.attempts = 0;
+    this.birthDate = '';
+    this.npi = '';
+    setTimeout(() => this.firstField?.nativeElement.focus());
+  }
+
+  @HostListener('document:keydown.escape')
+  closeVerification() {
+    if (this.state !== 'checking' && this.state !== 'issuing') {
+      this.selected = null;
+    }
+  }
+
+  verify() {
+    const user = this.selected;
+    if (!user || !this.birthDate || !this.npi.trim() || this.state === 'checking' || this.state === 'locked') {
+      return;
+    }
+    this.state = 'checking';
+    forkJoin([this._rest.verifyCitizen(this.useCaseId, user, this.birthDate, this.npi), timer(CHECK_DELAY_MS)])
+      .pipe(map(([verified]) => verified))
+      .subscribe(verified => {
+        if (verified) {
+          this.state = 'verified';
+          setTimeout(() => {
+            this.state = 'issuing';
+            this.createOffer(user, true);
+          }, 700);
+          return;
+        }
+        this.attempts++;
+        this.state = this.attempts >= MAX_ATTEMPTS ? 'locked' : 'failed';
+      });
+  }
+
+  get attemptsLeft(): number {
+    return MAX_ATTEMPTS - this.attempts;
+  }
+
+  createOffer(user: UserAttributes, verified = false) {
+    const businessId = uuidv4();
+    const walletIdentifier = user.walletId || DEFAULT_WALLET_IDENTIFIER;
+    this.credentialConfigs.resolve(this.useCaseId, user.credentialConfigurationId).pipe(
+      switchMap(credentialConfigurationId => {
+        const createOfferRequest = {
+          "identifier": user.identifier,
+          "business_id": businessId,
+          "wallet_identifier": walletIdentifier,
+          "businessId": businessId,
+          "walletIdentifier": walletIdentifier,
+          "authorization_details": [{
+            "type": "openid_credential",
+            "credential_configuration_id": credentialConfigurationId,
+          }]
+        } as CodeRequest;
+        if (user.credentialId) {
+          createOfferRequest.authorization_details[0].credential_identifiers = [user.credentialId];
+        }
+        return this._rest.generateOffer('/offer', JSON.stringify(createOfferRequest));
+      })
+    ).subscribe((offertRequest: Offer) => {
+      if (!offertRequest?.uri) {
+        this.selected = null;
+        alert(offerErrorMessage(this.translate, this._rest.lastOfferError));
+        return;
+      }
+      const state = verified ? { ...offertRequest, verifiedHolder: this.fullName(user) } : offertRequest;
+      this.router.navigate(['display-oid4vci-offer'], { state });
+    });
+  }
 }
-
-
-

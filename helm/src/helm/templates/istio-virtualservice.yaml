@@ -69,6 +69,13 @@ spec:
               regex: {{ .Values.whiteListIP }}
           {{- end }}
         - uri:
+            prefix: /oid_pid_mdoc_uc1/
+          {{ if .Values.global.infrastructure.istio.adminPanelProtection }}
+          headers:
+            x-forwarded-for:
+              regex: {{ .Values.whiteListIP }}
+          {{- end }}
+        - uri:
             prefix: /oid_pid_inp_uc1/
           {{ if .Values.global.infrastructure.istio.adminPanelProtection }}
           headers:

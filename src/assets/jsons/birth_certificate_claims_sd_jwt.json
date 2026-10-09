@@ -1,108 +1,174 @@
 [
-  {
-    "identifier": "user-bc-sd-jwt-001",
-    "credentialConfigurationId": "eu.europa.ec.eudi.birth_certificate_vc_sd_jwt",
-    "credentialId": "birth_certificate_full_data",
-    "attributes": [
-      {
-        "name": "family_name",
-        "value": "Dubois"
-      },
-      {
-        "name": "given_name",
-        "value": "Lucas"
-      },
-      {
-        "name": "birthdate",
-        "value": "2026-04-10"
-      },
-      {
-        "name": "nationalities",
-        "value": "FR"
-      },
-      {
-        "name": "expiry_date",
-        "value": "2126-04-12"
-      },
-      {
-        "name": "issuing_country",
-        "value": "FR"
-      },
-      {
-        "name": "place_of_birth",
-        "value": "Paris, FR"
-      },
-      {
-        "name": "country_of_birth",
-        "value": "FR"
-      },
-      {
-        "name": "locality",
-        "value": "Paris"
-      },
-      {
-        "name": "issuance_date",
-        "value": "2026-04-12"
-      },
-      {
-        "name": "issuing_authority",
-        "value": "Mairie de Paris"
-      },
-      {
-        "name": "doctor",
-        "value": "Dr. Jean-Pierre Martin"
-      },
-      {
-        "name": "hospital",
-        "value": "Hôpital Necker-Enfants Malades"
-      }
-    ]
-  },
-  {
-    "identifier": "user-bc-sd-jwt-002",
-    "credentialConfigurationId": "eu.europa.ec.eudi.birth_certificate_vc_sd_jwt",
-    "credentialId": "birth_certificate",
-    "attributes": [
-      {
-        "name": "family_name",
-        "value": "Leroy"
-      },
-      {
-        "name": "given_name",
-        "value": "Chloé"
-      },
-      {
-        "name": "birthdate",
-        "value": "2023-11-17"
-      },
-      {
-        "name": "nationalities",
-        "value": "FR"
-      },
-      {
-        "name": "expiry_date",
-        "value": "2123-11-20"
-      },
-      {
-        "name": "issuing_country",
-        "value": "FR"
-      },
-      {
-        "name": "place_of_birth",
-        "value": "Lyon, FR"
-      },
-      {
-        "name": "country_of_birth",
-        "value": "FR"
-      },
-      {
-        "name": "locality",
-        "value": "Lyon"
-      },
-      {
-        "name": "issuance_date",
-        "value": "2023-11-20"
-      }
-    ]
-  }
+    {
+        "identifier": "user-bc-sd-jwt-001",
+        "credentialConfigurationId": "eu.europa.ec.eudi.birth_certificate_vc_sd_jwt",
+        "credentialId": "birth_certificate_full_data",
+        "npi": "2504123456",
+        "attributes": [
+            {
+                "name": "family_name",
+                "value": "Agossou"
+            },
+            {
+                "name": "given_name",
+                "value": "Mahougnon"
+            },
+            {
+                "name": "birthdate",
+                "value": "2026-04-10"
+            },
+            {
+                "name": "nationalities",
+                "value": "BJ"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2126-04-12"
+            },
+            {
+                "name": "issuing_country",
+                "value": "BJ"
+            },
+            {
+                "name": "place_of_birth",
+                "value": "Cotonou, BJ"
+            },
+            {
+                "name": "country_of_birth",
+                "value": "BJ"
+            },
+            {
+                "name": "locality",
+                "value": "Cotonou"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2026-04-12"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "Mairie de Cotonou"
+            },
+            {
+                "name": "doctor",
+                "value": "Dr Gildas Hounkpatin"
+            },
+            {
+                "name": "hospital",
+                "value": "Hôpital de la Mère et de l'Enfant Lagune, Cotonou"
+            }
+        ]
+    },
+    {
+        "identifier": "user-bc-sd-jwt-002",
+        "credentialConfigurationId": "eu.europa.ec.eudi.birth_certificate_vc_sd_jwt",
+        "credentialId": "birth_certificate",
+        "npi": "2504234567",
+        "attributes": [
+            {
+                "name": "family_name",
+                "value": "Kpadonou"
+            },
+            {
+                "name": "given_name",
+                "value": "Fifamè"
+            },
+            {
+                "name": "birthdate",
+                "value": "2023-11-17"
+            },
+            {
+                "name": "nationalities",
+                "value": "BJ"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2123-11-20"
+            },
+            {
+                "name": "issuing_country",
+                "value": "BJ"
+            },
+            {
+                "name": "place_of_birth",
+                "value": "Porto-Novo, BJ"
+            },
+            {
+                "name": "country_of_birth",
+                "value": "BJ"
+            },
+            {
+                "name": "locality",
+                "value": "Porto-Novo"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2023-11-20"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "Mairie de Porto-Novo"
+            }
+        ]
+    },
+    {
+        "identifier": "user-bc-sd-jwt-003",
+        "credentialConfigurationId": "eu.europa.ec.eudi.birth_certificate_vc_sd_jwt",
+        "credentialId": "birth_certificate_full_data",
+        "npi": "2504345678",
+        "attributes": [
+            {
+                "name": "family_name",
+                "value": "Zinsou"
+            },
+            {
+                "name": "given_name",
+                "value": "Ayaba"
+            },
+            {
+                "name": "birthdate",
+                "value": "2025-08-05"
+            },
+            {
+                "name": "nationalities",
+                "value": "BJ"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2125-08-07"
+            },
+            {
+                "name": "issuing_country",
+                "value": "BJ"
+            },
+            {
+                "name": "place_of_birth",
+                "value": "Parakou, BJ"
+            },
+            {
+                "name": "country_of_birth",
+                "value": "BJ"
+            },
+            {
+                "name": "locality",
+                "value": "Parakou"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2025-08-07"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "Mairie de Parakou"
+            },
+            {
+                "name": "doctor",
+                "value": "Dr Moussa Yarou"
+            },
+            {
+                "name": "hospital",
+                "value": "CHU départemental du Borgou, Parakou"
+            }
+        ]
+    }
 ]

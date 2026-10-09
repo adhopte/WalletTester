@@ -11,6 +11,7 @@
   window["env"]["flows"]["DTC_FLOW_NAME"] = "ICAO_INPERSON-DTC";
   window["env"]["flows"]["DTC_DATA_FILE"] = "/assets/jsons/dtc_type1_data.json";
   window["env"]["flows"]["USER_PID_CLAIMS_FILE"] = "/assets/jsons/user_pid_claims.json";
+  window["env"]["flows"]["USER_PID_MDOC_CLAIMS_FILE"] = "/assets/jsons/pid_mdoc_claims.json";
   window["env"]["flows"]["USER_DEGREE_CLAIMS_FILE"] = "/assets/jsons/user_degree_claims.json";
   window["env"]["flows"]["USER_BIRTH_CERTIFICATE_CLAIMS_SD_JWT_FILE"] = "/assets/jsons/birth_certificate_claims_sd_jwt.json";
   window["env"]["flows"]["USER_BIRTH_CERTIFICATE_CLAIMS_MDOC_FILE"] = "/assets/jsons/birth_certificate_claims_mdoc.json";

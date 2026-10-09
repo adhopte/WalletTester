@@ -19,6 +19,10 @@
             </div>
 
             <div class="offer__details">
+                <div *ngIf="offer?.verifiedHolder" class="verified-badge">
+                    <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
+                    <span>{{ 'offer.verifiedFor' | translate: { name: offer.verifiedHolder } }}</span>
+                </div>
                 <h1 class="offer__title">{{ 'offer.scanTitle' | translate }}</h1>
                 <ol class="offer__steps">
                     <li>{{ 'offer.scanStep1' | translate }}</li>

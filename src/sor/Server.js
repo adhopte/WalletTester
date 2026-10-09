@@ -4,6 +4,8 @@ const fs = require('fs').promises;
 const CredentialNotFoundException = require('./CredentialNotFoundException');
 require('dotenv').config();
 
+app.use(express.json());
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*"); // or specific origin
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
@@ -36,11 +38,46 @@ app.get('/:credentialConfigurationId/sor/', async (req, res) => {
     const credentialConfigurationId = req.params['credentialConfigurationId'];
     const pathFile = findPathFile(credentialConfigurationId);
     const jsonData = await loadJson(pathFile);
-    res.json(jsonData);
+    // The national ID number (NPI) is only used to verify the citizen, so the
+    // list exposes its last digits, never the full number.
+    res.json(jsonData.map(({ npi, ...user }) => npi ? { ...user, npiHint: maskNpi(npi) } : user));
   } catch (e) {
     handleException(e, res);
   }
 });
+
+/*
+ * Simulated root-of-trust check: before a credential offer is created, the agent
+ * enters the citizen's date of birth and NPI, which must match the record.
+ */
+app.post('/:credentialConfigurationId/sor/:identifier/verify', async (req, res) => {
+  try {
+    const pathFile = findPathFile(req.params['credentialConfigurationId']);
+    const jsonData = await loadJson(pathFile);
+    const user = jsonData.find(c => c.identifier === req.params['identifier']);
+    if (!user) {
+      return res.status(404).json({ verified: false, reason: 'not_found' });
+    }
+    const birthDate = (user.attributes || []).find(a => a.name === 'birth_date' || a.name === 'birthdate')?.value;
+    const npiOk = normalize(req.body?.npi) !== '' && normalize(req.body?.npi) === normalize(user.npi);
+    const birthDateOk = !!birthDate && String(req.body?.birthDate || '').trim() === birthDate;
+    if (npiOk && birthDateOk) {
+      return res.json({ verified: true });
+    }
+    res.status(401).json({ verified: false, reason: 'mismatch' });
+  } catch (e) {
+    handleException(e, res);
+  }
+});
+
+function normalize(value) {
+  return String(value ?? '').replace(/\s+/g, '');
+}
+
+function maskNpi(npi) {
+  const digits = normalize(npi);
+  return '•'.repeat(Math.max(digits.length - 4, 0)) + digits.slice(-4);
+}
 
 app.listen(process.env.SOR_SERVER_PORT, () => {
   console.log('Backend listening on http://localhost:' + process.env.SOR_SERVER_PORT);
@@ -71,7 +108,7 @@ async function findUserById(credentialConfigId, lambda, res) {
     if (!found) {
       res.status(404).send('User not found by identifier');
     } else {
-      const { credentialConfigurationId, credentialId, walletId, ...clean } = found;
+      const { credentialConfigurationId, credentialId, walletId, npi, ...clean } = found;
       res.json(clean);
     }
   } catch (e) {
@@ -83,6 +120,8 @@ function findPathFile(credentialId) {
   switch (credentialId) {
     case "oid_pid_inp_uc1":
       return process.env.PID_CLAIMS_FILE;
+    case "oid_pid_mdoc_uc1":
+      return process.env.PID_MDOC_CLAIMS_FILE;
     case "oid_degree_uc1":
       return process.env.DEGREE_CLAIMS_FILE;
     case "oid_birth_certificate_sd_jwt_uc1":

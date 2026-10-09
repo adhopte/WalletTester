@@ -1,0 +1,262 @@
+[
+    {
+        "identifier": "bj-pid-001",
+        "credentialConfigurationId": "eu.europa.ec.eudi.pid_mdoc_emrtd",
+        "credentialId": "credential_id_1",
+        "walletId": "w-001",
+        "npi": "1203456781",
+        "attributes": [
+            {
+                "name": "family_name",
+                "value": "Adjovi"
+            },
+            {
+                "name": "given_name",
+                "value": "Koffi"
+            },
+            {
+                "name": "birth_date",
+                "value": "1988-03-14"
+            },
+            {
+                "name": "birth_place",
+                "value": "Cotonou"
+            },
+            {
+                "name": "nationality",
+                "value": "BJ"
+            },
+            {
+                "name": "sex",
+                "value": "1"
+            },
+            {
+                "name": "resident_address",
+                "value": "Lot 1204, Quartier Haie Vive"
+            },
+            {
+                "name": "resident_city",
+                "value": "Cotonou"
+            },
+            {
+                "name": "resident_country",
+                "value": "BJ"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "ANIP"
+            },
+            {
+                "name": "issuing_country",
+                "value": "BJ"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2024-02-01"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2034-01-31"
+            },
+            {
+                "name": "document_number",
+                "value": "BJ0012034"
+            }
+        ]
+    },
+    {
+        "identifier": "bj-pid-002",
+        "credentialConfigurationId": "eu.europa.ec.eudi.pid_mdoc_emrtd",
+        "credentialId": "credential_id_1",
+        "walletId": "w-001",
+        "npi": "1304567892",
+        "attributes": [
+            {
+                "name": "family_name",
+                "value": "Dossou"
+            },
+            {
+                "name": "given_name",
+                "value": "Aïcha"
+            },
+            {
+                "name": "birth_date",
+                "value": "1995-07-22"
+            },
+            {
+                "name": "birth_place",
+                "value": "Porto-Novo"
+            },
+            {
+                "name": "nationality",
+                "value": "BJ"
+            },
+            {
+                "name": "sex",
+                "value": "2"
+            },
+            {
+                "name": "resident_address",
+                "value": "Rue 115, Ouando"
+            },
+            {
+                "name": "resident_city",
+                "value": "Porto-Novo"
+            },
+            {
+                "name": "resident_country",
+                "value": "BJ"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "ANIP"
+            },
+            {
+                "name": "issuing_country",
+                "value": "BJ"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2024-05-12"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2034-05-11"
+            },
+            {
+                "name": "document_number",
+                "value": "BJ0045871"
+            }
+        ]
+    },
+    {
+        "identifier": "bj-pid-003",
+        "credentialConfigurationId": "eu.europa.ec.eudi.pid_mdoc_emrtd",
+        "credentialId": "credential_id_1",
+        "walletId": "w-001",
+        "npi": "1405678903",
+        "attributes": [
+            {
+                "name": "family_name",
+                "value": "Houngbédji"
+            },
+            {
+                "name": "given_name",
+                "value": "Sèna"
+            },
+            {
+                "name": "birth_date",
+                "value": "1979-11-02"
+            },
+            {
+                "name": "birth_place",
+                "value": "Abomey"
+            },
+            {
+                "name": "nationality",
+                "value": "BJ"
+            },
+            {
+                "name": "sex",
+                "value": "1"
+            },
+            {
+                "name": "resident_address",
+                "value": "Carré 32, Godomey"
+            },
+            {
+                "name": "resident_city",
+                "value": "Abomey-Calavi"
+            },
+            {
+                "name": "resident_country",
+                "value": "BJ"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "ANIP"
+            },
+            {
+                "name": "issuing_country",
+                "value": "BJ"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2023-09-18"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2033-09-17"
+            },
+            {
+                "name": "document_number",
+                "value": "BJ0078214"
+            }
+        ]
+    },
+    {
+        "identifier": "bj-pid-004",
+        "credentialConfigurationId": "eu.europa.ec.eudi.pid_mdoc_emrtd",
+        "credentialId": "credential_id_1",
+        "walletId": "w-001",
+        "npi": "1506789014",
+        "attributes": [
+            {
+                "name": "family_name",
+                "value": "Bio"
+            },
+            {
+                "name": "given_name",
+                "value": "Rachida"
+            },
+            {
+                "name": "birth_date",
+                "value": "2001-01-30"
+            },
+            {
+                "name": "birth_place",
+                "value": "Parakou"
+            },
+            {
+                "name": "nationality",
+                "value": "BJ"
+            },
+            {
+                "name": "sex",
+                "value": "2"
+            },
+            {
+                "name": "resident_address",
+                "value": "Quartier Banikanni"
+            },
+            {
+                "name": "resident_city",
+                "value": "Parakou"
+            },
+            {
+                "name": "resident_country",
+                "value": "BJ"
+            },
+            {
+                "name": "issuing_authority",
+                "value": "ANIP"
+            },
+            {
+                "name": "issuing_country",
+                "value": "BJ"
+            },
+            {
+                "name": "issuance_date",
+                "value": "2025-03-03"
+            },
+            {
+                "name": "expiry_date",
+                "value": "2035-03-02"
+            },
+            {
+                "name": "document_number",
+                "value": "BJ0091446"
+            }
+        ]
+    }
+]

@@ -24,28 +24,30 @@
     "errorPrefix": "Erreur : {{message}}",
     "start": "Commencer",
     "back": "Retour",
-    "backHome": "Retour à l’accueil"
+    "backHome": "Retour à l’accueil",
+    "cancel": "Annuler"
   },
   "home": {
     "selectUseCase": "Sélectionnez un cas d'usage",
-    "descriptionText": "Le flux à code pré-autorisé (Pre-Authorized Code Flow) permet aux utilisateurs de recevoir des attestations numériques dans leur portefeuille EUDI par un simple scan de QR code. L'émetteur génère un QR code contenant une offre d'attestation et un code pré-autorisé, que l'utilisateur scanne avec son portefeuille. Le portefeuille se connecte ensuite de manière sécurisée à l'émetteur, utilise le code pré-autorisé et récupère l'attestation vérifiable sans nécessiter de flux d'autorisation via un navigateur. Une fois validée et émise, l'attestation est stockée de manière sécurisée dans le portefeuille de l'utilisateur, offrant une expérience d'émission fluide, sûre et conviviale.",
-    "eyebrow": "Portefeuille EUDI · OpenID4VCI",
-    "heroTitle": "Délivrez des attestations numériques dans le portefeuille des citoyens",
+    "descriptionText": "Les attestations sont délivrées avec le flux OpenID4VCI à code pré-autorisé. Une fois l’identité du citoyen vérifiée auprès du registre national, le portail crée une offre d’attestation et l’affiche sous forme de QR code. Le citoyen la scanne avec le Portefeuille ANIP, qui se connecte de manière sécurisée à l’émetteur, utilise le code pré-autorisé et enregistre l’attestation vérifiable sur le téléphone, sans connexion via un navigateur.",
+    "eyebrow": "Portefeuille ANIP · OpenID4VCI",
+    "heroTitle": "Délivrez des attestations numériques dans le Portefeuille ANIP des citoyens",
     "selectUseCaseHint": "Choisissez le service à utiliser pour délivrer une attestation.",
     "howItWorks": "Comment ça marche",
-    "step1": "Choisissez un cas d’usage et sélectionnez le dossier du citoyen.",
-    "step2": "Le portail crée une offre d’attestation et affiche un QR code.",
-    "step3": "Le citoyen scanne le QR code avec son portefeuille EUDI pour recevoir l’attestation.",
-    "heroLead": "Délivrez en toute sécurité, en présentiel, des attestations d’identité et d’état civil dans le portefeuille européen d’identité numérique."
+    "step1": "Choisissez une attestation et sélectionnez le dossier pré-autorisé du citoyen.",
+    "step2": "Vérifiez l’identité du citoyen avec sa date de naissance et son NPI.",
+    "step3": "Le citoyen scanne le QR code avec son Portefeuille ANIP pour recevoir l’attestation.",
+    "heroLead": "Vérifiez l’identité du citoyen, puis délivrez en toute sécurité sa carte d’identité numérique ou son acte de naissance dans le Portefeuille ANIP."
   },
   "useCases": {
     "classic": "Agent en présentiel classique",
     "dtc_type1_inp": "DTC Type 1 - Agent en présentiel",
     "oid_pid_inp_uc1": "Émission de PID - Agent en présentiel (UC-1)",
     "oid_degree_uc1": "Connexion étudiant université (UC-1)",
-    "oid_birth_certificate_sd_jwt_uc1": "Connexion acte de naissance (SD-JWT)",
+    "oid_birth_certificate_sd_jwt_uc1": "Acte de naissance numérique (SD-JWT)",
     "oid_birth_certificate_mdoc_uc1": "Connexion acte de naissance (MDOC)",
-    "oid_pid_idp_uc2": "Émission - Basée sur une connexion IDP (UC-2)"
+    "oid_pid_idp_uc2": "Émission - Basée sur une connexion IDP (UC-2)",
+    "oid_pid_mdoc_uc1": "Carte d’identité numérique (PID mDoc)"
   },
   "createTransaction": {
     "title": "FORMULAIRE DE TRANSACTION",
@@ -83,9 +85,10 @@
     "issuerUnreachable": "Le serveur du portail n'a pas pu joindre l'émetteur d'attestations.",
     "issuerResponse": "Réponse de l'émetteur :",
     "scanTitle": "Scannez pour recevoir l’attestation",
-    "scanStep1": "Ouvrez l’application Portefeuille EUDI sur le téléphone.",
+    "scanStep1": "Ouvrez l’application Portefeuille ANIP sur le téléphone.",
     "scanStep2": "Scannez ce QR code ou ouvrez le lien ci-dessous sur le téléphone.",
-    "scanStep3": "Lorsque cela vous est demandé, saisissez le code de transaction."
+    "scanStep3": "Lorsque cela vous est demandé, saisissez le code de transaction.",
+    "verifiedFor": "Identité vérifiée : {{name}}"
   },
   "preAuth": {
     "createOffer": "Créer une offre",
@@ -178,6 +181,33 @@
     "graduation_year": "Année d’obtention",
     "issuing_authority": "Autorité de délivrance",
     "doctor": "Médecin",
-    "hospital": "Hôpital"
+    "hospital": "Hôpital",
+    "birth_place": "Lieu de naissance",
+    "place_of_birth": "Lieu de naissance",
+    "nationality": "Nationalité",
+    "document_number": "Numéro du document"
+  },
+  "verify": {
+    "listTitle": "Dossiers pré-autorisés",
+    "listSubtitle": "Ces citoyens sont pré-autorisés. Vérifiez l’identité du citoyen pour délivrer l’attestation dans son Portefeuille ANIP.",
+    "actionHeader": "Délivrer",
+    "action": "Vérifier et délivrer",
+    "npi": "NPI",
+    "status": "Statut",
+    "preAuthorized": "Pré-autorisé",
+    "title": "Vérification d’identité",
+    "subtitle": "Confirmez l’identité du citoyen auprès du registre national (RNPP) avant de délivrer l’attestation.",
+    "holder": "Citoyen",
+    "birthDate": "Date de naissance",
+    "npiLabel": "Numéro Personnel d’Identification (NPI)",
+    "npiPlaceholder": "10 chiffres",
+    "npiHelp": "Tel qu’indiqué sur la carte d’identité ANIP ou l’acte de naissance du citoyen.",
+    "submit": "Vérifier l’identité",
+    "checking": "Vérification auprès du registre national…",
+    "success": "Identité vérifiée",
+    "issuing": "Création de l’offre d’attestation…",
+    "failed": "Les informations ne correspondent pas au registre national. Tentative(s) restante(s) : {{attempts}}.",
+    "locked": "Trop de tentatives échouées. La vérification est bloquée pour ce dossier.",
+    "footnote": "La vérification est journalisée par l’ANIP. Les données servent uniquement à délivrer cette attestation."
   }
 }

@@ -1,16 +1,19 @@
 <div class="app-container">
     <a class="back-link" routerLink="/home"><i class="bi bi-arrow-left" aria-hidden="true"></i> {{ 'common.back' | translate }}</a>
     <h1 class="page-title">{{ ('useCases.' + useCaseId) | translate }}</h1>
-    <p class="page-subtitle">{{ 'preAuth.subtitle' | translate }}</p>
+    <p class="page-subtitle">{{ (requiresVerification ? 'verify.listSubtitle' : 'preAuth.subtitle') | translate }}</p>
 
-    <label class="titleBar">{{ 'preAuth.holders' | translate }}</label>
+    <label class="titleBar">{{ (requiresVerification ? 'verify.listTitle' : 'preAuth.holders') | translate }}</label>
     <div class="app-card cardSetting table-card">
         <div class="table-wrap">
             <table mat-table [dataSource]="dataSet" class="table">
                 <ng-container matColumnDef="action">
-                    <th mat-header-cell *matHeaderCellDef> {{ 'preAuth.createOffer' | translate }} </th>
+                    <th mat-header-cell *matHeaderCellDef> {{ (requiresVerification ? 'verify.actionHeader' : 'preAuth.createOffer') | translate }} </th>
                     <td mat-cell *matCellDef="let element">
-                        <button type="button" (click)="createOffer(element)"><i class="bi bi-qr-code" aria-hidden="true"></i> {{ 'preAuth.create' | translate }}</button>
+                        <button type="button" (click)="start(element)">
+                            <i class="bi" [class.bi-shield-check]="requiresVerification" [class.bi-qr-code]="!requiresVerification" aria-hidden="true"></i>
+                            {{ (requiresVerification ? 'verify.action' : 'preAuth.create') | translate }}
+                        </button>
                     </td>
                 </ng-container>
 
@@ -19,9 +22,85 @@
                     <td mat-cell *matCellDef="let elt" class="wrap-cell">{{ getAttributeValue(elt, column) }}</td>
                 </ng-container>
 
+                <ng-container matColumnDef="npi">
+                    <th mat-header-cell *matHeaderCellDef>{{ 'verify.npi' | translate }}</th>
+                    <td mat-cell *matCellDef="let elt" class="npi-cell">{{ npiHint(elt) }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef>{{ 'verify.status' | translate }}</th>
+                    <td mat-cell *matCellDef="let elt"><span class="status-chip"><i class="bi bi-hourglass-split" aria-hidden="true"></i> {{ 'verify.preAuthorized' | translate }}</span></td>
+                </ng-container>
+
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
         </div>
+    </div>
+</div>
+
+<!-- Identity verification (simulated root of trust) -->
+<div class="modal-backdrop-custom" *ngIf="selected" (click)="closeVerification()">
+    <div class="verify-dialog" role="dialog" aria-modal="true" aria-labelledby="verify-title" (click)="$event.stopPropagation()">
+        <div class="verify-dialog__band" aria-hidden="true"></div>
+        <button type="button" class="verify-dialog__close" (click)="closeVerification()" [attr.aria-label]="'common.close' | translate"
+                [disabled]="state === 'checking' || state === 'issuing'"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+
+        <div class="verify-dialog__head">
+            <span class="verify-dialog__icon"><i class="bi bi-fingerprint" aria-hidden="true"></i></span>
+            <div>
+                <h2 id="verify-title">{{ 'verify.title' | translate }}</h2>
+                <p>{{ 'verify.subtitle' | translate }}</p>
+            </div>
+        </div>
+
+        <div class="holder">
+            <span class="holder__label">{{ 'verify.holder' | translate }}</span>
+            <strong>{{ fullName(selected) }}</strong>
+            <span class="holder__meta">{{ ('useCases.' + useCaseId) | translate }}</span>
+        </div>
+
+        <form *ngIf="state === 'form' || state === 'failed' || state === 'locked'" (ngSubmit)="verify()" novalidate>
+            <div class="form-group">
+                <label for="verify-dob">{{ 'verify.birthDate' | translate }}</label>
+                <input #firstField id="verify-dob" name="birthDate" type="date" class="form-control" [(ngModel)]="birthDate"
+                       required autocomplete="off" [disabled]="state === 'locked'">
+            </div>
+            <div class="form-group">
+                <label for="verify-npi">{{ 'verify.npiLabel' | translate }}</label>
+                <input id="verify-npi" name="npi" type="text" class="form-control" [(ngModel)]="npi" inputmode="numeric"
+                       maxlength="14" required autocomplete="off" [placeholder]="'verify.npiPlaceholder' | translate" [disabled]="state === 'locked'">
+                <small>{{ 'verify.npiHelp' | translate }}</small>
+            </div>
+
+            <div class="alert-box alert-box--error" *ngIf="state === 'failed'" role="alert">
+                <i class="bi bi-x-octagon" aria-hidden="true"></i>
+                <span>{{ 'verify.failed' | translate: { attempts: attemptsLeft } }}</span>
+            </div>
+            <div class="alert-box alert-box--error" *ngIf="state === 'locked'" role="alert">
+                <i class="bi bi-lock" aria-hidden="true"></i>
+                <span>{{ 'verify.locked' | translate }}</span>
+            </div>
+
+            <div class="verify-dialog__actions">
+                <button type="button" class="btn-outline-brand" (click)="closeVerification()">{{ 'common.cancel' | translate }}</button>
+                <button type="submit" class="button" [disabled]="!birthDate || !npi.trim() || state === 'locked'">
+                    <i class="bi bi-shield-check" aria-hidden="true"></i> {{ 'verify.submit' | translate }}
+                </button>
+            </div>
+        </form>
+
+        <div class="progress-state" *ngIf="state === 'checking'" role="status">
+            <span class="spinner" aria-hidden="true"></span>
+            <p>{{ 'verify.checking' | translate }}</p>
+        </div>
+
+        <div class="progress-state progress-state--ok" *ngIf="state === 'verified' || state === 'issuing'" role="status">
+            <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
+            <p><strong>{{ 'verify.success' | translate }}</strong></p>
+            <p *ngIf="state === 'issuing'">{{ 'verify.issuing' | translate }}</p>
+        </div>
+
+        <p class="verify-dialog__foot"><i class="bi bi-lock-fill" aria-hidden="true"></i> {{ 'verify.footnote' | translate }}</p>
     </div>
 </div>

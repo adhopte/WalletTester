@@ -20,6 +20,10 @@ export class ConfigService {
     return (this.window as any).env?.flows["USER_PID_CLAIMS_FILE"];
   }
 
+  userPidMdocClaimsFile(): string {
+    return (this.window as any).env?.flows["USER_PID_MDOC_CLAIMS_FILE"];
+  }
+
   userDegreeClaimsFile(): string {
     return (this.window as any).env?.flows["USER_DEGREE_CLAIMS_FILE"];
   }

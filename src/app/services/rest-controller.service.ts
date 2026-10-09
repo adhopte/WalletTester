@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core'
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http'
 import { Observable, of } from 'rxjs'
-import { catchError, tap } from 'rxjs/operators'
+import { catchError, map, tap } from 'rxjs/operators'
 import { ResponseParser } from './../utils/ResponseParser'
 import { LocalStorageService } from './../services/local-storage.service'
 import { environment } from "../../environments/environment"
 import { ConfigService } from './config-service'
 import { Integer } from 'asn1js'
-import { UseCaseId } from '../models/Oid4vciModels'
+import { UseCaseId, UserAttributes } from '../models/Oid4vciModels'
 
 const gipsHost = environment.gipsHost
 
@@ -80,6 +80,8 @@ export class RestControllerService {
     switch (useCaseId) {
       case UseCaseId.oid_pid_inp_uc1:
         return this.handleSorData(this.configs.userPidClaimsFile(), useCaseId);
+      case UseCaseId.oid_pid_mdoc_uc1:
+        return this.handleSorData(this.configs.userPidMdocClaimsFile(), useCaseId);
       case UseCaseId.oid_degree_uc1:
         return this.handleSorData(this.configs.userDegreeClaimsFile(), useCaseId);
       case UseCaseId.oid_birth_certificate_sd_jwt_uc1:
@@ -112,6 +114,31 @@ export class RestControllerService {
     );
   }
 
+
+  /**
+   * Simulated root-of-trust check of a citizen (date of birth + NPI) by the SOR server.
+   * Emits true when the details match the record.
+   */
+  verifyCitizen(useCaseId: string, user: UserAttributes, birthDate: string, npi: string): Observable<boolean> {
+    if (!environment.useSorServer) {
+      // Records were read from a static file, which still contains the NPI
+      const recordBirthDate = user.attributes.find(a => a.name === 'birth_date' || a.name === 'birthdate')?.value;
+      const clean = (v: string | undefined) => (v ?? '').replace(/\s+/g, '');
+      return of(!!user.npi && clean(npi) === clean(user.npi) && birthDate === recordBirthDate);
+    }
+    const url = this.configs.sorHost() + environment.sorBasePath + "/" + useCaseId + "/sor/" + encodeURIComponent(user.identifier) + "/verify";
+    return this.httpClient.post<{ verified: boolean }>(url, JSON.stringify({ birthDate, npi }), this.httpOptions).pipe(
+      map(res => res?.verified === true),
+      catchError(() => of(false))
+    );
+  }
+
+  /** The credential issuer's metadata (null when unavailable) */
+  getIssuerMetadata(): Observable<any> {
+    return this.httpClient.get(this.configs.oid4vciHost() + oid4vciBasePath + '/.well-known/openid-credential-issuer').pipe(
+      catchError(() => of(null))
+    );
+  }
 
   /** Details of the last failed generateOffer call, for display to the user */
   lastOfferError: { status: number, detail: string } | null = null;

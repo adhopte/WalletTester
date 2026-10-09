@@ -29,6 +29,9 @@ RUN rm -f /etc/nginx/http.d/default.conf && chmod +x /app/entrypoint.sh
 ENV PORT=10000
 # Optional: upstream for the GIPS API (the "classic" / DTC flows), e.g. https://gips.example.com
 ENV GIPS_UPSTREAM=''
+# Credential issuer and the use cases listed on the home page (see render/entrypoint.sh)
+ENV ISSUER_URL='https://issuer.eu-wallet.prep.smartid.nuagein.io'
+ENV PORTAL_USE_CASES='["oid_pid_mdoc_uc1","oid_birth_certificate_sd_jwt_uc1"]'
 
 ENV SOR_SERVER_PORT=8082
 ENV IPV_HOST=''
@@ -39,6 +42,7 @@ ENV SUPPORTED_USE_CASES='["classic","dtc_type1_inp"]'
 ENV DTC_FLOW_NAME='ICAO_INPERSON-DTC'
 ENV DTC_DATA_FILE='/in-person-portal/assets/jsons/dtc_type1_data.json'
 ENV USER_PID_CLAIMS_FILE='/in-person-portal/assets/jsons/user_pid_claims.json'
+ENV USER_PID_MDOC_CLAIMS_FILE='/in-person-portal/assets/jsons/pid_mdoc_claims.json'
 ENV USER_DEGREE_CLAIMS_FILE='/in-person-portal/assets/jsons/user_degree_claims.json'
 ENV USER_BIRTH_CERTIFICATE_CLAIMS_SD_JWT_FILE='/in-person-portal/assets/jsons/birth_certificate_claims_sd_jwt.json'
 ENV USER_BIRTH_CERTIFICATE_CLAIMS_MDOC_FILE='/in-person-portal/assets/jsons/birth_certificate_claims_mdoc.json'
@@ -48,6 +52,7 @@ ENV UC2_CRED_NAME='eu.europa.ec.eudi.tax_sd_jwt_vc'
 
 ENV JSONS=/usr/share/nginx/html/in-person-portal/assets/jsons
 ENV PID_CLAIMS_FILE=$JSONS/user_pid_claims.json \
+    PID_MDOC_CLAIMS_FILE=$JSONS/pid_mdoc_claims.json \
     DEGREE_CLAIMS_FILE=$JSONS/user_degree_claims.json \
     BIRTH_CERTIFICATE_CLAIMS_SD_JWT_FILE=$JSONS/birth_certificate_claims_sd_jwt.json \
     BIRTH_CERTIFICATE_CLAIMS_MDOC_FILE=$JSONS/birth_certificate_claims_mdoc.json \
