@@ -88,7 +88,8 @@
     "scanStep1": "Ouvrez l’application Portefeuille ANIP sur le téléphone.",
     "scanStep2": "Scannez ce QR code ou ouvrez le lien ci-dessous sur le téléphone.",
     "scanStep3": "Lorsque cela vous est demandé, saisissez le code de transaction.",
-    "verifiedFor": "Identité vérifiée : {{name}}"
+    "verifiedFor": "Identité vérifiée : {{name}}",
+    "verifiedAssisted": "Identité vérifiée avec l’assistance de l’administrateur : {{name}}"
   },
   "preAuth": {
     "createOffer": "Créer une offre",
@@ -185,7 +186,28 @@
     "birth_place": "Lieu de naissance",
     "place_of_birth": "Lieu de naissance",
     "nationality": "Nationalité",
-    "document_number": "Numéro du document"
+    "document_number": "Numéro du document",
+    "personal_administrative_number": "NPI",
+    "birth_record_reference": "Référence de l’acte",
+    "gender": "Sexe",
+    "age_over_18": "Plus de 18 ans",
+    "birth_country": "Pays de naissance",
+    "birth_state": "Département de naissance",
+    "birth_city": "Ville de naissance",
+    "resident_address": "Adresse",
+    "family_name_birth": "Nom de naissance",
+    "given_name_birth": "Prénom de naissance",
+    "mother_family_name": "Nom de la mère",
+    "mother_given_name": "Prénom de la mère",
+    "father_family_name": "Nom du père",
+    "father_given_name": "Prénom du père",
+    "registration_date": "Date d’enregistrement",
+    "registration_place": "Lieu d’enregistrement",
+    "declarant_name": "Déclarant",
+    "declarant_relationship": "Lien du déclarant",
+    "marginal_mentions1": "Mention marginale 1",
+    "marginal_mentions2": "Mention marginale 2",
+    "issuing_country": "Pays de délivrance"
   },
   "verify": {
     "listTitle": "Dossiers pré-autorisés",
@@ -209,6 +231,30 @@
     "failed": "Les informations ne correspondent pas au registre national. Tentative(s) restante(s) : {{attempts}}.",
     "locked": "Trop de tentatives échouées. La vérification est bloquée pour ce dossier.",
     "footnote": "La vérification est journalisée par l’ANIP. Les données servent uniquement à délivrer cette attestation.",
-    "photo": "Photo"
+    "photo": "Photo",
+    "adminTitle": "Administrateur – données du dossier",
+    "adminFill": "Remplir automatiquement",
+    "failedAdmin": "Les informations ne correspondent pas au dossier. Utilisez les données du dossier ci-dessus."
+  },
+  "admin": {
+    "link": "Administration",
+    "linkActive": "Administrateur",
+    "loginTitle": "Connexion administrateur",
+    "loginIntro": "Réservé aux administrateurs du Portail CIVIC.",
+    "password": "Mot de passe",
+    "signIn": "Se connecter",
+    "signOut": "Se déconnecter",
+    "invalidPassword": "Mot de passe incorrect.",
+    "notConfigured": "Le compte administrateur n’est pas configuré sur ce serveur.",
+    "unavailable": "Le serveur est indisponible. Réessayez plus tard.",
+    "sessionExpired": "Votre session a expiré. Veuillez vous reconnecter.",
+    "title": "Administration – pré-autorisations",
+    "subtitle": "Toutes les données de pré-autorisation, pour assister un agent lorsque le citoyen ne peut pas fournir ses informations.",
+    "notice": "Données personnelles confidentielles. À utiliser uniquement pour assister un citoyen présent, sans jamais les communiquer.",
+    "loading": "Chargement des dossiers…",
+    "record": "Dossier",
+    "details": "Détails",
+    "issue": "Délivrer",
+    "credentialConfiguration": "Configuration d’attestation"
   }
 }

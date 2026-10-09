@@ -100,4 +100,10 @@ Test citizens (date of birth / accepted ID numbers):
 | Birth certificate | Mathieu Ahouandjinou | 1988-07-21 | `COT-1988-013742` or `EX-NAISS-2026-013742` |
 | Birth certificate | Estelle Houngbedji | 2010-11-23 | `PNO-2010-007314` |
 
+### Administrator
+
+The **Admin** link in the header opens the administrator area (`/admin`). After signing in, the administrator sees every pre-authorization record of the verified use cases with all its data (date of birth, ID numbers, claims, portrait). From there, or from the record list while signed in, **Issue** opens the verification dialog with the record's data and an **Auto-fill** button, so an agent can be assisted when the citizen cannot provide their details. The administrator is not locked out after failed attempts, and the QR code page shows that the verification was assisted.
+
+The password is the `ADMIN_PASSWORD` environment variable of the service; the administrator area is disabled when it is not set. On Render, the Blueprint generates a random value: open the service's **Environment** page to read or change it. Sessions last 8 hours and are kept in memory, so a restart signs the administrator out.
+
 To test the image locally: `docker build -f Dockerfile.render -t civic-portal . && docker run -p 10000:10000 civic-portal`, then open http://localhost:10000.

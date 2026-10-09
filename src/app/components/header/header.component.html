@@ -5,6 +5,11 @@
 <div class="gov-bar">
   <div class="gov-bar__inner">
     <span class="gov-bar__label">{{ 'app.republic' | translate }}</span>
+    <div class="gov-bar__tools">
+    <a class="admin-link" routerLink="/admin" [class.active]="admin.isAdmin()">
+      <i class="bi" [class.bi-person-lock]="!admin.isAdmin()" [class.bi-person-check-fill]="admin.isAdmin()" aria-hidden="true"></i>
+      <span>{{ (admin.isAdmin() ? 'admin.linkActive' : 'admin.link') | translate }}</span>
+    </a>
     <div class="language-switcher" role="group" [attr.aria-label]="'language.label' | translate">
       <i class="bi bi-globe2" aria-hidden="true"></i>
       @for (lang of languageService.languages; track lang.code) {
@@ -15,6 +20,7 @@
                 [title]="lang.label"
                 (click)="changeLanguage(lang.code)">{{ lang.code | uppercase }}</button>
       }
+    </div>
     </div>
   </div>
 </div>

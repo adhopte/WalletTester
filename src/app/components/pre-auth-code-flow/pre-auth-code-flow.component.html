@@ -70,6 +70,19 @@
             </div>
         </div>
 
+        <div class="admin-panel" *ngIf="admin.isAdmin() && (state === 'form' || state === 'failed')">
+            <div class="admin-panel__head">
+                <span><i class="bi bi-person-check-fill" aria-hidden="true"></i> {{ 'verify.adminTitle' | translate }}</span>
+                <button type="button" class="btn-outline-brand admin-panel__fill" (click)="fillFromRecord()">
+                    <i class="bi bi-magic" aria-hidden="true"></i> {{ 'verify.adminFill' | translate }}
+                </button>
+            </div>
+            <dl>
+                <div><dt>{{ 'verify.birthDate' | translate }}</dt><dd>{{ recordBirthDate(selected) }}</dd></div>
+                <div><dt>{{ 'verify.npi' | translate }}</dt><dd>{{ idNumbers(selected).join(' · ') }}</dd></div>
+            </dl>
+        </div>
+
         <form *ngIf="state === 'form' || state === 'failed' || state === 'locked'" (ngSubmit)="verify()" novalidate>
             <div class="form-group">
                 <label for="verify-dob">{{ 'verify.birthDate' | translate }}</label>
@@ -85,7 +98,7 @@
 
             <div class="alert-box alert-box--error" *ngIf="state === 'failed'" role="alert">
                 <i class="bi bi-x-octagon" aria-hidden="true"></i>
-                <span>{{ 'verify.failed' | translate: { attempts: attemptsLeft } }}</span>
+                <span>{{ (admin.isAdmin() ? 'verify.failedAdmin' : 'verify.failed') | translate: { attempts: attemptsLeft } }}</span>
             </div>
             <div class="alert-box alert-box--error" *ngIf="state === 'locked'" role="alert">
                 <i class="bi bi-lock" aria-hidden="true"></i>

@@ -16,6 +16,10 @@ services:
       # Use cases listed on the home page
       - key: PORTAL_USE_CASES
         value: '["oid_pid_mdoc_uc1","oid_birth_certificate_sd_jwt_uc1"]'
+      # Password of the portal administrator (full pre-authorization data, assisted
+      # issuance). Render generates a random value: see the service's Environment page.
+      - key: ADMIN_PASSWORD
+        generateValue: true
       # GIPS API base URL (needed for the "classic" and DTC use cases); leave empty if unused
       - key: GIPS_UPSTREAM
         sync: false

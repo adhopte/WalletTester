@@ -1,0 +1,108 @@
+<div class="app-container">
+  <a class="back-link" routerLink="/home"><i class="bi bi-arrow-left" aria-hidden="true"></i> {{ 'common.backHome' | translate }}</a>
+
+  @if (!admin.isAdmin()) {
+    <div class="login">
+      <label class="titleBar">{{ 'admin.loginTitle' | translate }}</label>
+      <form class="app-card cardSetting" (ngSubmit)="login()">
+        <p class="login__intro"><i class="bi bi-person-lock" aria-hidden="true"></i> {{ 'admin.loginIntro' | translate }}</p>
+        <div class="form-group">
+          <label for="admin-password">{{ 'admin.password' | translate }}</label>
+          <input id="admin-password" name="password" type="password" class="form-control" [(ngModel)]="password"
+                 autocomplete="current-password" required>
+        </div>
+        @if (loginError) {
+          <p class="error-box" role="alert">{{ loginError | translate }}</p>
+        }
+        <button type="submit" class="button" [disabled]="!password || signingIn">
+          <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i> {{ 'admin.signIn' | translate }}
+        </button>
+      </form>
+    </div>
+  } @else {
+    <div class="admin-head">
+      <div>
+        <h1 class="page-title">{{ 'admin.title' | translate }}</h1>
+        <p class="page-subtitle">{{ 'admin.subtitle' | translate }}</p>
+      </div>
+      <button type="button" class="btn-outline-brand" (click)="logout()"><i class="bi bi-box-arrow-right" aria-hidden="true"></i> {{ 'admin.signOut' | translate }}</button>
+    </div>
+
+    <div class="notice" role="note"><i class="bi bi-shield-exclamation" aria-hidden="true"></i> {{ 'admin.notice' | translate }}</div>
+
+    @if (loading) {
+      <p class="page-subtitle">{{ 'admin.loading' | translate }}</p>
+    }
+
+    @for (section of sections; track section.useCaseId) {
+      <label class="titleBar">{{ useCaseLabel(section.useCaseId) }} · {{ section.records.length }}</label>
+      <div class="app-card cardSetting table-card">
+        <div class="table-wrap">
+          <table class="records">
+            <thead>
+              <tr>
+                <th>{{ 'verify.photo' | translate }}</th>
+                <th>{{ 'verify.holder' | translate }}</th>
+                <th>{{ 'verify.birthDate' | translate }}</th>
+                <th>{{ 'verify.npi' | translate }}</th>
+                <th>{{ 'admin.record' | translate }}</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (user of section.records; track user.identifier) {
+                <tr>
+                  <td>
+                    @if (portrait(user); as src) {
+                      <img class="thumb" [src]="src" alt="">
+                    } @else {
+                      <span class="thumb thumb--empty"><i class="bi bi-person" aria-hidden="true"></i></span>
+                    }
+                  </td>
+                  <td><strong>{{ fullName(user) }}</strong></td>
+                  <td class="mono">{{ birthDate(user) }}</td>
+                  <td>
+                    @for (id of idNumbers(user); track id.label) {
+                      <div class="id"><span class="id__label">{{ id.label }}</span> <span class="mono">{{ id.value }}</span></div>
+                    }
+                  </td>
+                  <td class="small-cell">
+                    <div class="mono">{{ user.identifier }}</div>
+                    <div class="muted">{{ user.credentialId }}</div>
+                  </td>
+                  <td class="actions">
+                    <button type="button" class="btn-outline-brand small-btn" (click)="toggle(section.useCaseId + user.identifier)"
+                            [attr.aria-expanded]="expanded.has(section.useCaseId + user.identifier)">
+                      <i class="bi" [class.bi-chevron-down]="!expanded.has(section.useCaseId + user.identifier)" [class.bi-chevron-up]="expanded.has(section.useCaseId + user.identifier)" aria-hidden="true"></i>
+                      {{ 'admin.details' | translate }}
+                    </button>
+                    <button type="button" class="button small-btn" (click)="issue(section.useCaseId, user)">
+                      <i class="bi bi-qr-code" aria-hidden="true"></i> {{ 'admin.issue' | translate }}
+                    </button>
+                  </td>
+                </tr>
+                @if (expanded.has(section.useCaseId + user.identifier)) {
+                  <tr class="details-row">
+                    <td colspan="6">
+                      <div class="details">
+                        @if (portrait(user); as src) {
+                          <img class="details__photo" [src]="src" [alt]="fullName(user)">
+                        }
+                        <dl>
+                          <div><dt>{{ 'admin.credentialConfiguration' | translate }}</dt><dd class="mono">{{ user.credentialConfigurationId }}</dd></div>
+                          @for (claim of claims(user); track claim.name) {
+                            <div><dt>{{ claimLabel(claim.name) }}</dt><dd>{{ claim.value }}</dd></div>
+                          }
+                        </dl>
+                      </div>
+                    </td>
+                  </tr>
+                }
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    }
+  }
+</div>

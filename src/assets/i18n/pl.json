@@ -88,7 +88,8 @@
     "scanStep1": "Otwórz aplikację Portfel ANIP na telefonie.",
     "scanStep2": "Zeskanuj ten kod QR lub otwórz poniższy link na telefonie.",
     "scanStep3": "Gdy pojawi się prośba, wpisz kod transakcji.",
-    "verifiedFor": "Tożsamość zweryfikowana: {{name}}"
+    "verifiedFor": "Tożsamość zweryfikowana: {{name}}",
+    "verifiedAssisted": "Tożsamość zweryfikowana z pomocą administratora: {{name}}"
   },
   "preAuth": {
     "createOffer": "Utwórz ofertę",
@@ -185,7 +186,28 @@
     "birth_place": "Miejsce urodzenia",
     "place_of_birth": "Miejsce urodzenia",
     "nationality": "Obywatelstwo",
-    "document_number": "Numer dokumentu"
+    "document_number": "Numer dokumentu",
+    "personal_administrative_number": "NPI",
+    "birth_record_reference": "Numer aktu",
+    "gender": "Płeć",
+    "age_over_18": "Powyżej 18 lat",
+    "birth_country": "Kraj urodzenia",
+    "birth_state": "Departament urodzenia",
+    "birth_city": "Miasto urodzenia",
+    "resident_address": "Adres",
+    "family_name_birth": "Nazwisko rodowe",
+    "given_name_birth": "Imię przy urodzeniu",
+    "mother_family_name": "Nazwisko matki",
+    "mother_given_name": "Imię matki",
+    "father_family_name": "Nazwisko ojca",
+    "father_given_name": "Imię ojca",
+    "registration_date": "Data rejestracji",
+    "registration_place": "Miejsce rejestracji",
+    "declarant_name": "Zgłaszający",
+    "declarant_relationship": "Pokrewieństwo zgłaszającego",
+    "marginal_mentions1": "Wzmianka dodatkowa 1",
+    "marginal_mentions2": "Wzmianka dodatkowa 2",
+    "issuing_country": "Kraj wydania"
   },
   "verify": {
     "listTitle": "Rekordy wstępnie autoryzowane",
@@ -209,6 +231,30 @@
     "failed": "Dane nie zgadzają się z rejestrem krajowym. Pozostałe próby: {{attempts}}.",
     "locked": "Zbyt wiele nieudanych prób. Weryfikacja tego rekordu jest zablokowana.",
     "footnote": "Weryfikacja jest rejestrowana przez ANIP. Dane służą wyłącznie do wydania tego poświadczenia.",
-    "photo": "Zdjęcie"
+    "photo": "Zdjęcie",
+    "adminTitle": "Administrator – dane rekordu",
+    "adminFill": "Wypełnij automatycznie",
+    "failedAdmin": "Dane nie zgadzają się z rekordem. Użyj powyższych danych rekordu."
+  },
+  "admin": {
+    "link": "Administracja",
+    "linkActive": "Administrator",
+    "loginTitle": "Logowanie administratora",
+    "loginIntro": "Dostęp tylko dla administratorów Portalu CIVIC.",
+    "password": "Hasło",
+    "signIn": "Zaloguj",
+    "signOut": "Wyloguj",
+    "invalidPassword": "Nieprawidłowe hasło.",
+    "notConfigured": "Konto administratora nie jest skonfigurowane na tym serwerze.",
+    "unavailable": "Serwer jest niedostępny. Spróbuj ponownie później.",
+    "sessionExpired": "Sesja wygasła. Zaloguj się ponownie.",
+    "title": "Administracja – wstępne autoryzacje",
+    "subtitle": "Wszystkie dane wstępnej autoryzacji, aby pomóc agentowi, gdy obywatel nie może podać swoich danych.",
+    "notice": "Poufne dane osobowe. Używaj ich wyłącznie do pomocy obecnemu obywatelowi i nigdy ich nie udostępniaj.",
+    "loading": "Wczytywanie rekordów…",
+    "record": "Rekord",
+    "details": "Szczegóły",
+    "issue": "Wydaj",
+    "credentialConfiguration": "Konfiguracja poświadczenia"
   }
 }

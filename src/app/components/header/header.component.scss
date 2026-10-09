@@ -159,3 +159,37 @@
     }
   }
 }
+
+.gov-bar__tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 2px 8px;
+  font-size: .75rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+
+  &:hover {
+    background: rgba(255, 255, 255, .12);
+  }
+
+  &.active {
+    color: var(--ink);
+    background: var(--accent);
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-link span {
+    display: none;
+  }
+}

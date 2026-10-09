@@ -88,7 +88,8 @@
     "scanStep1": "Open the ANIP Wallet app on the phone.",
     "scanStep2": "Scan this QR code, or open the link below on the phone.",
     "scanStep3": "When asked, enter the transaction code.",
-    "verifiedFor": "Identity verified: {{name}}"
+    "verifiedFor": "Identity verified: {{name}}",
+    "verifiedAssisted": "Identity verified with administrator assistance: {{name}}"
   },
   "preAuth": {
     "createOffer": "Create offer",
@@ -185,7 +186,28 @@
     "birth_place": "Place of birth",
     "place_of_birth": "Place of birth",
     "nationality": "Nationality",
-    "document_number": "Document number"
+    "document_number": "Document number",
+    "personal_administrative_number": "NPI",
+    "birth_record_reference": "Birth record reference",
+    "gender": "Sex",
+    "age_over_18": "Over 18",
+    "birth_country": "Country of birth",
+    "birth_state": "Department of birth",
+    "birth_city": "City of birth",
+    "resident_address": "Address",
+    "family_name_birth": "Family name at birth",
+    "given_name_birth": "Given name at birth",
+    "mother_family_name": "Mother’s family name",
+    "mother_given_name": "Mother’s given name",
+    "father_family_name": "Father’s family name",
+    "father_given_name": "Father’s given name",
+    "registration_date": "Registration date",
+    "registration_place": "Registration place",
+    "declarant_name": "Declarant",
+    "declarant_relationship": "Declarant’s relationship",
+    "marginal_mentions1": "Marginal note 1",
+    "marginal_mentions2": "Marginal note 2",
+    "issuing_country": "Issuing country"
   },
   "verify": {
     "listTitle": "Pre-authorized records",
@@ -209,6 +231,30 @@
     "failed": "The details do not match the national register. {{attempts}} attempt(s) left.",
     "locked": "Too many failed attempts. Verification is blocked for this record.",
     "footnote": "Verification is logged by ANIP. Data is used only to issue this credential.",
-    "photo": "Photo"
+    "photo": "Photo",
+    "adminTitle": "Administrator – record data",
+    "adminFill": "Auto-fill",
+    "failedAdmin": "The details do not match the record. Use the record data above."
+  },
+  "admin": {
+    "link": "Admin",
+    "linkActive": "Admin",
+    "loginTitle": "Administrator sign-in",
+    "loginIntro": "Restricted to CIVIC Portal administrators.",
+    "password": "Password",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "invalidPassword": "Incorrect password.",
+    "notConfigured": "The administrator account is not configured on this server.",
+    "unavailable": "The server is unavailable. Try again later.",
+    "sessionExpired": "Your session has expired. Please sign in again.",
+    "title": "Administration – pre-authorizations",
+    "subtitle": "All pre-authorization data, to assist an agent when the citizen cannot provide their details.",
+    "notice": "Confidential personal data. Use it only to assist a citizen who is present, and never share it.",
+    "loading": "Loading records…",
+    "record": "Record",
+    "details": "Details",
+    "issue": "Issue",
+    "credentialConfiguration": "Credential configuration"
   }
 }

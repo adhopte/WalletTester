@@ -8,7 +8,15 @@ export class Offer {
     authorization_code: string
     // Set by the portal when the holder's identity was verified before the offer was created
     verifiedHolder?: string
+    // True when the verification was assisted by the portal administrator
+    assisted?: boolean
 }
+
+/** Use cases where the citizen must be verified (date of birth + ID number) before the offer is created */
+export const VERIFIED_USE_CASES: string[] = ["oid_pid_mdoc_uc1", "oid_birth_certificate_sd_jwt_uc1"];
+
+/** Claims accepted as "ID number" when verifying a citizen, NPI first */
+export const ID_CLAIMS = ['personal_administrative_number', 'document_number', 'birth_record_reference'];
 
 
 export class UserAttributes {

@@ -10,6 +10,7 @@ import { DtcUsersComponent } from './components/dtc-users/dtc-users.component';
 import { DtcTransactionComponent } from './components/dtc-transaction/dtc-transaction.component';
 import { PreAuthCodeFlowComponent } from './components/pre-auth-code-flow/pre-auth-code-flow.component';
 import { DisplayOid4vciOfferComponent } from './components/display-oid4vci-offer/display-oid4vci-offer.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 export const routes: Routes = [
@@ -24,6 +25,7 @@ export const routes: Routes = [
   { path: 'dtc-transaction', component: DtcTransactionComponent },
   { path: 'pre-auth-code-flow/:useCaseId', component: PreAuthCodeFlowComponent },
   { path: 'display-oid4vci-offer', component: DisplayOid4vciOfferComponent },
+  { path: 'admin', component: AdminComponent },
 ];
 
 @NgModule({

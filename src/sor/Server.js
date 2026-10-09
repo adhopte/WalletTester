@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const fs = require('fs').promises;
+const crypto = require('crypto');
 const CredentialNotFoundException = require('./CredentialNotFoundException');
 require('dotenv').config();
 
@@ -63,6 +64,9 @@ app.post('/:credentialConfigurationId/sor/:identifier/verify', async (req, res) 
     const idOk = entered !== '' && idNumbers(user).some(id => normalize(id) === entered);
     const birthDateOk = !!birthDate && String(req.body?.birthDate || '').trim() === String(birthDate);
     if (idOk && birthDateOk) {
+      if (isAdmin(req)) {
+        console.log('admin-assisted verification of ' + user.identifier);
+      }
       return res.json({ verified: true });
     }
     res.status(401).json({ verified: false, reason: 'mismatch' });
@@ -101,6 +105,72 @@ function mask(id) {
   const value = String(id);
   return '•'.repeat(Math.max(value.length - 4, 0)) + value.slice(-4);
 }
+
+/*
+ * Portal administrator: sees the full pre-authorization records (including ID
+ * numbers) so an agent can be assisted when the citizen cannot provide them.
+ * Enabled only when ADMIN_PASSWORD is set; sessions are kept in memory.
+ */
+const ADMIN_SESSION_MS = 8 * 60 * 60 * 1000;
+const adminSessions = new Map();
+
+function sha256(value) {
+  return crypto.createHash('sha256').update(String(value)).digest();
+}
+
+function bearerToken(req) {
+  return (req.headers.authorization || '').replace(/^Bearer\s+/i, '');
+}
+
+function isAdmin(req) {
+  const token = bearerToken(req);
+  const expiry = token && adminSessions.get(token);
+  if (!expiry) {
+    return false;
+  }
+  if (expiry < Date.now()) {
+    adminSessions.delete(token);
+    return false;
+  }
+  return true;
+}
+
+app.post('/admin/login', async (req, res) => {
+  const expected = process.env.ADMIN_PASSWORD;
+  if (!expected) {
+    return res.status(503).json({ error: 'admin_not_configured' });
+  }
+  const ok = crypto.timingSafeEqual(sha256(req.body?.password ?? ''), sha256(expected));
+  if (!ok) {
+    console.warn('admin login failed from ' + req.ip);
+    await new Promise(resolve => setTimeout(resolve, 600));
+    return res.status(401).json({ error: 'invalid_credentials' });
+  }
+  const token = crypto.randomBytes(32).toString('hex');
+  adminSessions.set(token, Date.now() + ADMIN_SESSION_MS);
+  console.log('admin login from ' + req.ip);
+  res.json({ token, expiresIn: ADMIN_SESSION_MS / 1000 });
+});
+
+app.post('/admin/logout', (req, res) => {
+  adminSessions.delete(bearerToken(req));
+  res.sendStatus(204);
+});
+
+// Full records, ID numbers included
+app.get('/admin/:credentialConfigurationId/sor/', async (req, res) => {
+  if (!isAdmin(req)) {
+    return res.status(401).json({ error: 'admin_required' });
+  }
+  try {
+    const credentialConfigurationId = req.params['credentialConfigurationId'];
+    const jsonData = await loadJson(findPathFile(credentialConfigurationId));
+    console.log('admin read pre-authorization records of ' + credentialConfigurationId);
+    res.json(jsonData);
+  } catch (e) {
+    handleException(e, res);
+  }
+});
 
 app.listen(process.env.SOR_SERVER_PORT, () => {
   console.log('Backend listening on http://localhost:' + process.env.SOR_SERVER_PORT);

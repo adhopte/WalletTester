@@ -4,17 +4,16 @@ import { NgForOf, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RestControllerService } from '../../services/rest-controller.service';
 import { CredentialConfigService } from '../../services/credential-config.service';
+import { AdminService } from '../../services/admin.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
-import { CodeRequest, DEFAULT_WALLET_IDENTIFIER, Offer, offerErrorMessage, UseCaseId, UserAttributes } from '../../models/Oid4vciModels';
+import { CodeRequest, DEFAULT_WALLET_IDENTIFIER, ID_CLAIMS, Offer, offerErrorMessage, UseCaseId, UserAttributes, VERIFIED_USE_CASES } from '../../models/Oid4vciModels';
 import { v4 as uuidv4 } from 'uuid';
 import { forkJoin, timer } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
 type VerificationState = 'form' | 'checking' | 'failed' | 'locked' | 'verified' | 'issuing';
 
-/** Use cases where the citizen must be verified (date of birth + NPI) before the offer is created */
-const VERIFIED_USE_CASES: string[] = [UseCaseId.oid_pid_mdoc_uc1, UseCaseId.oid_birth_certificate_sd_jwt_uc1];
 const MAX_ATTEMPTS = 3;
 // Minimum time the "checking with the national register" step is shown
 const CHECK_DELAY_MS = 1200;
@@ -30,6 +29,7 @@ export class PreAuthCodeFlowComponent implements OnInit {
   route = inject(ActivatedRoute);
   private translate = inject(TranslateService);
   private credentialConfigs = inject(CredentialConfigService);
+  admin = inject(AdminService);
   dataSet: UserAttributes[] = [];
 
   staticColumns = ['action'];
@@ -61,8 +61,23 @@ export class PreAuthCodeFlowComponent implements OnInit {
     });
     this.requiresVerification = VERIFIED_USE_CASES.includes(this.useCaseId);
     this.buildDisplayedColumns(this.useCaseId);
-    this._rest.loadOidDataUser(this.useCaseId).subscribe((res: any) => {
+    // The administrator gets the full records (ID numbers included)
+    const records$ = this.requiresVerification && this.admin.isAdmin()
+      ? this._rest.loadAdminRecords(this.useCaseId)
+      : this._rest.loadOidDataUser(this.useCaseId);
+    records$.subscribe((res: any) => {
+      if (res === null && this.requiresVerification) {
+        // admin session expired: fall back to the agent view
+        this._rest.loadOidDataUser(this.useCaseId).subscribe((list: any) => this.dataSet = list ?? []);
+        return;
+      }
       this.dataSet = res ?? [];
+      // Opened from the admin page for a given record
+      const record = this.route.snapshot.queryParamMap.get('record');
+      const user = record ? this.dataSet.find(u => u.identifier === record) : undefined;
+      if (user) {
+        this.start(user);
+      }
     });
   }
 
@@ -125,7 +140,32 @@ export class PreAuthCodeFlowComponent implements OnInit {
     return [this.getAttributeValue(user, 'given_name'), this.getAttributeValue(user, 'family_name')].filter(Boolean).join(' ');
   }
 
+  /** ID numbers of a full record (administrator view) */
+  idNumbers(user: UserAttributes): string[] {
+    const ids = ID_CLAIMS.map(name => this.getAttributeValue(user, name)).filter(Boolean);
+    return user.npi ? [user.npi, ...ids] : ids;
+  }
+
+  recordBirthDate(user: UserAttributes): string {
+    return this.getAttributeValue(user, 'birth_date') || this.getAttributeValue(user, 'birthdate');
+  }
+
+  /** Administrator: fill the verification form from the record */
+  fillFromRecord() {
+    if (!this.selected) {
+      return;
+    }
+    this.birthDate = this.recordBirthDate(this.selected);
+    this.npi = this.idNumbers(this.selected)[0] ?? '';
+    if (this.state === 'failed' || this.state === 'locked') {
+      this.state = 'form';
+    }
+  }
+
   npiHint(user: UserAttributes): string {
+    if (this.admin.isAdmin()) {
+      return this.idNumbers(user).join(' · ');
+    }
     if (user.npiHint) {
       return user.npiHint;
     }
@@ -171,7 +211,8 @@ export class PreAuthCodeFlowComponent implements OnInit {
           return;
         }
         this.attempts++;
-        this.state = this.attempts >= MAX_ATTEMPTS ? 'locked' : 'failed';
+        // The administrator is never locked out
+        this.state = this.attempts >= MAX_ATTEMPTS && !this.admin.isAdmin() ? 'locked' : 'failed';
       });
   }
 
@@ -206,7 +247,7 @@ export class PreAuthCodeFlowComponent implements OnInit {
         alert(offerErrorMessage(this.translate, this._rest.lastOfferError));
         return;
       }
-      const state = verified ? { ...offertRequest, verifiedHolder: this.fullName(user) } : offertRequest;
+      const state = verified ? { ...offertRequest, verifiedHolder: this.fullName(user), assisted: this.admin.isAdmin() } : offertRequest;
       this.router.navigate(['display-oid4vci-offer'], { state });
     });
   }

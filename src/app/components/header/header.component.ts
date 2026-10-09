@@ -1,6 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {UpperCasePipe} from '@angular/common';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import {AdminService} from '../../services/admin.service';
 import {TranslatePipe} from '@ngx-translate/core';
 import {LanguageService} from '../../services/language.service';
 
@@ -9,12 +10,13 @@ import {LanguageService} from '../../services/language.service';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
-  imports: [TranslatePipe, UpperCasePipe],
+  imports: [TranslatePipe, UpperCasePipe, RouterLink],
   standalone: true
 })
 export class HeaderComponent implements OnInit {
 
   languageService = inject(LanguageService);
+  admin = inject(AdminService);
 
   constructor(private router: Router) {
 

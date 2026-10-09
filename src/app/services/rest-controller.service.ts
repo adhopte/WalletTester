@@ -6,6 +6,7 @@ import { ResponseParser } from './../utils/ResponseParser'
 import { LocalStorageService } from './../services/local-storage.service'
 import { environment } from "../../environments/environment"
 import { ConfigService } from './config-service'
+import { AdminService } from './admin.service'
 import { Integer } from 'asn1js'
 import { UseCaseId, UserAttributes } from '../models/Oid4vciModels'
 
@@ -28,7 +29,7 @@ const accessTokenUrl = "accesstoken/create"
 export class RestControllerService {
 
 
-  constructor(private httpClient: HttpClient, private _storage: LocalStorageService, private configs: ConfigService) { }
+  constructor(private httpClient: HttpClient, private _storage: LocalStorageService, private configs: ConfigService, private admin: AdminService) { }
 
   private httpOptions = {
     headers: new HttpHeaders().set('Content-Type', 'application/json')
@@ -130,10 +131,45 @@ export class RestControllerService {
       return of(clean(npi) !== '' && ids.some(id => clean(id) === clean(npi)) && birthDate === String(recordBirthDate));
     }
     const url = this.configs.sorHost() + environment.sorBasePath + "/" + useCaseId + "/sor/" + encodeURIComponent(user.identifier) + "/verify";
-    return this.httpClient.post<{ verified: boolean }>(url, JSON.stringify({ birthDate, npi }), this.httpOptions).pipe(
+    return this.httpClient.post<{ verified: boolean }>(url, JSON.stringify({ birthDate, npi }), { headers: this.adminHeaders() }).pipe(
       map(res => res?.verified === true),
       catchError(() => of(false))
     );
+  }
+
+  /** Administrator login; emits the session token, or null with the HTTP status on failure */
+  adminLogin(password: string): Observable<{ token?: string, expiresIn?: number, status?: number }> {
+    return this.httpClient.post<{ token: string, expiresIn: number }>(this.sorBaseUrl() + '/admin/login', JSON.stringify({ password }), this.httpOptions).pipe(
+      catchError((err: HttpErrorResponse) => of({ status: err.status }))
+    );
+  }
+
+  adminLogout(): Observable<unknown> {
+    return this.httpClient.post(this.sorBaseUrl() + '/admin/logout', '{}', { headers: this.adminHeaders() }).pipe(
+      catchError(() => of(null))
+    );
+  }
+
+  /** Full pre-authorization records, ID numbers included (administrator only) */
+  loadAdminRecords(useCaseId: string): Observable<UserAttributes[] | null> {
+    return this.httpClient.get<UserAttributes[]>(this.sorBaseUrl() + '/admin/' + useCaseId + '/sor/', { headers: this.adminHeaders() }).pipe(
+      catchError((err: HttpErrorResponse) => {
+        if (err.status === 401) {
+          this.admin.end();
+        }
+        return of(null);
+      })
+    );
+  }
+
+  private sorBaseUrl(): string {
+    return this.configs.sorHost() + environment.sorBasePath;
+  }
+
+  private adminHeaders(): HttpHeaders {
+    const token = this.admin.currentToken();
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return token ? headers.set('Authorization', 'Bearer ' + token) : headers;
   }
 
   /** The credential issuer's metadata (null when unavailable) */
