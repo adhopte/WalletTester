@@ -67,3 +67,9 @@
   height: 5px;
   background: var(--tricolour);
 }
+
+.site-footer__version {
+  opacity: .7;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .78rem;
+}

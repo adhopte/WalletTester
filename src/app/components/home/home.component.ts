@@ -79,7 +79,19 @@ export class HomeComponent implements OnInit {
       case 'oid_pid_idp_uc2':
         this.submitOfferRequest();
         break;
+      default:
+        // Any other OID4VCI pre-authorized use case
+        if (this.selected?.startsWith('oid_')) {
+          this.router.navigate(['pre-auth-code-flow/' + this.selected]);
+        }
     }
+  }
+
+  /** Translated use case name, falling back to the English name or the id */
+  useCaseLabel(useCaseId: string): string {
+    const key = 'useCases.' + useCaseId;
+    const label = this.translate.instant(key);
+    return label !== key ? label : (useCaseMap[useCaseId] ?? useCaseId);
   }
 
   submitOfferRequest(): void {

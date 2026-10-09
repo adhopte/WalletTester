@@ -7,6 +7,7 @@
     window["env"]["oid4vciHost"] = "${OID_4_VCI_HOST}";
     window["env"]["sorHost"] = "${SOR_HOST}";
     window["env"]["uc2CredName"] = "${UC2_CRED_NAME}";
+    window["env"]["version"] = "${APP_VERSION}";
     window.env.flows = {
       default: ${DEFAULT_FLOWS},
       hosts: ${HOST_SPECIFIC_FLOWS},

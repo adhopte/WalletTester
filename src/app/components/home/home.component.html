@@ -15,7 +15,7 @@
       <button type="button" class="use-case" (click)="select(uc[0])">
         <span class="use-case__icon"><i class="bi" [ngClass]="iconFor(uc[0])" aria-hidden="true"></i></span>
         <span class="use-case__body">
-          <span class="use-case__name">{{ ('useCases.' + uc[0]) | translate }}</span>
+          <span class="use-case__name">{{ useCaseLabel(uc[0]) }}</span>
           <span class="use-case__cta">{{ 'common.start' | translate }} <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
         </span>
       </button>

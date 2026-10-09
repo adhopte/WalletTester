@@ -8,6 +8,8 @@ HTML=/usr/share/nginx/html/in-person-portal
 # image defaults unless the new names are set explicitly.
 OID_4_VCI_HOST="${ISSUER_URL:-$OID_4_VCI_HOST}"
 export SUPPORTED_USE_CASES="${PORTAL_USE_CASES:-$SUPPORTED_USE_CASES}"
+# Shown in the portal footer; Render sets RENDER_GIT_COMMIT
+export APP_VERSION="$(printf '%s' "${APP_VERSION:-$RENDER_GIT_COMMIT}" | cut -c1-7)"
 
 # The portal POSTs credential offers to <oid4vciHost>/offer from the browser.
 # Proxy that through nginx so the call is same-origin (no CORS needed on the

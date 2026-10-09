@@ -8,11 +8,12 @@ import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http"
 import { provideTranslateService } from "@ngx-translate/core";
 import { provideTranslateHttpLoader } from "@ngx-translate/http-loader";
 import { LanguageService } from "./services/language.service";
+import { BUILD_ID } from "../environments/build-id";
 
 export const appConfig: ApplicationConfig = {
     providers: [provideRouter(routes),RestControllerService, LocalStorageService, WindowProvider,provideHttpClient(withInterceptorsFromDi()),
         provideTranslateService({
-            loader: provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' }),
+            loader: provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json?v=' + BUILD_ID }),
             fallbackLang: LanguageService.DEFAULT_LANGUAGE,
         }),
         provideAppInitializer(() => inject(LanguageService).init()),

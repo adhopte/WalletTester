@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ConfigService } from '../../services/config-service';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
@@ -10,4 +11,5 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class FooterComponent {
   readonly year = new Date().getFullYear();
+  readonly version = inject(ConfigService).appVersion();
 }

@@ -44,6 +44,11 @@ export class ConfigService {
     return (this.window as any).env?.sorHost;
   }
 
+  /** Deployed build (git commit), when the host provides it */
+  appVersion(): string {
+    return (this.window as any).env?.version ?? '';
+  }
+
   uc2CredentialName(): string {
     return (this.window as any).env?.uc2CredName;
   }

@@ -7,7 +7,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci --no-audit --no-fund
 COPY . .
-RUN npm run build -- --configuration production
+# Unique id per image, used to version the translation file URLs
+RUN echo "export const BUILD_ID = '$(date +%s)';" > src/environments/build-id.ts \
+ && npm run build -- --configuration production
 
 
 FROM node:20-alpine

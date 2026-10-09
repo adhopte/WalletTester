@@ -11,7 +11,7 @@
   </div>
   <div class="site-footer__bottom">
     <div class="site-footer__inner">
-      <span>© {{ year }} ANIP · {{ 'app.portalName' | translate }}</span>
+      <span>© {{ year }} ANIP · {{ 'app.portalName' | translate }}@if (version) {<span class="site-footer__version"> · v{{ version }}</span>}</span>
       <span class="site-footer__notice"><i class="bi bi-info-circle" aria-hidden="true"></i> {{ 'footer.demoNotice' | translate }}</span>
     </div>
   </div>
